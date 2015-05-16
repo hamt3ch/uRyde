@@ -7,12 +7,23 @@
 //
 
 import UIKit
+import Parse
+import ParseUI
 
-class ViewController: UIViewController {
-
+class urSignUp: UIViewController {
+    
+    @IBOutlet var firstName: UITextField!
+    @IBOutlet var lastName: UITextField!
+    @IBOutlet var username: UITextField!
+    @IBOutlet var password: UITextField!
+    @IBOutlet var confirmPass: UITextField!
+    @IBOutlet var email: UITextField!
+    @IBOutlet var phoneNum: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+
     }
 
     override func didReceiveMemoryWarning() {

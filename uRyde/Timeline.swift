@@ -10,7 +10,10 @@ import Parse
 import ParseUI
 import UIKit
 
-class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate{
+class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate {
+    
+    var loginViewController = PFLogInViewController()  // instantiate loginView
+    var signUpViewController = PFSignUpViewController() // instantiate signupView
     
     @IBOutlet var tableView: UITableView!
     
@@ -20,7 +23,7 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
   //  var postArrayString:Array = [""]
   //  var postArray:NSMutableArray = []
     
-    let swiftBlogs = ["Progress", "Strength Exercises", "Activites", "Achieved Goal Congratulations", "Next Message", "Then the Message After That", "And So on..."]
+    let swiftBlogs = ["I", "am", "cooler", "than", "Hugh", "Anthony", "Miles"]
     
     let textCellIdentifier = "TextCell"
     
@@ -38,29 +41,45 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
         
         if(PFUser.currentUser() == nil)
         {
-            //customize parse login here
+            //customize parse login/signup here
             
-            var loginViewController = PFLogInViewController()  // instantiate loginView
             
             loginViewController.delegate = self // connect loginView to delegate
-            
-            var signUpViewController = PFSignUpViewController() // instantiate signupView
-            
             signUpViewController.delegate = self // connect signupView to delegate
+            
+           // signUpViewController.fields = PFSignUpFields.Email
+            loginViewController.signUpController?.fields = (PFSignUpFields.Additional)
+            loginViewController.signUpController?.delegate = self
             
             loginViewController.signUpController = signUpViewController // signupBtn >> signupViewController
             
             self.presentViewController(loginViewController, animated: true, completion: nil) // push to screen
             
+            //replaes Parse logo
+            var loginLogoTitle = UILabel() //can use UIImage UIButton etc...
+            loginLogoTitle.text = "uRyde"
+            
+            //customize SignUpView
+            var signupLogoTitle = UILabel()
+            signupLogoTitle.text = loginLogoTitle.text
+            loginViewController.logInView?.logo = loginLogoTitle
+            
+            
+            signUpViewController.signUpView?.logo = signupLogoTitle
+            
+            
+            
+        
         }
     }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    //DataSourceSegement////////////////
+    //DataSourceSegment////////////////
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -79,7 +98,7 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
     }
     
     
-    //UITableViewSegement////////////////
+    //UITableViewSegment////////////////
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
@@ -89,7 +108,7 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
     
     
 
-    //UIParseLoginSegement/////////////////
+    //UIParseLoginSegment/////////////////
     func logInViewController(logInController: PFLogInViewController, shouldBeginLogInWithUsername username: String, password: String) -> Bool {
         if(!username.isEmpty || !password.isEmpty)
         {
@@ -110,16 +129,16 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
     
     func logInViewController(logInController: PFLogInViewController, didFailToLogInWithError error: NSError?) {
         //User failed to login
-        println("Did fail to login")
+        println("Failed to login")
     }
     
-    //UIParseSignupSegement////////////////////////////////////
+    //UIParseSignupSegment////////////////////////////////////
     func signUpViewController(signUpController: PFSignUpViewController, didSignUpUser user: PFUser) -> Void {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func signUpViewController(signUpController: PFSignUpViewController, didFailToSignUpWithError error: NSError?) {
-        println("failed to signup")
+        println("Failed to signup")
     }
     
     func signUpViewControllerDidCancelSignUp(signUpController: PFSignUpViewController) {

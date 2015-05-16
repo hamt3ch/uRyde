@@ -189,6 +189,83 @@
             </objects>
             <point key="canvasLocation" x="101.59999999999999" y="377.71999999999997"/>
         </scene>
+        <!--Ur Sign Up-->
+        <scene sceneID="cSX-Kx-dXb">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sNj-MD-unR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="fui-0L-lwq" customClass="urSignUp" customModule="uRyde" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Cu2-oL-O0Q"/>
+                        <viewControllerLayoutGuide type="bottom" id="8rY-Zs-NY5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8aH-Me-L8N">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password (6-20 characters)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ANG-oc-SYz">
+                                <rect key="frame" x="16" y="249" width="288" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username (6-20 characters)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fF6-u9-WoG">
+                                <rect key="frame" x="16" y="211" width="288" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yQK-fZ-koi">
+                                <rect key="frame" x="139" y="28" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hH1-WF-lUT">
+                                <rect key="frame" x="16" y="365" width="288" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fnr-YM-axn">
+                                <rect key="frame" x="16" y="327" width="288" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wft-W0-RRe">
+                                <rect key="frame" x="16" y="135" width="288" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wpK-oU-fDH">
+                                <rect key="frame" x="16" y="173" width="288" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="twl-T9-vCP">
+                                <rect key="frame" x="137" y="403" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HYK-fG-Qp6">
+                                <rect key="frame" x="16" y="287" width="288" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="e5l-RT-3XU"/>
+                    <connections>
+                        <outlet property="confirmPass" destination="HYK-fG-Qp6" id="Zhf-w6-pTM"/>
+                        <outlet property="email" destination="fnr-YM-axn" id="S4u-yQ-T0A"/>
+                        <outlet property="firstName" destination="Wft-W0-RRe" id="KS3-Pe-hEY"/>
+                        <outlet property="lastName" destination="wpK-oU-fDH" id="OwR-Qb-bSZ"/>
+                        <outlet property="password" destination="ANG-oc-SYz" id="ITC-Qc-nU8"/>
+                        <outlet property="phoneNum" destination="hH1-WF-lUT" id="WB9-Gs-u1s"/>
+                        <outlet property="username" destination="fF6-u9-WoG" id="6Ul-jy-Lfb"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="395" y="1997"/>
+        </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
