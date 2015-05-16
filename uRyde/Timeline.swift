@@ -6,9 +6,11 @@
 //  Copyright (c) 2015 ph7. All rights reserved.
 //
 
+import Parse
+import ParseUI
 import UIKit
 
-class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate  {
+class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate{
     
     @IBOutlet var tableView: UITableView!
     
@@ -21,6 +23,28 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate  {
         // Do any additional setup after loading the view, typically from a nib.
         tableView.delegate = self       //connect tableview to delegates/DataSource
         tableView.dataSource = self
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if(PFUser.currentUser() == nil)
+        {
+            //customize parse login here
+            
+            var loginViewController = PFLogInViewController()  // instantiate loginView
+            
+            loginViewController.delegate = self // connect loginView to delegate
+            
+            var signUpViewController = PFSignUpViewController() // instantiate signupView
+            
+            signUpViewController.delegate = self // connect signupView to delegate
+            
+            loginViewController.signUpController = signUpViewController // signupBtn >> signupViewController
+            
+            self.presentViewController(loginViewController, animated: true, completion: nil) // push to screen
+            
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -55,6 +79,44 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate  {
         
         let row = indexPath.row
         println(swiftBlogs[row]) // NS Log(cell.text)
+    }
+
+    //UIParseLoginSegement/////////////////
+    
+    func logInViewController(logInController: PFLogInViewController, shouldBeginLogInWithUsername username: String, password: String) -> Bool {
+        if(!username.isEmpty || !password.isEmpty)
+        {
+            return true
+        }
+        
+        else
+        {
+            return false
+        }
+    }
+    
+    func logInViewController(logInController: PFLogInViewController, didLogInUser user: PFUser) {
+        //User for logged in
+         self.dismissViewControllerAnimated(true, completion: nil) // dismiss loginView
+    
+    }
+    
+    func logInViewController(logInController: PFLogInViewController, didFailToLogInWithError error: NSError?) {
+        //User failed to login
+        println("Did fail to login")
+    }
+    
+    //UIParseSignupSegement////////////////////////////////////
+    func signUpViewController(signUpController: PFSignUpViewController, didSignUpUser user: PFUser) -> Void {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func signUpViewController(signUpController: PFSignUpViewController, didFailToSignUpWithError error: NSError?) {
+        println("failed to signup")
+    }
+    
+    func signUpViewControllerDidCancelSignUp(signUpController: PFSignUpViewController) {
+        println("Cancelled signupView")
     }
     
     @IBAction func offerBtnPressed(sender: AnyObject) {
