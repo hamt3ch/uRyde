@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import ParseUI
 import Parse
 
-class Profile: UIViewController {
+class Profile: UIViewController, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate {
     
     //profile info
     @IBOutlet var username: UILabel!
@@ -17,16 +18,18 @@ class Profile: UIViewController {
     @IBOutlet var email: UILabel!
     @IBOutlet var phoneNum: UILabel!
     
-    //get current user
+    
    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         //DON'T put vars before viewDidLoad
-        //
-        var myself = PFUser.currentUser()
+        
+        //gets current user
+        let myself = PFUser.currentUser()
         var query = PFQuery(className:"_User")
         if myself != nil {
             
@@ -57,6 +60,68 @@ class Profile: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    //UIParseLoginSegement/////////////////
+    
+    func logInViewController(logInController: PFLogInViewController, shouldBeginLogInWithUsername username: String, password: String) -> Bool {
+        if(!username.isEmpty || !password.isEmpty)
+        {
+            return true
+        }
+            
+        else
+        {
+            return false
+        }
+    }
+    
+    func logInViewController(logInController: PFLogInViewController, didLogInUser user: PFUser) {
+        //User for logged in
+        self.dismissViewControllerAnimated(true, completion: nil) // dismiss loginView
+        
+    }
+    
+    func logInViewController(logInController: PFLogInViewController, didFailToLogInWithError error: NSError?) {
+        //User failed to login
+        println("Did fail to login")
+    }
+    
+
+    
+    //logs out user and sends back timeline which will send back to log in page
+    @IBAction func logMeOut(sender: UIButton) {
+        PFUser.logOut()
+        if (PFUser.currentUser() == nil) {
+            println("logged out successfully")
+        }
+        
+        self.presentLoginViewController()
+        
+        
+    }
+    
+    //logs out the user
+    func presentLoginViewController()
+    {
+        if (PFUser.currentUser() == nil)
+        {
+            //calls login view controller
+            let login = PFLogInViewController()
+            login.fields =
+                PFLogInFields.UsernameAndPassword |
+                PFLogInFields.LogInButton |
+                PFLogInFields.SignUpButton
+            
+            login.delegate = self
+            login.signUpController?.delegate = self
+            self.presentViewController(login, animated: true, completion: nil)
+            
+            
+
+        }
+    
     }
     
     
