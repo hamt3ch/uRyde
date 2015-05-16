@@ -41,14 +41,11 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
         
         if(PFUser.currentUser() == nil)
         {
-            //customize parse login/signup here
-            
-            
             loginViewController.delegate = self // connect loginView to delegate
             signUpViewController.delegate = self // connect signupView to delegate
             
-           // signUpViewController.fields = PFSignUpFields.Email
             loginViewController.signUpController?.fields = (PFSignUpFields.Additional)
+            
             loginViewController.signUpController?.delegate = self
             
             loginViewController.signUpController = signUpViewController // signupBtn >> signupViewController
@@ -66,9 +63,6 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
             
             
             signUpViewController.signUpView?.logo = signupLogoTitle
-            
-            
-            
         
         }
     }

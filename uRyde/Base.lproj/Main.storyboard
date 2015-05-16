@@ -92,7 +92,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-284" y="1155.8799999999999"/>
+            <point key="canvasLocation" x="-328" y="1155"/>
         </scene>
         <!--Timeline-->
         <scene sceneID="052-1P-c7z">
@@ -106,6 +106,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NdQ-6p-9NA">
+                                <rect key="frame" x="224" y="118" width="57" height="30"/>
+                                <state key="normal" title="Request">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="requestBtnPressed:" destination="VEP-lE-yRV" eventType="touchUpInside" id="iRf-6O-nY1"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m0X-HY-eKk">
+                                <rect key="frame" x="32" y="118" width="34" height="30"/>
+                                <state key="normal" title="Offer">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="offerBtnPressed:" destination="VEP-lE-yRV" eventType="touchUpInside" id="Und-jS-5TP"/>
+                                </connections>
+                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="NMd-SP-i9g">
                                 <rect key="frame" x="0.0" y="165" width="366" height="586"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -120,35 +138,23 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NdQ-6p-9NA">
-                                <rect key="frame" x="254" y="118" width="57" height="30"/>
-                                <state key="normal" title="Request">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="requestBtnPressed:" destination="VEP-lE-yRV" eventType="touchUpInside" id="iRf-6O-nY1"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m0X-HY-eKk">
-                                <rect key="frame" x="68" y="118" width="34" height="30"/>
-                                <state key="normal" title="Offer">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="offerBtnPressed:" destination="VEP-lE-yRV" eventType="touchUpInside" id="Und-jS-5TP"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Timeline" id="IaI-hl-15C"/>
+                    <navigationItem key="navigationItem" title="Live Feed" id="U1o-y8-cF6">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="GEL-Ew-TRY">
+                            <connections>
+                                <segue destination="AsH-X4-Y9N" kind="push" id="wI6-kL-GRm"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="NMd-SP-i9g" id="duW-i8-2Z0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2kc-Ls-DvR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="155.19999999999999" y="1155.8799999999999"/>
+            <point key="canvasLocation" x="584" y="1155"/>
         </scene>
         <!--Notifications-->
         <scene sceneID="Htz-CY-rHn">
@@ -167,7 +173,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zGc-O8-4vq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="596.79999999999995" y="1155.8799999999999"/>
+            <point key="canvasLocation" x="1102" y="1155"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="z5f-vr-s9B">
@@ -180,7 +186,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="VEP-lE-yRV" kind="relationship" relationship="viewControllers" id="Qfi-Bq-NRw"/>
+                        <segue destination="K66-n1-M6g" kind="relationship" relationship="viewControllers" id="Qfi-Bq-NRw"/>
                         <segue destination="vXZ-lx-hvc" kind="relationship" relationship="viewControllers" id="IWK-wb-KU6"/>
                         <segue destination="oCO-vh-96B" kind="relationship" relationship="viewControllers" id="OHi-if-faf"/>
                     </connections>
@@ -192,7 +198,6 @@
         <!--Ur Sign Up-->
         <scene sceneID="cSX-Kx-dXb">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sNj-MD-unR" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="fui-0L-lwq" customClass="urSignUp" customModule="uRyde" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Cu2-oL-O0Q"/>
@@ -263,8 +268,68 @@
                         <outlet property="username" destination="fF6-u9-WoG" id="6Ul-jy-Lfb"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sNj-MD-unR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="395" y="1997"/>
+            <point key="canvasLocation" x="-215" y="1926"/>
+        </scene>
+        <!--Create Post-->
+        <scene sceneID="EVF-yE-p6m">
+            <objects>
+                <viewController id="AsH-X4-Y9N" customClass="CreatePost" customModule="uRyde" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Wq7-d6-n2J"/>
+                        <viewControllerLayoutGuide type="bottom" id="Adi-ep-75h"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="T3s-MH-dg9">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gLX-vv-bI9">
+                                <rect key="frame" x="0.0" y="64" width="320" height="341"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y46-M8-UEQ">
+                                        <rect key="frame" x="145" y="137" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ycw-vp-JGj">
+                                <rect key="frame" x="0.0" y="389" width="320" height="130"/>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="3in-vH-tZQ"/>
+                    <connections>
+                        <outlet property="myPicker" destination="ycw-vp-JGj" id="WMK-Ms-mxK"/>
+                        <outlet property="requestView" destination="gLX-vv-bI9" id="A5u-m3-3pv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n4b-Xx-ClK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="584" y="1921"/>
+        </scene>
+        <!--Timeline-->
+        <scene sceneID="kJb-Hg-efq">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="K66-n1-M6g" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Timeline" id="wgv-TP-frq"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4c6-Fl-lCr">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="VEP-lE-yRV" kind="relationship" relationship="rootViewController" id="RJX-hm-i6Z"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sth-MN-DgA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="121" y="1155"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

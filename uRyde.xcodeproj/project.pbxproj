@@ -35,6 +35,7 @@
 		A8BE9D6F1B06C662009F13BD /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A8BE9D6E1B06C662009F13BD /* libsqlite3.dylib */; };
 		A8BE9D711B06C66B009F13BD /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8BE9D701B06C66B009F13BD /* Accounts.framework */; };
 		A8BE9D731B06C672009F13BD /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8BE9D721B06C672009F13BD /* Social.framework */; };
+		A8BE9D751B07EA07009F13BD /* CreatePost.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BE9D741B07EA07009F13BD /* CreatePost.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,7 @@
 		A8BE9D6E1B06C662009F13BD /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		A8BE9D701B06C66B009F13BD /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		A8BE9D721B06C672009F13BD /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		A8BE9D741B07EA07009F13BD /* CreatePost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePost.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 				A87B39511B066E8F0078ADAE /* Notifications.swift */,
 				A87B39531B066E9B0078ADAE /* Profile.swift */,
 				A87B39311B066E020078ADAE /* urSignUp.swift */,
+				A8BE9D741B07EA07009F13BD /* CreatePost.swift */,
 				A87B39361B066E020078ADAE /* Images.xcassets */,
 				A87B39381B066E020078ADAE /* LaunchScreen.xib */,
 				A87B392D1B066E020078ADAE /* Supporting Files */,
@@ -307,6 +310,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A87B39521B066E8F0078ADAE /* Notifications.swift in Sources */,
+				A8BE9D751B07EA07009F13BD /* CreatePost.swift in Sources */,
 				A87B39541B066E9B0078ADAE /* Profile.swift in Sources */,
 				A87B39501B066E770078ADAE /* Timeline.swift in Sources */,
 				A87B39321B066E020078ADAE /* urSignUp.swift in Sources */,
