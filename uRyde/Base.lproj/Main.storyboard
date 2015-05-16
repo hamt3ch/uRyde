@@ -130,14 +130,14 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="viewControllers" id="IWK-wb-KU6"/>
                         <segue destination="VEP-lE-yRV" kind="relationship" relationship="viewControllers" id="Qfi-Bq-NRw"/>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="viewControllers" id="IWK-wb-KU6"/>
                         <segue destination="oCO-vh-96B" kind="relationship" relationship="viewControllers" id="OHi-if-faf"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jao-oH-0gW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="304.5" y="399"/>
+            <point key="canvasLocation" x="190.5" y="399"/>
         </scene>
     </scenes>
 </document>
