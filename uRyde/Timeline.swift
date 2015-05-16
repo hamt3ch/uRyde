@@ -14,6 +14,12 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
     
     @IBOutlet var tableView: UITableView!
     
+    var myPostArray = NSMutableArray()
+    var mySwiftArray: [String] = []
+   
+  //  var postArrayString:Array = [""]
+  //  var postArray:NSMutableArray = []
+    
     let swiftBlogs = ["Progress", "Strength Exercises", "Activites", "Achieved Goal Congratulations", "Next Message", "Then the Message After That", "And So on..."]
     
     let textCellIdentifier = "TextCell"
@@ -21,8 +27,10 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+         // intialize data
         tableView.delegate = self       //connect tableview to delegates/DataSource
         tableView.dataSource = self
+        retrieveDataFromParse()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -59,30 +67,29 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return swiftBlogs.count
+        return mySwiftArray.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) as! UITableViewCell
         
         let row = indexPath.row
-        cell.textLabel?.text = swiftBlogs[row]
-        
+        cell.textLabel?.text = mySwiftArray[row]
         return cell
     }
     
     
     //UITableViewSegement////////////////
-    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         let row = indexPath.row
         println(swiftBlogs[row]) // NS Log(cell.text)
     }
+    
+    
 
     //UIParseLoginSegement/////////////////
-    
     func logInViewController(logInController: PFLogInViewController, shouldBeginLogInWithUsername username: String, password: String) -> Bool {
         if(!username.isEmpty || !password.isEmpty)
         {
@@ -119,11 +126,91 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
         println("Cancelled signupView")
     }
     
+    //Buttons//////////////////
     @IBAction func offerBtnPressed(sender: AnyObject) {
+        
+        var query = PFQuery(className:"Request")
+        
+        //query.whereKey("playerName", equalTo:"Sean Plott")
+        //query.whereKey("madeBy", containedIn: "Request")
+        
+        var postArray = NSMutableArray()
+       
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [AnyObject]?, error: NSError?) -> Void in
+            
+            if error == nil {
+                // The find succeeded.
+                println("Successfully retrieved \(objects!.count) scores.")
+    
+                // Do something with the found objects
+                if let objects = objects as? [PFObject] {
+                    for object in objects {
+                       // println(object.objectForKey("madeBy"))
+                        postArray.addObject(object["madeBy"] as! String)
+                    }
+                    
+                    self.myPostArray = postArray
+                    println(self.myPostArray)
+                }
+            }
+             
+            else {
+                // Log details of the failure
+                println("Error: \(error!) \(error!.userInfo!)")
+            }
+        }
+
+        
     }
     
     @IBAction func requestBtnPressed(sender: AnyObject) {
+        
+//        var user = PFUser.currentUser()
+//        println(user!.objectForKey("email") as! String)
+//        let email = user!.objectForKey("email") as! String
+        println(self.myPostArray)
+        
     }
     
+    func retrieveDataFromParse ()
+    {
+        var query = PFQuery(className:"Request")
+        
+        //query.whereKey("playerName", equalTo:"Sean Plott")
+        //query.whereKey("madeBy", containedIn: "Request")
+        
+        var postArray = NSMutableArray() // create mutable array
+        
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [AnyObject]?, error: NSError?) -> Void in
+            
+            if error == nil {
+                // The find succeeded.
+                println("Successfully retrieved \(objects!.count) scores.")
+                
+                // Do something with the found objects
+                if let objects = objects as? [PFObject] {
+                    for object in objects {
+                        // println(object.objectForKey("madeBy"))
+                        postArray.addObject(object["madeBy"] as! String)
+                    }
+                
+                    self.myPostArray = postArray
+                    self.mySwiftArray = postArray as AnyObject as! [String]
+                    self.tableView.reloadData() // reload data from Parse into tableView
+
+                    
+                }
+            }
+                
+            else {
+                // Log details of the failure
+                println("Error: \(error!) \(error!.userInfo!)")
+            }
+        }
+
+        
+    }
     
 }
