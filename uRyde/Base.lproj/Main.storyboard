@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="LM0-ZI-KhE"/>
+                    <tabBarItem key="tabBarItem" title="Profile" id="LM0-ZI-KhE"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
@@ -32,6 +32,7 @@
                         <viewControllerLayoutGuide type="bottom" id="FTR-Kf-8G6"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="aL3-bY-DFM">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="NMd-SP-i9g">
@@ -90,7 +91,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="IaI-hl-15C"/>
+                    <tabBarItem key="tabBarItem" title="Timeline" id="IaI-hl-15C"/>
                     <connections>
                         <outlet property="tableView" destination="NMd-SP-i9g" id="duW-i8-2Z0"/>
                     </connections>
@@ -108,10 +109,11 @@
                         <viewControllerLayoutGuide type="bottom" id="YTI-Hs-RDx"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="gvJ-bO-YSB">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="cVl-KH-D91"/>
+                    <tabBarItem key="tabBarItem" title="Notifications" id="cVl-KH-D91"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zGc-O8-4vq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
