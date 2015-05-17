@@ -10,11 +10,25 @@
 import UIKit
 
 class CreatePost: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
-    
-    @IBOutlet var requestView: UIView!
+
     @IBOutlet var myPicker: UIPickerView!
     
     let pickerData = ["Request","Offer"]
+    
+    @IBOutlet var offerView: UIView!      // OfferView Reference and Fields
+    
+    @IBOutlet var offerDatePicker: UIDatePicker!
+    
+    
+    @IBOutlet var requestView: UIView!  // RequestView Reference and Fields
+    
+    @IBOutlet var requestDatePicker: UIDatePicker!
+    
+    
+    
+    
+    
+    var postSelection = "Request" // initialize to
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +60,37 @@ class CreatePost: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         //  myLabel.text = pickerData[row]
+        postSelection = pickerData[row]     // user chooses between Offer or Request
+        showCreatePostView(postSelection) // change subView of CreatePostView
+    }
+    
+    func showCreatePostView(userChoice:String)
+    {
+        if(userChoice == "Request")
+        {
+            println("Showing Request View")
+            UIView.animateWithDuration(0.2,
+            animations: {
+                self.offerView.alpha = 0
+                self.requestView.alpha = 1
+            },
+            completion: { (value: Bool) in
+
+            })
+        }
+        
+        else
+        {
+            println("Showing Offer View")
+            UIView.animateWithDuration(0.2,
+                animations: {
+                    self.offerView.alpha = 1
+                    self.requestView.alpha = 0
+                },
+                completion: { (value: Bool) in
+                    
+            })
+        }
     }
     
 

@@ -10,7 +10,7 @@ import UIKit
 import Parse
 import ParseUI
 
-class urSignUp: UIViewController {
+class SignUp: UIViewController {
     
     @IBOutlet var firstName: UITextField!
     @IBOutlet var lastName: UITextField!

@@ -154,7 +154,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2kc-Ls-DvR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="584" y="1155"/>
+            <point key="canvasLocation" x="121" y="1894"/>
         </scene>
         <!--Notifications-->
         <scene sceneID="Htz-CY-rHn">
@@ -173,7 +173,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zGc-O8-4vq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1102" y="1155"/>
+            <point key="canvasLocation" x="577" y="1155"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="z5f-vr-s9B">
@@ -193,12 +193,30 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jao-oH-0gW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="101.59999999999999" y="377.71999999999997"/>
+            <point key="canvasLocation" x="121" y="369"/>
         </scene>
-        <!--Ur Sign Up-->
+        <!--View Controller-->
+        <scene sceneID="sbp-pQ-IeN">
+            <objects>
+                <viewController id="8fg-du-beY" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="UqD-gm-S4R"/>
+                        <viewControllerLayoutGuide type="bottom" id="Wad-q4-lFU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="j6b-cT-OSP">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hO4-lJ-Ciz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-281" y="2649"/>
+        </scene>
+        <!--Sign Up-->
         <scene sceneID="cSX-Kx-dXb">
             <objects>
-                <viewController id="fui-0L-lwq" customClass="urSignUp" customModule="uRyde" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="fui-0L-lwq" customClass="SignUp" customModule="uRyde" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Cu2-oL-O0Q"/>
                         <viewControllerLayoutGuide type="bottom" id="8rY-Zs-NY5"/>
@@ -258,19 +276,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="e5l-RT-3XU"/>
-                    <connections>
-                        <outlet property="confirmPass" destination="HYK-fG-Qp6" id="Zhf-w6-pTM"/>
-                        <outlet property="email" destination="fnr-YM-axn" id="S4u-yQ-T0A"/>
-                        <outlet property="firstName" destination="Wft-W0-RRe" id="KS3-Pe-hEY"/>
-                        <outlet property="lastName" destination="wpK-oU-fDH" id="OwR-Qb-bSZ"/>
-                        <outlet property="password" destination="ANG-oc-SYz" id="ITC-Qc-nU8"/>
-                        <outlet property="phoneNum" destination="hH1-WF-lUT" id="WB9-Gs-u1s"/>
-                        <outlet property="username" destination="fF6-u9-WoG" id="6Ul-jy-Lfb"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sNj-MD-unR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-215" y="1926"/>
+            <point key="canvasLocation" x="121" y="2649"/>
         </scene>
         <!--Create Post-->
         <scene sceneID="EVF-yE-p6m">
@@ -284,15 +293,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gLX-vv-bI9">
-                                <rect key="frame" x="0.0" y="64" width="320" height="341"/>
+                            <view alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gLX-vv-bI9" userLabel="Offer">
+                                <rect key="frame" x="0.0" y="66" width="320" height="341"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y46-M8-UEQ">
-                                        <rect key="frame" x="145" y="137" width="42" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Offer" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y46-M8-UEQ">
+                                        <rect key="frame" x="139" y="28" width="38" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Moj-i1-KfS">
+                                        <rect key="frame" x="0.0" y="90" width="320" height="55"/>
+                                        <date key="date" timeIntervalSinceReferenceDate="453515991.13999897">
+                                            <!--2015-05-17 00:39:51 +0000-->
+                                        </date>
+                                    </datePicker>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EWC-YE-V2r" userLabel="Request">
+                                <rect key="frame" x="0.0" y="64" width="320" height="341"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Request" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uTa-Mc-GVj">
+                                        <rect key="frame" x="129" y="28" width="64" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="AY5-Dq-ObG">
+                                        <rect key="frame" x="1" y="84" width="320" height="66"/>
+                                        <date key="date" timeIntervalSinceReferenceDate="453515978.72316498">
+                                            <!--2015-05-17 00:39:38 +0000-->
+                                        </date>
+                                    </datePicker>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -305,12 +338,15 @@
                     <navigationItem key="navigationItem" id="3in-vH-tZQ"/>
                     <connections>
                         <outlet property="myPicker" destination="ycw-vp-JGj" id="WMK-Ms-mxK"/>
-                        <outlet property="requestView" destination="gLX-vv-bI9" id="A5u-m3-3pv"/>
+                        <outlet property="offerDatePicker" destination="Moj-i1-KfS" id="jOr-yn-EEC"/>
+                        <outlet property="offerView" destination="gLX-vv-bI9" id="djj-Cp-wBt"/>
+                        <outlet property="requestDatePicker" destination="AY5-Dq-ObG" id="obc-WP-mBY"/>
+                        <outlet property="requestView" destination="EWC-YE-V2r" id="xya-fe-yxC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n4b-Xx-ClK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="584" y="1921"/>
+            <point key="canvasLocation" x="572" y="1894"/>
         </scene>
         <!--Timeline-->
         <scene sceneID="kJb-Hg-efq">

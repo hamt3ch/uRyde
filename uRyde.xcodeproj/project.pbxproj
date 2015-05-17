@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A82E11541B0816FD0060ACD2 /* LogIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82E11531B0816FD0060ACD2 /* LogIn.swift */; };
 		A87B39301B066E020078ADAE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87B392F1B066E020078ADAE /* AppDelegate.swift */; };
-		A87B39321B066E020078ADAE /* urSignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87B39311B066E020078ADAE /* urSignUp.swift */; };
+		A87B39321B066E020078ADAE /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87B39311B066E020078ADAE /* SignUp.swift */; };
 		A87B39351B066E020078ADAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A87B39331B066E020078ADAE /* Main.storyboard */; };
 		A87B39371B066E020078ADAE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A87B39361B066E020078ADAE /* Images.xcassets */; };
 		A87B393A1B066E020078ADAE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A87B39381B066E020078ADAE /* LaunchScreen.xib */; };
@@ -49,10 +50,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A82E11531B0816FD0060ACD2 /* LogIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogIn.swift; sourceTree = "<group>"; };
 		A87B392A1B066E020078ADAE /* uRyde.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uRyde.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A87B392E1B066E020078ADAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A87B392F1B066E020078ADAE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A87B39311B066E020078ADAE /* urSignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = urSignUp.swift; sourceTree = "<group>"; };
+		A87B39311B066E020078ADAE /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		A87B39341B066E020078ADAE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A87B39361B066E020078ADAE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A87B39391B066E020078ADAE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -148,7 +150,8 @@
 				A87B394F1B066E770078ADAE /* Timeline.swift */,
 				A87B39511B066E8F0078ADAE /* Notifications.swift */,
 				A87B39531B066E9B0078ADAE /* Profile.swift */,
-				A87B39311B066E020078ADAE /* urSignUp.swift */,
+				A87B39311B066E020078ADAE /* SignUp.swift */,
+				A82E11531B0816FD0060ACD2 /* LogIn.swift */,
 				A8BE9D741B07EA07009F13BD /* CreatePost.swift */,
 				A87B39361B066E020078ADAE /* Images.xcassets */,
 				A87B39381B066E020078ADAE /* LaunchScreen.xib */,
@@ -312,8 +315,9 @@
 				A87B39521B066E8F0078ADAE /* Notifications.swift in Sources */,
 				A8BE9D751B07EA07009F13BD /* CreatePost.swift in Sources */,
 				A87B39541B066E9B0078ADAE /* Profile.swift in Sources */,
+				A82E11541B0816FD0060ACD2 /* LogIn.swift in Sources */,
 				A87B39501B066E770078ADAE /* Timeline.swift in Sources */,
-				A87B39321B066E020078ADAE /* urSignUp.swift in Sources */,
+				A87B39321B066E020078ADAE /* SignUp.swift in Sources */,
 				A87B39301B066E020078ADAE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
