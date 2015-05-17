@@ -55,7 +55,15 @@ class LogIn: UIViewController {
                 var alert = UIAlertView(title: "Success", message: "You logged in correctly", delegate: self, cancelButtonTitle: "OK")
                 alert.show()
                 var timelineVC = self.storyboard?.instantiateViewControllerWithIdentifier("TabBar") as! UITabBarController
+                
+                var installation:PFInstallation = PFInstallation.currentInstallation()
+                installation.addUniqueObject(PFUser.currentUser()!.username!, forKey: "channels")
+                installation["user"] = PFUser.currentUser()
+                installation.saveInBackground()
+                
+                
                 self.presentViewController(timelineVC, animated: true, completion: nil)
+            
             } else {
                 var alert = UIAlertView(title: "Error", message: "\(error)", delegate: self, cancelButtonTitle: "OK")
                 alert.show()

@@ -10,7 +10,7 @@ import Parse
 import ParseUI
 import UIKit
 
-class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate {
+class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, UIAlertViewDelegate {
     
     var loginViewController = PFLogInViewController()  // instantiate loginView
     var signUpViewController = PFSignUpViewController() // instantiate signupView
@@ -110,17 +110,33 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         let row = indexPath.row
-        println(swiftBlogs[row]) // NS Log(cell.text)
+        println(myPostArray.objectAtIndex(row)) // getObject in cell
         
-        var push:PFPush = PFPush()
-        push.setChannel(PFUser.currentUser()?.username)
+        let postCreator = myPostArray.objectAtIndex(row)
         
-        var data:NSDictionary = ["alert":"", "badge":"0", "content-available":"1","sound":""]
+        if(PFUser.currentUser()?.username == postCreator as! String)
+        {
+            var alert:UIAlertView = UIAlertView()
+            alert.title = "You cannot register a ride with yourself"
+            //alert.message = "Your workout has been logged into the system"
+            alert.delegate = self
+            alert.addButtonWithTitle("Ok")
+            alert.show()
+        }
         
-       // push.setData(data)
-       // push.sendPushInBackground()
-
+        else
+        {
+            var push:PFPush = PFPush() // set channel to postCreator
+            push.setChannel("psdisdope")
+            println(myPostArray.objectAtIndex(row) as! String)
+            push.setMessage("The Giants just scored!")
+            push.sendPushInBackground()
+          //  var data:NSDictionary = ["alert":"Requesting Ride", "badge":"", "content-available":"1","sound":""]
+            
+          //  push.setData(data as [NSObject : AnyObject]) //attach data to pushNotes
+        }
         
+       
     }
     
     
