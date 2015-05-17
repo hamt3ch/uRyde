@@ -25,7 +25,6 @@ class CreatePost: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
     @IBOutlet var offerView: UIView!      // OfferView Reference and Fields
     @IBOutlet var offerDatePicker: UIDatePicker!
     
-    
     @IBOutlet var requestView: UIView!  // RequestView Reference and Fields
     @IBOutlet var requestDatePicker: UIDatePicker!
 
@@ -92,12 +91,24 @@ class CreatePost: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
             pickerLabel.textAlignment = .Center
         }
         let titleData = pickerData[row]
-        let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Helvetica Neue", size: 18.0)!,NSForegroundColorAttributeName:UIColor.blackColor()])
+        let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Helvetica-Bold", size: 18.0)!,NSForegroundColorAttributeName:UIColor.blackColor()])
             pickerLabel.attributedText = myTitle
         
         return pickerLabel
         
     }
+    
+    //size the components of the UIPickerView
+    //row height
+    func pickerView(pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        return 36.0
+    }
+    /*
+    //row width
+    func pickerView(pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
+        return 200
+    }
+    */
     
     func showCreatePostView(userChoice:String)
     {
@@ -157,15 +168,25 @@ class CreatePost: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
     @IBAction func sendToParse(sender: AnyObject) {
         var postToCreate = PFObject(className: postType) //indicate post type (Offer/Request)
         postToCreate["madeBy"] = PFUser.currentUser()!.username
+        let dateFormatter = NSDateFormatter()
+        
         if (self.postType == "Offer") {
+            
+            //only timeLeaving
+            dateFormatter.dateStyle = .NoStyle
+            dateFormatter.timeStyle = .ShortStyle
+            postToCreate["timeLeaving"] = dateFormatter.stringFromDate(requestDatePicker.date)
         }
         
         if (self.postType == "Request") {
             
         }
-    
-        postToCreate["dateLeaving"] = requestDatePicker.description
-
+        
+        //only dateLeaving
+        dateFormatter.dateStyle = .ShortStyle
+        dateFormatter.timeStyle = .NoStyle
+        postToCreate["dateLeaving"] = dateFormatter.stringFromDate(requestDatePicker.date)
+        
         postToCreate.saveInBackgroundWithBlock {
             (success: Bool, error: NSError?) -> Void in
             if (success) {
@@ -176,6 +197,8 @@ class CreatePost: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
         }
         
     }
+    
+
     
 
 }
