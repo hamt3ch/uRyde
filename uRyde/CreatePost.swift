@@ -15,6 +15,9 @@ class CreatePost: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
     var createPostGasMoney:Bool = false
     var createPostDate:String = String()
     
+    @IBOutlet var gas: UILabel!
+    @IBOutlet var departTime: UILabel!
+    @IBOutlet var sendButton: UIButton!
     
     @IBOutlet var myPicker: UIPickerView!
     @IBOutlet var cityPicker: UIPickerView!
@@ -149,8 +152,14 @@ class CreatePost: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
         {
         case 0:
             showCreatePostView("Offer") // change subView of CreatePostView
+            gas.text = "Need Gas $$$?"
+            departTime.text = "Time of Departure:"
+            sendButton.setTitle("Make Offer", forState: UIControlState.Normal)
         case 1:
             showCreatePostView("Request")
+            gas.text = "Will You Pay?"
+            departTime.text = "Desired Departure Date:"
+            sendButton.setTitle("Make Request", forState: UIControlState.Normal)
         default:
             break         }
     }
