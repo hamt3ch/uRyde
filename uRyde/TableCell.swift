@@ -7,13 +7,13 @@
 //
 
 import UIKit
+import Parse
 
 class TableCell: UITableViewCell {
 
     @IBOutlet var name: UILabel!
     @IBOutlet var destination: UILabel!
     @IBOutlet var date: UILabel!
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()

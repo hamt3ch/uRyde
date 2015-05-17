@@ -18,21 +18,28 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
     @IBOutlet var tableView: UITableView!
     
     var myPostArray = NSMutableArray()
-    var mySwiftArray: [String] = []
-   
-  //  var postArrayString:Array = [""]
-  //  var postArray:NSMutableArray = []
+    
+    //use this array to populate the cell
+    //var mySwiftArray: [String] = []
+    
+    /*
+    var postArrayString:Array = [""]
+    var postArray:NSMutableArray = []
     
     let swiftBlogs = ["I", "am", "cooler", "than", "Hugh", "Anthony", "Miles"]
     
     let textCellIdentifier = "TextCell"
-    
+    */
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-         // intialize data
+        //Register custom cell
+        var nib = UINib(nibName: "tableCellView", bundle: nil)
+        tableView.registerNib(nib, forCellReuseIdentifier: "offerCell")
         
+        retrieveDataFromParse("Offer")
+
         
+        // Do any additional setup after loading the view, typically from a nib. <-- on point
         
     }
     
@@ -44,17 +51,11 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
         
         tableView.contentSize.width != tableView.bounds.size.width && tableView.contentSize.height != tableView.bounds.size.height;
         
-        retrieveDataFromParse("Offer") // intialize post
+         // intialize post
         
         if(PFUser.currentUser() == nil)
         {
             //customize parse login/signup here
-            
-            self.loginViewController.fields =   PFLogInFields.UsernameAndPassword |
-                PFLogInFields.LogInButton |
-                PFLogInFields.SignUpButton |
-                PFLogInFields.PasswordForgotten |
-                PFLogInFields.DismissButton
             
             //replaes Parse logo
             var loginLogoTitle = UILabel() //can use UIImage UIButton etc...
@@ -63,9 +64,6 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
             loginViewController.delegate = self // connect loginView to delegate
             
             //customize SignUpView
-            var signupLogoTitle = UILabel()
-            signupLogoTitle.text = loginLogoTitle.text
-            signUpViewController.signUpView?.logo = signupLogoTitle
             signUpViewController.delegate = self // connect signupView to delegate
             
             // signupBtn >> signupViewController
@@ -74,8 +72,6 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
             var loginVC = self.storyboard?.instantiateViewControllerWithIdentifier("Login") as! LogIn
             var navController = UINavigationController(rootViewController: loginVC)
             self.presentViewController(navController, animated: true, completion: nil)
-            
-          
         
         }
     }
@@ -93,19 +89,29 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return mySwiftArray.count
+        return myPostArray.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) as! UITableViewCell
+        var cell:TableCell = tableView.dequeueReusableCellWithIdentifier("offerCell") as! TableCell
         
-        let row = indexPath.row
-        cell.textLabel?.text = mySwiftArray[row]
+        //get offer/request
+        var tempObject:PFObject = self.myPostArray.objectAtIndex(indexPath.row) as! PFObject
+        cell.name.text = tempObject["madeBy"] as? String
+        cell.destination.text = tempObject["destination"] as? String
+        let departureDate = tempObject["dateLeaving"] as! String
+        let departureTime = tempObject["timeLeaving"] as! String
+        cell.date.text = "Leaving on " + "\(departureDate)" + " at " + "\(departureTime)"
+
+        //FOR LATE USE
+        //for images: cell.userImage = UIImage(named: "u_turn_symbol")
+        
         return cell
     }
     
     
     //UITableViewSegment////////////////
+    //gives user ability to click each cell in table view
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
@@ -113,17 +119,17 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
         println(myPostArray.objectAtIndex(row)) // getObject in cell
         
         let postCreator = myPostArray.objectAtIndex(row)
-        
+        /*
         if(PFUser.currentUser()?.username == postCreator as! String)
         {
             var alert:UIAlertView = UIAlertView()
-            alert.title = "You cannot register a ride with yourself"
+            alert.title = "You cannot request a ride from yourself"
             //alert.message = "Your workout has been logged into the system"
             alert.delegate = self
             alert.addButtonWithTitle("Ok")
             alert.show()
         }
-        
+
         else
         {
             var push:PFPush = PFPush() // set channel to postCreator
@@ -135,11 +141,8 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
             push.sendPushInBackground()
            
         }
-        
-       
+        */
     }
-    
-    
 
     //UIParseLoginSegment/////////////////
     func logInViewController(logInController: PFLogInViewController, shouldBeginLogInWithUsername username: String, password: String) -> Bool {
@@ -187,8 +190,50 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
         retrieveDataFromParse("Request") //populate Tableview with Request Post
     }
     
+    //retrieves data at viewDidLoad the
     func retrieveDataFromParse (selectedPost:String)
     {
+        //get query from parse
+        var query = PFQuery(className: selectedPost)
+        query.orderByAscending("createdAt")
+        
+        query.findObjectsInBackgroundWithBlock {
+            //query parse object and put each object in objects array
+            (objects: [AnyObject]?, error: NSError?) -> Void in
+            if error == nil
+            {
+                self.myPostArray.removeAllObjects()
+                //populate myPostArray with each parse objects
+                if let objects = objects as? [PFObject] {
+                    for object in objects {
+                        println(object.objectId)
+                        self.myPostArray.addObject(object)
+                    }
+                }
+                self.tableView.reloadData()
+                
+                // The find succeeded.
+                println("Successfully retrieved \(objects!.count) posts.")
+            }
+            else
+            {
+                // Log details of the failure
+                println("Error: \(error!) \(error!.userInfo!)")
+            }
+        }
+        
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /*
         var query = PFQuery(className: selectedPost)
         
         //query.whereKey("playerName", equalTo:"Sean Plott")
@@ -226,5 +271,5 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
 
         
     }
-    
+    */
 }
