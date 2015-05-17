@@ -49,8 +49,43 @@ class SignUp: UIViewController {
     */
 
     @IBAction func signupAction(sender: AnyObject) {
+        self.actInd.startAnimating()
+        
+        if (self.password.text == self.confirmPass.text) {
+            var newUser = PFUser()
+            println(self.firstName.text)
+            newUser["FirstName"] = self.firstName.text
+            newUser["LastName"] = self.lastName.text
+            newUser.username = self.username.text
+            newUser.password = self.confirmPass.text
+            newUser.email = self.email.text
+            newUser["phoneNum"] = self.phoneNum.text
+            
+            newUser.signUpInBackgroundWithBlock ({ (succeed, error) -> Void in
+                
+                self.actInd.stopAnimating()
+                
+                if ((error) != nil) {
+                    
+                    var alert = UIAlertView(title: "Error", message: "\(error)", delegate: self, cancelButtonTitle: "OK")
+                    alert.show()
+                    
+                    
+                }else {
+                    
+                    var alert = UIAlertView(title: "Success", message: "Welcome!", delegate: self, cancelButtonTitle: "OK")
+                    alert.show()
+                    var timelineVC = self.storyboard?.instantiateViewControllerWithIdentifier("TabBar") as! UITabBarController
+                    self.presentViewController(timelineVC, animated: true, completion: nil)
+                }
+                
+            })
+        } else {
+            var alert = UIAlertView(title: "Error", message: "Passwords don't match.", delegate: self, cancelButtonTitle: "OK")
+            alert.show()
+        }
         
     }
-
+    
 }
 

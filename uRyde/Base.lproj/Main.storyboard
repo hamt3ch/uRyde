@@ -289,11 +289,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wft-W0-RRe">
-                                <rect key="frame" x="16" y="135" width="288" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wpK-oU-fDH">
                                 <rect key="frame" x="16" y="173" width="288" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -313,10 +308,24 @@
                                     <action selector="signupAction:" destination="fui-0L-lwq" eventType="touchUpInside" id="2X8-KN-SeJ"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wft-W0-RRe">
+                                <rect key="frame" x="16" y="135" width="288" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="e5l-RT-3XU"/>
+                    <connections>
+                        <outlet property="confirmPass" destination="HYK-fG-Qp6" id="Zo8-ur-BGA"/>
+                        <outlet property="email" destination="fnr-YM-axn" id="eCj-Yx-MJe"/>
+                        <outlet property="firstName" destination="Wft-W0-RRe" id="qRU-z0-ptb"/>
+                        <outlet property="lastName" destination="wpK-oU-fDH" id="75X-YK-Yo1"/>
+                        <outlet property="password" destination="ANG-oc-SYz" id="IM8-gF-A0G"/>
+                        <outlet property="phoneNum" destination="hH1-WF-lUT" id="s9I-hN-I4A"/>
+                        <outlet property="username" destination="fF6-u9-WoG" id="nwS-iV-hC4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sNj-MD-unR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
