@@ -11,16 +11,17 @@ import Parse
 
 class CreatePost: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
-    var postType:String = "Offer"  //parsePostIndicator for SaveInBackground
     var createPostDestination:String = String()
     var createPostGasMoney:Bool = false
     var createPostDate:String = String()
+    
     
     @IBOutlet var myPicker: UIPickerView!
     @IBOutlet var cityPicker: UIPickerView!
     
     @IBOutlet var GasSwitch: UISwitch!
-    let pickerData = ["Cincinnati","Gainesville", "Miami sucks", "Orlando", "Tampa", "Dayton", "Cleveland", "Boca Raton"]
+    let pickerData = ["Akron","Boca Raton","Canton","Cape Coral","Cincinnati","Cleveland","Columbus","Coral Springs","Dayton","Daytona", "Elyria","Fort Lauderdale","Gainesville","Hamilton","Hialeah","Hollywood","Jacksonville","Kettering","Lorain","Miami","Middletown","Miramar","Orlando","St. Petersburg","Parma","Pembroke Pines","Port St. Lucie","Tallahassee","Tampa","Toledo","Youngstown"]
+    var selectedCityRow = "Akron"
     
     @IBOutlet var offerView: UIView!      // OfferView Reference and Fields
     @IBOutlet var offerDatePicker: UIDatePicker!
@@ -53,6 +54,9 @@ class CreatePost: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
         myPicker.dataSource = self
         cityPicker.delegate = myPicker.delegate
         cityPicker.dataSource = myPicker.dataSource
+        
+        //starts in the middle of the picker
+        //cityPicker.selectRow(pickerData.count / 2, inComponent: 0, animated: true)
 
         
     }
@@ -78,7 +82,7 @@ class CreatePost: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        //  myLabel.text = pickerData[row]
+        selectedCityRow = pickerData[row]
     }
     
     func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView!) -> UIView {
@@ -144,10 +148,8 @@ class CreatePost: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
         switch SegmentCtrl.selectedSegmentIndex
         {
         case 0:
-            self.postType = "Offer"
             showCreatePostView("Offer") // change subView of CreatePostView
         case 1:
-            self.postType = "Request"
             showCreatePostView("Request")
         default:
             break         }
@@ -166,26 +168,31 @@ class CreatePost: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
     }
     
     @IBAction func sendToParse(sender: AnyObject) {
+        var postType:String = "Offer"  //parsePostIndicator for SaveInBackground
         var postToCreate = PFObject(className: postType) //indicate post type (Offer/Request)
+        
+        //made by
         postToCreate["madeBy"] = PFUser.currentUser()!.username
-        let dateFormatter = NSDateFormatter()
-        
-        if (self.postType == "Offer") {
-            
-            //only timeLeaving
-            dateFormatter.dateStyle = .NoStyle
-            dateFormatter.timeStyle = .ShortStyle
-            postToCreate["timeLeaving"] = dateFormatter.stringFromDate(requestDatePicker.date)
-        }
-        
-        if (self.postType == "Request") {
-            
-        }
         
         //only dateLeaving
+        let dateFormatter = NSDateFormatter()
         dateFormatter.dateStyle = .ShortStyle
         dateFormatter.timeStyle = .NoStyle
         postToCreate["dateLeaving"] = dateFormatter.stringFromDate(requestDatePicker.date)
+        
+        //destination
+        postToCreate["destination"] = selectedCityRow
+        
+        //only timeLeaving
+        dateFormatter.dateStyle = .NoStyle
+        dateFormatter.timeStyle = .ShortStyle
+        postToCreate["timeLeaving"] = dateFormatter.stringFromDate(requestDatePicker.date)
+        
+        //in need of gas money (only for offers)
+        postToCreate["needGasMoney"] = GasSwitch.on
+        
+        //willingness to pay gas money (only for requests)
+        postToCreate["willIPay"] = GasSwitch.on
         
         postToCreate.saveInBackgroundWithBlock {
             (success: Bool, error: NSError?) -> Void in
