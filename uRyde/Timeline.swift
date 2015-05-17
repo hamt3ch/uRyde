@@ -40,7 +40,12 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
         super.viewDidAppear(animated)
         self.tableView.delegate = self       //connect tableview to delegates/DataSource
         self.tableView.dataSource = self
-        retrieveDataFromParse()
+        self.tableView.scrollEnabled = true
+        
+        tableView.contentSize.width != tableView.bounds.size.width && tableView.contentSize.height != tableView.bounds.size.height;
+        
+        retrieveDataFromParse("Offer") // intialize post
+        
         if(PFUser.currentUser() == nil)
         {
             //customize parse login/signup here
@@ -106,6 +111,16 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
         
         let row = indexPath.row
         println(swiftBlogs[row]) // NS Log(cell.text)
+        
+        var push:PFPush = PFPush()
+        push.setChannel(PFUser.currentUser()?.username)
+        
+        var data:NSDictionary = ["alert":"", "badge":"0", "content-available":"1","sound":""]
+        
+       // push.setData(data)
+       // push.sendPushInBackground()
+
+        
     }
     
     
@@ -149,54 +164,16 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
     
     //Buttons//////////////////
     @IBAction func offerBtnPressed(sender: AnyObject) {
-        
-        var query = PFQuery(className:"Request")
-        
-        //query.whereKey("playerName", equalTo:"Sean Plott")
-        //query.whereKey("madeBy", containedIn: "Request")
-        
-        var postArray = NSMutableArray()
-       
-        query.findObjectsInBackgroundWithBlock {
-            (objects: [AnyObject]?, error: NSError?) -> Void in
-            
-            if error == nil {
-                // The find succeeded.
-                println("Successfully retrieved \(objects!.count) scores.")
-    
-                // Do something with the found objects
-                if let objects = objects as? [PFObject] {
-                    for object in objects {
-                       // println(object.objectForKey("madeBy"))
-                        postArray.addObject(object["madeBy"] as! String)
-                    }
-                    
-                    self.myPostArray = postArray
-                    println(self.myPostArray)
-                }
-            }
-             
-            else {
-                // Log details of the failure
-                println("Error: \(error!) \(error!.userInfo!)")
-            }
-        }
-
-        
+        retrieveDataFromParse("Offer") //populate TableView with Offer Post
     }
     
     @IBAction func requestBtnPressed(sender: AnyObject) {
-        
-//        var user = PFUser.currentUser()
-//        println(user!.objectForKey("email") as! String)
-//        let email = user!.objectForKey("email") as! String
-        println(self.myPostArray)
-        
+        retrieveDataFromParse("Request") //populate Tableview with Request Post
     }
     
-    func retrieveDataFromParse ()
+    func retrieveDataFromParse (selectedPost:String)
     {
-        var query = PFQuery(className:"Request")
+        var query = PFQuery(className: selectedPost)
         
         //query.whereKey("playerName", equalTo:"Sean Plott")
         //query.whereKey("madeBy", containedIn: "Request")
