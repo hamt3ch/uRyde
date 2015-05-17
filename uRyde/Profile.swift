@@ -18,10 +18,7 @@ class Profile: UIViewController, PFLogInViewControllerDelegate, PFSignUpViewCont
     @IBOutlet var email: UILabel!
     @IBOutlet var phoneNum: UILabel!
     
-    
-   
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.

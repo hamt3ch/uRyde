@@ -425,7 +425,7 @@
                     <navigationItem key="navigationItem" id="3in-vH-tZQ"/>
                     <connections>
                         <outlet property="GasSwitch" destination="knx-XC-dpK" id="sOZ-0D-YrI"/>
-                        <outlet property="SegmentCtrl" destination="Hve-8k-ZbX" id="Xhi-9c-1r4"/>
+                        <outlet property="SegmentCtrl" destination="Hve-8k-ZbX" id="ly2-jA-UfU"/>
                         <outlet property="cityPicker" destination="fng-HD-BsW" id="IKl-2N-cKE"/>
                         <outlet property="myPicker" destination="ycw-vp-JGj" id="WMK-Ms-mxK"/>
                         <outlet property="offerDatePicker" destination="Moj-i1-KfS" id="jOr-yn-EEC"/>

@@ -163,10 +163,9 @@ class CreatePost: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
         if (self.postType == "Request") {
             
         }
-        
-        postToCreate["dateLeaving"] = requestDatePicker.date
-        
-        
+    
+        postToCreate["dateLeaving"] = requestDatePicker.description
+
         postToCreate.saveInBackgroundWithBlock {
             (success: Bool, error: NSError?) -> Void in
             if (success) {
