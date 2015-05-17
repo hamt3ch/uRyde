@@ -127,13 +127,13 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
         else
         {
             var push:PFPush = PFPush() // set channel to postCreator
-            push.setChannel("psdisdope")
-            println(myPostArray.objectAtIndex(row) as! String)
-            push.setMessage("The Giants just scored!")
-            push.sendPushInBackground()
-          //  var data:NSDictionary = ["alert":"Requesting Ride", "badge":"", "content-available":"1","sound":""]
+            push.setChannel(postCreator as! String)
+            push.setMessage((postCreator as! String) + "Wants a Ride")
+            var data:NSDictionary = ["alert":(PFUser.currentUser()?.username)! + " wants a Ride", "badge":"", "content-available":"2","sound":"" , "phone": "usersphonenumber" ]
             
-          //  push.setData(data as [NSObject : AnyObject]) //attach data to pushNotes
+            push.setData(data as [NSObject : AnyObject]) //attach data to pushNotes
+            push.sendPushInBackground()
+           
         }
         
        

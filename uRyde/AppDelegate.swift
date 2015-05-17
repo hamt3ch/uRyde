@@ -36,10 +36,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
         
+//        
+//        //Actions
+//        var acceptAction: UIMutableUserNotificationAction = UIMutableUserNotificationAction()
+//        acceptAction.title = "Accept"
+//        acceptAction.identifier = "ACCEPT"
+//        acceptAction.activationMode = UIUserNotificationActivationMode.Background
+//        acceptAction.authenticationRequired = false
+//        
+//        var declineAction: UIMutableUserNotificationAction = UIMutableUserNotificationAction()
+//        declineAction.title = "Decline"
+//        declineAction.identifier = "DECLINE"
+//        declineAction.activationMode = UIUserNotificationActivationMode.Background
+//        declineAction.authenticationRequired = false
+//        
+//        //Category
+//        var myCategory:UIMutableUserNotificationCategory = UIMutableUserNotificationCategory()
+//        myCategory.identifier = "MY_CATEGORY"
+//        
+//        let myActions:NSArray = [acceptAction,declineAction]
+//        myCategory.setActions(myActions as [AnyObject], forContext: UIUserNotificationActionContext.Minimal)
+//        
+//        let categories:NSSet = NSSet(objects:myCategory)
+        
         return true
     }
     
-    //PushNotes - Delegates
+    //PushNotes - Delegate
+    
     func application(application: UIApplication!, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings!) {
         UIApplication.sharedApplication().registerForRemoteNotifications()
     }
@@ -55,7 +79,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
-        PFPush.handlePush(userInfo )
+        
+     //   var notification:NSDictionary = userInfo.objectForKey("notifications") as NSDictionary!
+        
+        PFPush.handlePush(userInfo)
+        
     }
     
     
