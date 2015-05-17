@@ -31,38 +31,46 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
          // intialize data
-        tableView.delegate = self       //connect tableview to delegates/DataSource
-        tableView.dataSource = self
-        retrieveDataFromParse()
+        
+        
+        
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
+        self.tableView.delegate = self       //connect tableview to delegates/DataSource
+        self.tableView.dataSource = self
+        retrieveDataFromParse()
         if(PFUser.currentUser() == nil)
         {
-            loginViewController.delegate = self // connect loginView to delegate
-            signUpViewController.delegate = self // connect signupView to delegate
+            //customize parse login/signup here
             
-            loginViewController.signUpController?.fields = (PFSignUpFields.Additional)
-            
-            loginViewController.signUpController?.delegate = self
-            
-            loginViewController.signUpController = signUpViewController // signupBtn >> signupViewController
-            
-            self.presentViewController(loginViewController, animated: true, completion: nil) // push to screen
+            self.loginViewController.fields =   PFLogInFields.UsernameAndPassword |
+                PFLogInFields.LogInButton |
+                PFLogInFields.SignUpButton |
+                PFLogInFields.PasswordForgotten |
+                PFLogInFields.DismissButton
             
             //replaes Parse logo
             var loginLogoTitle = UILabel() //can use UIImage UIButton etc...
             loginLogoTitle.text = "uRyde"
+            loginViewController.logInView?.logo = loginLogoTitle
+            loginViewController.delegate = self // connect loginView to delegate
             
             //customize SignUpView
             var signupLogoTitle = UILabel()
             signupLogoTitle.text = loginLogoTitle.text
-            loginViewController.logInView?.logo = loginLogoTitle
-            
-            
             signUpViewController.signUpView?.logo = signupLogoTitle
+            signUpViewController.delegate = self // connect signupView to delegate
+            
+            // signupBtn >> signupViewController
+            loginViewController.signUpController = self.signUpViewController
+            
+            var loginVC = self.storyboard?.instantiateViewControllerWithIdentifier("Login") as! LogIn
+            var navController = UINavigationController(rootViewController: loginVC)
+            self.presentViewController(navController, animated: true, completion: nil)
+            
+          
         
         }
     }

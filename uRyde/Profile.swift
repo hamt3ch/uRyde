@@ -92,37 +92,28 @@ class Profile: UIViewController, PFLogInViewControllerDelegate, PFSignUpViewCont
     
     //logs out user and sends back timeline which will send back to log in page
     @IBAction func logMeOut(sender: UIButton) {
+        
         PFUser.logOut()
-        if (PFUser.currentUser() == nil) {
-            println("logged out successfully")
-        }
-        
-        self.presentLoginViewController()
-        
-        
-    }
-    
-    //logs out the user
-    func presentLoginViewController()
-    {
         if (PFUser.currentUser() == nil)
         {
             //calls login view controller
+            
+            var loginVC = self.storyboard?.instantiateViewControllerWithIdentifier("Login") as! LogIn
+            var navController = UINavigationController(rootViewController: loginVC)
+            self.presentViewController(navController, animated: true, completion: nil)
+            /*
             let login = PFLogInViewController()
             login.fields =
-                PFLogInFields.UsernameAndPassword |
-                PFLogInFields.LogInButton |
-                PFLogInFields.SignUpButton
+            PFLogInFields.UsernameAndPassword |
+            PFLogInFields.LogInButton |
+            PFLogInFields.SignUpButton
             
             login.delegate = self
             login.signUpController?.delegate = self
             self.presentViewController(login, animated: true, completion: nil)
-            
-            
-
+            */
+        
         }
-    
     }
-    
     
 }
