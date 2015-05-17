@@ -20,7 +20,7 @@ class CreatePost: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
     @IBOutlet var cityPicker: UIPickerView!
     
     @IBOutlet var GasSwitch: UISwitch!
-    let pickerData = ["Cincinnati","Gainesville","Miami","Cleveland"]
+    let pickerData = ["Cincinnati","Gainesville", "Miami sucks", "Orlando", "Tampa", "Dayton", "Cleveland", "Boca Raton"]
     
     @IBOutlet var offerView: UIView!      // OfferView Reference and Fields
     @IBOutlet var offerDatePicker: UIDatePicker!
@@ -28,9 +28,8 @@ class CreatePost: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
     
     @IBOutlet var requestView: UIView!  // RequestView Reference and Fields
     @IBOutlet var requestDatePicker: UIDatePicker!
-    
-    
-    @IBOutlet var SegementCtrl: UISegmentedControl!
+
+    @IBOutlet var SegmentCtrl: UISegmentedControl!
     
     var postSelection = "Request" // initialize to
     
@@ -48,13 +47,14 @@ class CreatePost: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
         requestDatePicker.minimumDate = currentDate // intialize OfferDatePicker Values
         requestDatePicker.date = currentDate
         
-        SegementCtrl.setTitle("Offer", forSegmentAtIndex: 0) // initialize segCtrl text
-        SegementCtrl.setTitle("Request", forSegmentAtIndex: 1)
+        SegmentCtrl.setTitle("Offer", forSegmentAtIndex: 0) // initialize segCtrl text
+        SegmentCtrl.setTitle("Request", forSegmentAtIndex: 1)
         
         myPicker.delegate = self     // connect delegates
         myPicker.dataSource = self
         cityPicker.delegate = myPicker.delegate
         cityPicker.dataSource = myPicker.dataSource
+
         
     }
     
@@ -80,6 +80,23 @@ class CreatePost: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         //  myLabel.text = pickerData[row]
+    }
+    
+    func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView!) -> UIView {
+        var pickerLabel = UILabel()
+        if view == nil {  //if no label there yet
+            pickerLabel = UILabel()
+            //color the label's background
+            let hue = CGFloat(row)/CGFloat(pickerData.count)
+            pickerLabel.backgroundColor = UIColor(hue: hue, saturation: 1.0, brightness: 1.0, alpha: 0.5)
+            pickerLabel.textAlignment = .Center
+        }
+        let titleData = pickerData[row]
+        let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Helvetica Neue", size: 18.0)!,NSForegroundColorAttributeName:UIColor.blackColor()])
+            pickerLabel.attributedText = myTitle
+        
+        return pickerLabel
+        
     }
     
     func showCreatePostView(userChoice:String)
@@ -113,7 +130,7 @@ class CreatePost: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
     
     @IBAction func indexChanged(sender: UISegmentedControl) {
         
-        switch SegementCtrl.selectedSegmentIndex
+        switch SegmentCtrl.selectedSegmentIndex
         {
         case 0:
             self.postType = "Offer"
@@ -138,10 +155,17 @@ class CreatePost: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
     }
     
     @IBAction func sendToParse(sender: AnyObject) {
-        var postToCreate = PFObject(className: postType) //indicate post type (Request/Offer)
+        var postToCreate = PFObject(className: postType) //indicate post type (Offer/Request)
         postToCreate["madeBy"] = PFUser.currentUser()!.username
-        //  postToCreate["destination"] =
-        //  postToCreate["dateLeaving"] =
+        if (self.postType == "Offer") {
+        }
+        
+        if (self.postType == "Request") {
+            
+        }
+        
+        postToCreate["dateLeaving"] = requestDatePicker.date
+        
         
         postToCreate.saveInBackgroundWithBlock {
             (success: Bool, error: NSError?) -> Void in

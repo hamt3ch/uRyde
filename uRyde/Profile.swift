@@ -33,23 +33,23 @@ class Profile: UIViewController, PFLogInViewControllerDelegate, PFSignUpViewCont
         var query = PFQuery(className:"_User")
         if myself != nil {
             
-            //username
+            //username (built-in)
             let myUserName = myself!.objectForKey("username") as! String
             username.text = myUserName
-            /*
-            //name
-            let myFirstName = myself!.objectForKey("FirstName")  as! String
-            let myLastName = myself!.objectForKey("LastName")  as! String
-            name.text = "\(myFirstName)" + " " + "\(myLastName)"
-            */
-            //email
+            
+            //name (custom)
+            let myFirstName: String? = myself!["FirstName"] as? String
+            let myLastName: String? = myself!["LastName"]  as? String
+            name.text = myFirstName! + " " + myLastName!
+            
+            //email (built-in)
             let myEmail = myself!.objectForKey("email") as! String
             email.text = myEmail
-            /*
-            //phone number
-            let myPhoneNumber = myself!.objectForKey("phone") as! String
+            
+            //phone number (custom)
+            let myPhoneNumber: String? = myself!["phoneNum"] as? String
             phoneNum.text = myPhoneNumber
-            */
+            
             
             
             
