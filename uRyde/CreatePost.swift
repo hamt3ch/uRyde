@@ -1,4 +1,3 @@
-
 //
 //  CreatePost.swift
 //  uRyde
@@ -8,9 +7,15 @@
 //
 
 import UIKit
+import Parse
 
 class CreatePost: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
-
+    
+    var postType:String = "Offer"  //parsePostIndicator for SaveInBackground
+    var createPostDestination:String = String()
+    var createPostGasMoney:Bool = false
+    var createPostDate:String = String()
+    
     @IBOutlet var myPicker: UIPickerView!
     @IBOutlet var cityPicker: UIPickerView!
     
@@ -18,15 +23,15 @@ class CreatePost: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
     let pickerData = ["Cincinnati","Gainesville","Miami","Cleveland"]
     
     @IBOutlet var offerView: UIView!      // OfferView Reference and Fields
-        @IBOutlet var offerDatePicker: UIDatePicker!
+    @IBOutlet var offerDatePicker: UIDatePicker!
     
     
     @IBOutlet var requestView: UIView!  // RequestView Reference and Fields
-        @IBOutlet var requestDatePicker: UIDatePicker!
+    @IBOutlet var requestDatePicker: UIDatePicker!
     
     
     @IBOutlet var SegementCtrl: UISegmentedControl!
-
+    
     var postSelection = "Request" // initialize to
     
     override func viewDidLoad() {
@@ -83,15 +88,15 @@ class CreatePost: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
         {
             println("Showing Request View")
             UIView.animateWithDuration(0.2,
-            animations: {
-                self.offerView.alpha = 0
-                self.requestView.alpha = 1
-            },
-            completion: { (value: Bool) in
-
+                animations: {
+                    self.offerView.alpha = 0
+                    self.requestView.alpha = 1
+                },
+                completion: { (value: Bool) in
+                    
             })
         }
-        
+            
         else
         {
             println("Showing Offer View")
@@ -111,23 +116,43 @@ class CreatePost: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
         switch SegementCtrl.selectedSegmentIndex
         {
         case 0:
+            self.postType = "Offer"
             showCreatePostView("Offer") // change subView of CreatePostView
         case 1:
+            self.postType = "Request"
             showCreatePostView("Request")
         default:
             break         }
     }
-
+    
     @IBAction func switchTgl(sender: UISwitch) {
         if(GasSwitch.on)
         {
             println("Switch on")
         }
-        
+            
         else
         {
             println("Switch off")
         }
     }
+    
+    @IBAction func sendToParse(sender: AnyObject) {
+        var postToCreate = PFObject(className: postType) //indicate post type (Request/Offer)
+        postToCreate["madeBy"] = PFUser.currentUser()!.username
+        //  postToCreate["destination"] =
+        //  postToCreate["dateLeaving"] =
+        
+        postToCreate.saveInBackgroundWithBlock {
+            (success: Bool, error: NSError?) -> Void in
+            if (success) {
+                // The object has been saved.
+            } else {
+                // There was a problem, check error.description
+            }
+        }
+        
+    }
+    
 
 }
