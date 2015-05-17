@@ -29,63 +29,64 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // [Optional] Track statistics around application opens.
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
+       
+      //Actions
+      var acceptAction: UIMutableUserNotificationAction = UIMutableUserNotificationAction()
+      acceptAction.title = "Accept"
+       acceptAction.identifier = "ACCEPT"
+      acceptAction.activationMode = UIUserNotificationActivationMode.Background
+      acceptAction.authenticationRequired = false
+       
+     var declineAction: UIMutableUserNotificationAction = UIMutableUserNotificationAction()
+      declineAction.title = "Decline"
+       declineAction.identifier = "DECLINE"
+       declineAction.activationMode = UIUserNotificationActivationMode.Background
+        declineAction.authenticationRequired = false
+       
+      //Category
+     var myCategory:UIMutableUserNotificationCategory = UIMutableUserNotificationCategory()
+      myCategory.identifier = "MY_CATEGORY"
+     
+     let myActions:NSArray = [acceptAction,declineAction]
+      myCategory.setActions(myActions as [AnyObject], forContext: UIUserNotificationActionContext.Minimal)
+       
+      let categories:NSSet = NSSet(objects:myCategory)
         
         //ParsePushNotifications
         let notificationTypes:UIUserNotificationType = UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound
-        let notificationSettings:UIUserNotificationSettings = UIUserNotificationSettings(forTypes: notificationTypes, categories: nil)
+        let notificationSettings:UIUserNotificationSettings = UIUserNotificationSettings(forTypes: notificationTypes, categories: categories as Set<NSObject>)
         
         UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
-        
-//        
-//        //Actions
-//        var acceptAction: UIMutableUserNotificationAction = UIMutableUserNotificationAction()
-//        acceptAction.title = "Accept"
-//        acceptAction.identifier = "ACCEPT"
-//        acceptAction.activationMode = UIUserNotificationActivationMode.Background
-//        acceptAction.authenticationRequired = false
-//        
-//        var declineAction: UIMutableUserNotificationAction = UIMutableUserNotificationAction()
-//        declineAction.title = "Decline"
-//        declineAction.identifier = "DECLINE"
-//        declineAction.activationMode = UIUserNotificationActivationMode.Background
-//        declineAction.authenticationRequired = false
-//        
-//        //Category
-//        var myCategory:UIMutableUserNotificationCategory = UIMutableUserNotificationCategory()
-//        myCategory.identifier = "MY_CATEGORY"
-//        
-//        let myActions:NSArray = [acceptAction,declineAction]
-//        myCategory.setActions(myActions as [AnyObject], forContext: UIUserNotificationActionContext.Minimal)
-//        
-//        let categories:NSSet = NSSet(objects:myCategory)
+        application.registerForRemoteNotifications()
         
         return true
     }
     
     //PushNotes - Delegate
     
-    func application(application: UIApplication!, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings!) {
+    func application(application: UIApplication!, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
         UIApplication.sharedApplication().registerForRemoteNotifications()
     }
     
-    func application(application: UIApplication!, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData!) {
+    func application(application: UIApplication!, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         let currentInstallation:PFInstallation = PFInstallation.currentInstallation()
         currentInstallation.setDeviceTokenFromData(deviceToken)
         currentInstallation.saveInBackground()
     }
     
-    func application(application: UIApplication!, didFailToRegisterForRemoteNotificationsWithError error: NSError!) {
+    func application(application: UIApplication!, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
         println(error.localizedDescription)
     }
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
-        
-     //   var notification:NSDictionary = userInfo.objectForKey("notifications") as NSDictionary!
-        
-        PFPush.handlePush(userInfo)
+                    PFPush.handlePush(userInfo)
+    }
+ 
+    
+    
+    func application(application: UIApplication,  didReceiveRemoteNotification userInfo: [NSObject : AnyObject],  fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
         
     }
-    
     
 
     func applicationWillResignActive(application: UIApplication) {
