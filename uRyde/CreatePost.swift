@@ -8,9 +8,15 @@
 
 import UIKit
 import Parse
-
+/*
+public enum Post: String {
+    case Offer = "Offer"
+    case Request = "Request"
+}
+*/
 class CreatePost: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
+    var postSelection:String = "Offer"
     var createPostDestination:String = String()
     var createPostGasMoney:Bool = false
     var createPostDate:String = String()
@@ -34,7 +40,7 @@ class CreatePost: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
 
     @IBOutlet var SegmentCtrl: UISegmentedControl!
     
-    var postSelection = "Offer" // initialize to
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -154,14 +160,14 @@ class CreatePost: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
             showCreatePostView("Offer") // change subView of CreatePostView
             gas.text = "Need Gas $$$?"
             departTime.text = "Time of Departure:"
-            sendButton.setTitle("Make Offer", forState: UIControlState.Normal)
+            sendButton.setTitle("+Offer", forState: UIControlState.Normal)
             postSelection = "Offer"
             
         case 1:
             showCreatePostView("Request")
             gas.text = "Will You Pay?"
             departTime.text = "Desired Departure Date:"
-            sendButton.setTitle("Make Request", forState: UIControlState.Normal)
+            sendButton.setTitle("+Request", forState: UIControlState.Normal)
             postSelection = "Request"
         default:
             break         }
@@ -182,7 +188,7 @@ class CreatePost: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
     @IBAction func sendToParse(sender: AnyObject) {
         var postType:String = postSelection  //parsePostIndicator for SaveInBackground
         var postToCreate = PFObject(className: postType) //indicate post type (Offer/Request)
-        
+
         //made by
         postToCreate["madeBy"] = PFUser.currentUser()!.username
         
@@ -211,7 +217,9 @@ class CreatePost: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
         postToCreate.saveInBackgroundWithBlock {
             (success: Bool, error: NSError?) -> Void in
             if (success) {
-                // The object has been saved.
+                // The object has been saved. Now return to timeline
+                var timelineVC = self.storyboard?.instantiateViewControllerWithIdentifier("TabBar") as! UITabBarController
+                self.presentViewController(timelineVC, animated: true, completion: nil)
             } else {
                 // There was a problem, check error.description
             }

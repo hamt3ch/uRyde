@@ -36,10 +36,18 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
         var nib = UINib(nibName: "tableCellView", bundle: nil)
         tableView.registerNib(nib, forCellReuseIdentifier: "offerCell")
         
-        retrieveDataFromParse("Offer")
-
-        
         // Do any additional setup after loading the view, typically from a nib. <-- on point
+        
+        
+        
+        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        //reloads data before even appearing in the view
+        retrieveDataFromParse("Offer")
+        self.tableView.reloadData()
         
     }
     
@@ -50,8 +58,6 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
         self.tableView.scrollEnabled = true
         
         tableView.contentSize.width != tableView.bounds.size.width && tableView.contentSize.height != tableView.bounds.size.height;
-        
-         // intialize post
         
         if(PFUser.currentUser() == nil)
         {
@@ -197,8 +203,7 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
     {
         //get query from parse
         var query = PFQuery(className: selectedPost)
-        query.orderByAscending("createdAt")
-        
+        query.orderByDescending("createdAt")
         query.findObjectsInBackgroundWithBlock {
             //query parse object and put each object in objects array
             (objects: [AnyObject]?, error: NSError?) -> Void in
@@ -224,54 +229,5 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
             }
         }
         
-        
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    /*
-        var query = PFQuery(className: selectedPost)
-        
-        //query.whereKey("playerName", equalTo:"Sean Plott")
-        //query.whereKey("madeBy", containedIn: "Request")
-        
-        var postArray = NSMutableArray() // create mutable array
-        
-        query.findObjectsInBackgroundWithBlock {
-            (objects: [AnyObject]?, error: NSError?) -> Void in
-            
-            if error == nil {
-                // The find succeeded.
-                println("Successfully retrieved \(objects!.count) scores.")
-                
-                // Do something with the found objects
-                if let objects = objects as? [PFObject] {
-                    for object in objects {
-                        // println(object.objectForKey("madeBy"))
-                        postArray.addObject(object["madeBy"] as! String)
-                    }
-                
-                    self.myPostArray = postArray
-                    self.mySwiftArray = postArray as AnyObject as! [String]
-                    self.tableView.reloadData() // reload data from Parse into tableView
-
-                    
-                }
-            }
-                
-            else {
-                // Log details of the failure
-                println("Error: \(error!) \(error!.userInfo!)")
-            }
-        }
-
-        
-    }
-    */
 }

@@ -10,7 +10,7 @@ import UIKit
 import ParseUI
 import Parse
 
-class Profile: UIViewController, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate {
+class Profile: UIViewController, UIImagePickerControllerDelegate, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, UINavigationControllerDelegate {
     
     //profile info
     @IBOutlet var username: UILabel!
@@ -18,6 +18,8 @@ class Profile: UIViewController, PFLogInViewControllerDelegate, PFSignUpViewCont
     @IBOutlet var email: UILabel!
     @IBOutlet var phoneNum: UILabel!
     
+    @IBOutlet var profilePic: UIImageView!
+    @IBOutlet var picText: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,9 +49,6 @@ class Profile: UIViewController, PFLogInViewControllerDelegate, PFSignUpViewCont
             let myPhoneNumber: String? = myself!["phoneNum"] as? String
             phoneNum.text = myPhoneNumber
             
-            
-            
-            
         }
 
     }
@@ -60,7 +59,7 @@ class Profile: UIViewController, PFLogInViewControllerDelegate, PFSignUpViewCont
     }
     
     
-    //UIParseLoginSegement/////////////////
+    //UIParseLoginSegment/////////////////
     
     func logInViewController(logInController: PFLogInViewController, shouldBeginLogInWithUsername username: String, password: String) -> Bool {
         if(!username.isEmpty || !password.isEmpty)
@@ -85,8 +84,6 @@ class Profile: UIViewController, PFLogInViewControllerDelegate, PFSignUpViewCont
         println("Did fail to login")
     }
     
-
-    
     //logs out user and sends back timeline which will send back to log in page
     @IBAction func logMeOut(sender: UIButton) {
         
@@ -98,19 +95,47 @@ class Profile: UIViewController, PFLogInViewControllerDelegate, PFSignUpViewCont
             var loginVC = self.storyboard?.instantiateViewControllerWithIdentifier("Login") as! LogIn
             var navController = UINavigationController(rootViewController: loginVC)
             self.presentViewController(navController, animated: true, completion: nil)
-            /*
-            let login = PFLogInViewController()
-            login.fields =
-            PFLogInFields.UsernameAndPassword |
-            PFLogInFields.LogInButton |
-            PFLogInFields.SignUpButton
-            
-            login.delegate = self
-            login.signUpController?.delegate = self
-            self.presentViewController(login, animated: true, completion: nil)
-            */
         
         }
     }
     
+    //gets pictures from camera's photo library
+    //action from add profile pic button
+
+    @IBAction func uploadFromSourceToParse(sender: AnyObject) {
+        //uploads from library
+        var imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        imagePicker.allowsEditing = false
+        self.presentViewController(imagePicker, animated: true, completion: nil)
+        
+       
+        
+    }
+    
+    @IBAction func uploadToParse(sender: AnyObject) {
+        let imageData = UIImagePNGRepresentation(self.profilePic.image)
+        let imageFile:PFFile = PFFile(data: imageData)
+        PFUser.currentUser()!["picture"] = imageFile
+        PFUser.currentUser()?.saveInBackgroundWithBlock({
+            (success: Bool, error: NSError?) -> Void in
+            
+            if error == nil {
+                //save pic
+                println("Done")
+                
+                
+            } else {
+                println("Something went wrong")
+            }
+        })
+
+    }
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
+        profilePic.image = image
+        self.dismissViewControllerAnimated(true, completion: nil)
+        picText.titleLabel?.text = "Change Photo"
+
+            }
 }
