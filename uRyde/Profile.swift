@@ -18,6 +18,7 @@ class Profile: UIViewController, PFLogInViewControllerDelegate, PFSignUpViewCont
     @IBOutlet var email: UILabel!
     @IBOutlet var phoneNum: UILabel!
     
+    @IBOutlet var userPic: UIImageView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +28,7 @@ class Profile: UIViewController, PFLogInViewControllerDelegate, PFSignUpViewCont
         
         //gets current user
         let myself = PFUser.currentUser()
-        var query = PFQuery(className:"_User")
+
         if myself != nil {
             
             //username (built-in)
@@ -46,9 +47,6 @@ class Profile: UIViewController, PFLogInViewControllerDelegate, PFSignUpViewCont
             //phone number (custom)
             let myPhoneNumber: String? = myself!["phoneNum"] as? String
             phoneNum.text = myPhoneNumber
-            
-            
-            
             
         }
 
