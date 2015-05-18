@@ -34,7 +34,7 @@ class CreatePost: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
 
     @IBOutlet var SegmentCtrl: UISegmentedControl!
     
-    var postSelection = "Request" // initialize to
+    var postSelection = "Offer" // initialize to
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -155,11 +155,14 @@ class CreatePost: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
             gas.text = "Need Gas $$$?"
             departTime.text = "Time of Departure:"
             sendButton.setTitle("Make Offer", forState: UIControlState.Normal)
+            postSelection = "Offer"
+            
         case 1:
             showCreatePostView("Request")
             gas.text = "Will You Pay?"
             departTime.text = "Desired Departure Date:"
             sendButton.setTitle("Make Request", forState: UIControlState.Normal)
+            postSelection = "Request"
         default:
             break         }
     }
@@ -177,7 +180,7 @@ class CreatePost: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
     }
     
     @IBAction func sendToParse(sender: AnyObject) {
-        var postType:String = "Offer"  //parsePostIndicator for SaveInBackground
+        var postType:String = postSelection  //parsePostIndicator for SaveInBackground
         var postToCreate = PFObject(className: postType) //indicate post type (Offer/Request)
         
         //made by
