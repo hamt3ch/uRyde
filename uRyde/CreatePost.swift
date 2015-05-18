@@ -197,11 +197,13 @@ class CreatePost: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
         dateFormatter.timeStyle = .ShortStyle
         postToCreate["timeLeaving"] = dateFormatter.stringFromDate(requestDatePicker.date)
         
-        //in need of gas money (only for offers)
-        postToCreate["needGasMoney"] = GasSwitch.on
-        
-        //willingness to pay gas money (only for requests)
-        postToCreate["willIPay"] = GasSwitch.on
+        //$$$
+        if (postType == "Offer") {
+            postToCreate["needGasMoney"] = GasSwitch.on
+        }
+        if (postType == "Request") {
+            postToCreate["willIPay"] = GasSwitch.on
+        }
         
         postToCreate.saveInBackgroundWithBlock {
             (success: Bool, error: NSError?) -> Void in
