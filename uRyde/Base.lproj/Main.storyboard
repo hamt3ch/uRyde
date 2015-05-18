@@ -90,6 +90,7 @@
                         <outlet property="email" destination="00j-3h-0aS" id="BIf-Ux-bxs"/>
                         <outlet property="name" destination="TFF-bM-2tC" id="ded-Yx-Lpg"/>
                         <outlet property="phoneNum" destination="zTZ-ov-pw6" id="Lzu-LN-czX"/>
+                        <outlet property="userPic" destination="g91-gS-Coh" id="Bye-MN-oC6"/>
                         <outlet property="username" destination="doM-KC-JRZ" id="PQz-66-Y9P"/>
                     </connections>
                 </viewController>

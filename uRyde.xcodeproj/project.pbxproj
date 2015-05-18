@@ -153,7 +153,6 @@
 				A87B39331B066E020078ADAE /* Main.storyboard */,
 				A87B392F1B066E020078ADAE /* AppDelegate.swift */,
 				A87B394F1B066E770078ADAE /* Timeline.swift */,
-				4154315B1B08AE9700B625D0 /* tableCellView.xib */,
 				4154315D1B08B2B300B625D0 /* TableCell.swift */,
 				A87B39511B066E8F0078ADAE /* Notifications.swift */,
 				A87B39531B066E9B0078ADAE /* Profile.swift */,
@@ -161,6 +160,7 @@
 				416CBDAF1B08421D00CC3E10 /* LogIn.swift */,
 				A8BE9D741B07EA07009F13BD /* CreatePost.swift */,
 				A8640D3C1B0874DE008796A1 /* bridgeHeader.h */,
+				4154315B1B08AE9700B625D0 /* tableCellView.xib */,
 				A87B39361B066E020078ADAE /* Images.xcassets */,
 				A87B39381B066E020078ADAE /* LaunchScreen.xib */,
 				A87B392D1B066E020078ADAE /* Supporting Files */,
@@ -270,6 +270,11 @@
 					A87B39291B066E020078ADAE = {
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = GDB3SZ2MTH;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					A87B393E1B066E020078ADAE = {
 						CreatedOnToolsVersion = 6.3.1;
