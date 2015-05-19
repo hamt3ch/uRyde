@@ -14,6 +14,7 @@ class TableCell: UITableViewCell {
     @IBOutlet var name: UILabel!
     @IBOutlet var destination: UILabel!
     @IBOutlet var date: UILabel!
+    @IBOutlet var profilePic: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

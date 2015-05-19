@@ -49,6 +49,20 @@ class Profile: UIViewController, UIImagePickerControllerDelegate, PFLogInViewCon
             let myPhoneNumber: String? = myself!["phoneNum"] as? String
             phoneNum.text = myPhoneNumber
             
+            
+            if (myself!["picture"] != nil) {
+                let myProfPic = myself!["picture"] as! PFFile
+                myProfPic.getDataInBackgroundWithBlock {
+                    (imageData: NSData?, error: NSError?) -> Void in
+                    if error == nil {
+                        if let imageData = imageData {
+                            let image = UIImage(data:imageData)
+                            self.profilePic.image = image
+                        }
+                    }
+                }
+            }
+            
         }
 
     }
@@ -109,9 +123,6 @@ class Profile: UIViewController, UIImagePickerControllerDelegate, PFLogInViewCon
         imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         imagePicker.allowsEditing = false
         self.presentViewController(imagePicker, animated: true, completion: nil)
-        
-       
-        
     }
     
     @IBAction func uploadToParse(sender: AnyObject) {
@@ -130,12 +141,12 @@ class Profile: UIViewController, UIImagePickerControllerDelegate, PFLogInViewCon
                 println("Something went wrong")
             }
         })
-
     }
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
         profilePic.image = image
         self.dismissViewControllerAnimated(true, completion: nil)
         picText.titleLabel?.text = "Change Photo"
 
-            }
+    }
+
 }

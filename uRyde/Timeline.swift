@@ -108,7 +108,39 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
         let departureDate = tempObject["dateLeaving"] as! String
         let departureTime = tempObject["timeLeaving"] as! String
         cell.date.text = "Leaving on " + "\(departureDate)" + " at " + "\(departureTime)"
+        
+        let postCreator = tempObject["madeBy"] as! String  // get username from post
+        var userQuery:PFQuery = PFUser.query()! // access user class
+        userQuery.whereKey("username", equalTo: postCreator)
+        var userFound = userQuery.findObjects()
+        
+        let postPicure = userFound["picture"] as PFFile
+            postPicure.getDataInBackgroundWithBlock {
+                (imageData: NSData?, error: NSError?) -> Void in
+                if error == nil {
+                    if let imageData = imageData {
+                        let imageData = UIImage(data: imageData)
+                          cell.profilePic.image = imageData
+                        }
+                    }
+                }
+                
+        }
+    
+        print(userFound)
+        
+        
+        // find way to connect
 
+//        let myProfPic = tempObject["picture"] as PFFile
+//        myProfPic.getDataInBackgroundWithBlock {
+//            (imageData: NSData?, error: NSError?) -> Void in
+//            if error == nil {
+//                if let imageData = imageData {
+//                    let image = UIImage(data:imageData)
+//                    cell.profilePic.image = image
+//                    println(cell.profilePic.image)
+//
         //FOR LATE USE
         //for images: cell.userImage = UIImage(named: "u_turn_symbol")
         
