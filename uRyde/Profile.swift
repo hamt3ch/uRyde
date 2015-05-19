@@ -29,7 +29,7 @@ class Profile: UIViewController, UIImagePickerControllerDelegate, PFLogInViewCon
         
         //gets current user
         let myself = PFUser.currentUser()
-        var query = PFQuery(className:"_User")
+
         if myself != nil {
             
             //username (built-in)
@@ -49,7 +49,6 @@ class Profile: UIViewController, UIImagePickerControllerDelegate, PFLogInViewCon
             let myPhoneNumber: String? = myself!["phoneNum"] as? String
             phoneNum.text = myPhoneNumber
             
-            
             if (myself!["picture"] != nil) {
                 let myProfPic = myself!["picture"] as! PFFile
                 myProfPic.getDataInBackgroundWithBlock {
@@ -62,7 +61,7 @@ class Profile: UIViewController, UIImagePickerControllerDelegate, PFLogInViewCon
                     }
                 }
             }
-            
+        
         }
 
     }

@@ -18,6 +18,7 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
     @IBOutlet var tableView: UITableView!
     
     var myPostArray = NSMutableArray()
+    //var currentPostType = "Offer" // if no public variable allowed
     
     //use this array to populate the cell
     //var mySwiftArray: [String] = []
@@ -156,9 +157,10 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
         let row = indexPath.row
         println(myPostArray.objectAtIndex(row)) // getObject in cell
         
-        let postCreator = myPostArray.objectAtIndex(row)
-        /*
-        if(PFUser.currentUser()?.username == postCreator as! String)
+        let postCreator = myPostArray.objectAtIndex(row)["madeBy"] as! String
+        println(postCreator)
+    
+        if(PFUser.currentUser()?.username == postCreator)
         {
             var alert:UIAlertView = UIAlertView()
             alert.title = "You cannot request a ride from yourself"
@@ -170,18 +172,16 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
 
         else
         {
-            
             var push:PFPush = PFPush() // set channel to postCreator
-            push.setChannel(postCreator as! String)
-            push.setMessage((postCreator as! String) + "Wants a Ride")
+            push.setChannel(postCreator)
+            push.setMessage(postCreator + "Wants a Ride")
             let data = ["alert":(PFUser.currentUser()?.username)! + " wants a Ride", "badge": "", "content-available":"2","sound":"", "category":"MY_CATEGORY" ]
-            
-            push.setQuery(postCreator as! PFQuery)
+        
             push.setData(data) //attach data to pushNotes
             push.sendPushInBackground()
-           
-        }
-        */
+
+         }
+    
     }
 
     //UIParseLoginSegment/////////////////
