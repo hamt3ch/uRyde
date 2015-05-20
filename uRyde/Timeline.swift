@@ -10,14 +10,19 @@ import Parse
 import ParseUI
 import UIKit
 
-class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, UIAlertViewDelegate {
+class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, UIAlertViewDelegate, UITabBarControllerDelegate {
     
     var loginViewController = PFLogInViewController()  // instantiate loginView
     var signUpViewController = PFSignUpViewController() // instantiate signupView
-    
+  
     @IBOutlet var tableView: UITableView!
     
     var myPostArray = NSMutableArray()
+    
+     let swipeRec = UISwipeGestureRecognizer()
+    
+    @IBOutlet var swipeView: UIView!
+    
     //var currentPostType = "Offer" // if no public variable allowed
     
     //use this array to populate the cell
@@ -38,8 +43,9 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
         tableView.registerNib(nib, forCellReuseIdentifier: "offerCell")
         
         // Do any additional setup after loading the view, typically from a nib. <-- on point
-        
-        
+        swipeRec.addTarget(self, action: "swipedView")
+        swipeView.addGestureRecognizer(swipeRec)
+        swipeView.userInteractionEnabled = true
         
         
     }
@@ -115,20 +121,20 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
         userQuery.whereKey("username", equalTo: postCreator)
         var userFound = userQuery.findObjects()
         
-        let postPicure = userFound["picture"] as PFFile
-            postPicure.getDataInBackgroundWithBlock {
-                (imageData: NSData?, error: NSError?) -> Void in
-                if error == nil {
-                    if let imageData = imageData {
-                        let imageData = UIImage(data: imageData)
-                          cell.profilePic.image = imageData
-                        }
-                    }
-                }
-                
-        }
-    
-        print(userFound)
+//        let postPicure = userFound["picture"] as PFFile
+//            postPicure.getDataInBackgroundWithBlock {
+//                (imageData: NSData?, error: NSError?) -> Void in
+//                if error == nil {
+//                    if let imageData = imageData {
+//                        let imageData = UIImage(data: imageData)
+//                          cell.profilePic.image = imageData
+//                        }
+//                    }
+//                }
+//                
+//        }
+//    
+//        print(userFound)
         
         
         // find way to connect
@@ -262,4 +268,14 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
         }
         
     }
+    
+    
+    //UIGuestures///////////////////////////////
+    func swipedView(){
+        
+        let tapAlert = UIAlertController(title: "Swiped", message: "You just swiped the swipe view", preferredStyle: UIAlertControllerStyle.Alert)
+        tapAlert.addAction(UIAlertAction(title: "OK", style: .Destructive, handler: nil))
+        self.presentViewController(tapAlert, animated: true, completion: nil)
+    }
+    
 }

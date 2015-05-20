@@ -33,6 +33,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Setup PushNotes
         intializeCustomPushNotes(application)
         
+        let tabBarCtrl = UITabBarController()
+        tabBarCtrl.selectedIndex = 1
+        
+        
         return true
     }
     
