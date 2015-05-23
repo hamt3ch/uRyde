@@ -18,6 +18,7 @@ class SignUp: UIViewController {
     @IBOutlet var password: UITextField!
     @IBOutlet var confirmPass: UITextField!
     @IBOutlet var email: UITextField!
+    @IBOutlet var schoolName: UITextField!
     @IBOutlet var phoneNum: UITextField!
     
     var actInd: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(0, 0, 150, 150)) as UIActivityIndicatorView
@@ -54,12 +55,14 @@ class SignUp: UIViewController {
         if (self.password.text == self.confirmPass.text) {
             var newUser = PFUser()
             println(self.firstName.text)
-            newUser["FirstName"] = self.firstName.text
-            newUser["LastName"] = self.lastName.text
+            newUser["firstName"] = self.firstName.text
+            newUser["lastName"] = self.lastName.text
             newUser.username = self.username.text
             newUser.password = self.confirmPass.text
             newUser.email = self.email.text
+            newUser["school"] = self.schoolName.text
             newUser["phoneNum"] = self.phoneNum.text
+            
             
             newUser.signUpInBackgroundWithBlock ({ (succeed, error) -> Void in
                 

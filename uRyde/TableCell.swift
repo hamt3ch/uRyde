@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import QuartzCore
 
 class TableCell: UITableViewCell {
 
@@ -19,6 +20,8 @@ class TableCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        profilePic.layer.cornerRadius = 10;
+        profilePic.clipsToBounds = true;
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

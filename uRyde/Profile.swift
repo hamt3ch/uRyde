@@ -17,6 +17,7 @@ class Profile: UIViewController, UIImagePickerControllerDelegate, PFLogInViewCon
     @IBOutlet var name: UILabel!
     @IBOutlet var email: UILabel!
     @IBOutlet var phoneNum: UILabel!
+    @IBOutlet var schoolName: UILabel!
     
     @IBOutlet var profilePic: UIImageView!
     @IBOutlet var picText: UIButton!
@@ -29,7 +30,7 @@ class Profile: UIViewController, UIImagePickerControllerDelegate, PFLogInViewCon
         
         //gets current user
         let myself = PFUser.currentUser()
-
+        
         if myself != nil {
             
             //username (built-in)
@@ -37,8 +38,8 @@ class Profile: UIViewController, UIImagePickerControllerDelegate, PFLogInViewCon
             username.text = myUserName
             
             //name (custom)
-            let myFirstName: String? = myself!["FirstName"] as? String
-            let myLastName: String? = myself!["LastName"]  as? String
+            let myFirstName: String? = myself!["firstName"] as? String
+            let myLastName: String? = myself!["lastName"]  as? String
             name.text = myFirstName! + " " + myLastName!
             
             //email (built-in)
@@ -61,6 +62,9 @@ class Profile: UIViewController, UIImagePickerControllerDelegate, PFLogInViewCon
                     }
                 }
             }
+            
+            let school: String? = myself!["school"] as? String
+            schoolName.text = school
         
         }
 

@@ -19,7 +19,7 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
     
     var myPostArray = NSMutableArray()
     
-     let swipeRec = UISwipeGestureRecognizer()
+//     let swipeRec = UISwipeGestureRecognizer()
     
     @IBOutlet var swipeView: UIView!
     
@@ -43,9 +43,9 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
         tableView.registerNib(nib, forCellReuseIdentifier: "offerCell")
         
         // Do any additional setup after loading the view, typically from a nib. <-- on point
-        swipeRec.addTarget(self, action: "swipedView")
-        swipeView.addGestureRecognizer(swipeRec)
-        swipeView.userInteractionEnabled = true
+//        swipeRec.addTarget(self, action: "swipedView")
+//        swipeView.addGestureRecognizer(swipeRec)
+//        swipeView.userInteractionEnabled = true
         
         
     }
@@ -118,9 +118,39 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
         
         let postCreator = tempObject["madeBy"] as! String  // get username from post
         var userQuery:PFQuery = PFUser.query()! // access user class
-        userQuery.whereKey("username", equalTo: postCreator)
-        var userFound = userQuery.findObjects()
+        userQuery.whereKey("username", equalTo: postCreator) // find user == postCreator
+        userQuery.findObjectsInBackgroundWithBlock {
+            (objects: [AnyObject]?, error: NSError?) -> Void in
+            if error == nil {
+                // The find succeeded.
+                println("Successfully retrieved \(objects!.count) scores.")
+                // Do something with the found objects
+                if let objects = objects as? [PFObject] {
+                    for object in objects {
+                        let profilePic = object["picture"] as! PFFile
+                        profilePic.getDataInBackgroundWithBlock {
+                            (imageData: NSData?, error: NSError?) -> Void in
+                            if error == nil {
+                                if let imageData = imageData {
+                                    let image = UIImage(data:imageData)
+                                    cell.profilePic.image = image
+                                }
+                            }
+                        }
+
+                    }
+                }
+            } else {
+                // Log details of the failure
+                println("Error: \(error!) \(error!.userInfo!)")
+            }
+        }
         
+        
+        //var userFound = userQuery.findObjects()
+        
+      ///  print(userFound)
+
 //        let postPicure = userFound["picture"] as PFFile
 //            postPicure.getDataInBackgroundWithBlock {
 //                (imageData: NSData?, error: NSError?) -> Void in
@@ -146,7 +176,7 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
 //                if let imageData = imageData {
 //                    let image = UIImage(data:imageData)
 //                    cell.profilePic.image = image
-//                    println(cell.profilePic.image)
+//                   println(cell.profilePic.image)
 //
         //FOR LATE USE
         //for images: cell.userImage = UIImage(named: "u_turn_symbol")
@@ -271,11 +301,11 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
     
     
     //UIGuestures///////////////////////////////
-    func swipedView(){
-        
-        let tapAlert = UIAlertController(title: "Swiped", message: "You just swiped the swipe view", preferredStyle: UIAlertControllerStyle.Alert)
-        tapAlert.addAction(UIAlertAction(title: "OK", style: .Destructive, handler: nil))
-        self.presentViewController(tapAlert, animated: true, completion: nil)
-    }
+//    func swipedView(){
+//        
+//        let tapAlert = UIAlertController(title: "Swiped", message: "You just swiped the swipe view", preferredStyle: UIAlertControllerStyle.Alert)
+//        tapAlert.addAction(UIAlertAction(title: "OK", style: .Destructive, handler: nil))
+//        self.presentViewController(tapAlert, animated: true, completion: nil)
+//    }
     
 }
