@@ -13,11 +13,13 @@ import Parse
 class Profile: UIViewController, UIImagePickerControllerDelegate, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, UINavigationControllerDelegate {
     
     //profile info
+
     @IBOutlet var username: UILabel!
     @IBOutlet var name: UILabel!
     @IBOutlet var email: UILabel!
     @IBOutlet var phoneNum: UILabel!
     @IBOutlet var schoolName: UILabel!
+
     
     @IBOutlet var profilePic: UIImageView!
     @IBOutlet var picText: UIButton!

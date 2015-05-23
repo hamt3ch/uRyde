@@ -39,6 +39,7 @@
 		A8BE9D711B06C66B009F13BD /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8BE9D701B06C66B009F13BD /* Accounts.framework */; };
 		A8BE9D731B06C672009F13BD /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8BE9D721B06C672009F13BD /* Social.framework */; };
 		A8BE9D751B07EA07009F13BD /* CreatePost.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BE9D741B07EA07009F13BD /* CreatePost.swift */; };
+		A8D08DE61B1113FA00B0A4A0 /* Sinch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8D08DE51B1113FA00B0A4A0 /* Sinch.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,7 @@
 		A8BE9D701B06C66B009F13BD /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		A8BE9D721B06C672009F13BD /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		A8BE9D741B07EA07009F13BD /* CreatePost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePost.swift; sourceTree = "<group>"; };
+		A8D08DE51B1113FA00B0A4A0 /* Sinch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sinch.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				A8BE9D711B06C66B009F13BD /* Accounts.framework in Frameworks */,
 				A8BE9D6F1B06C662009F13BD /* libsqlite3.dylib in Frameworks */,
 				A8BE9D6D1B06C60E009F13BD /* libz.dylib in Frameworks */,
+				A8D08DE61B1113FA00B0A4A0 /* Sinch.framework in Frameworks */,
 				A8BE9D6B1B06C5F6009F13BD /* SystemConfiguration.framework in Frameworks */,
 				A8BE9D691B06C5E8009F13BD /* StoreKit.framework in Frameworks */,
 				A8BE9D671B06C5E0009F13BD /* Security.framework in Frameworks */,
@@ -196,6 +199,7 @@
 		A87B39551B06712D0078ADAE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A8D08DE51B1113FA00B0A4A0 /* Sinch.framework */,
 				A8BE9D721B06C672009F13BD /* Social.framework */,
 				A8BE9D701B06C66B009F13BD /* Accounts.framework */,
 				A8BE9D6E1B06C662009F13BD /* libsqlite3.dylib */,
