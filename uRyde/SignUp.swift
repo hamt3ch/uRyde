@@ -63,7 +63,6 @@ class SignUp: UIViewController {
             newUser["school"] = self.schoolName.text
             newUser["phoneNum"] = self.phoneNum.text
             
-            
             newUser.signUpInBackgroundWithBlock ({ (succeed, error) -> Void in
                 
                 self.actInd.stopAnimating()

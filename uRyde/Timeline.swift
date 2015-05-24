@@ -128,18 +128,19 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
                 if let objects = objects as? [PFObject] {
                     for object in objects {
                         
-                        if let profilePic = object["picture"] as? PFFile {
-
-                            profilePic.getDataInBackgroundWithBlock {
+                        let profilePic = object["picture"] as? PFFile
+                        
+                            profilePic?.getDataInBackgroundWithBlock {
                                 (imageData: NSData?, error: NSError?) -> Void in
                                 if error == nil {
                                     if let imageData = imageData {
                                         let image = UIImage(data:imageData)
                                         cell.profilePic.image = image
+                                        
                                     }
                                 }
                             }
-                        }
+                        
                     }
                 }
             } else {

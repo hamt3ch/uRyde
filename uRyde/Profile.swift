@@ -19,7 +19,6 @@ class Profile: UIViewController, UIImagePickerControllerDelegate, PFLogInViewCon
     @IBOutlet var email: UILabel!
     @IBOutlet var phoneNum: UILabel!
     @IBOutlet var schoolName: UILabel!
-
     
     @IBOutlet var profilePic: UIImageView!
     @IBOutlet var picText: UIButton!
@@ -60,6 +59,7 @@ class Profile: UIViewController, UIImagePickerControllerDelegate, PFLogInViewCon
                         if let imageData = imageData {
                             let image = UIImage(data:imageData)
                             self.profilePic.image = image
+                            self.picText.titleLabel?.text = ""
                         }
                     }
                 }
@@ -67,6 +67,10 @@ class Profile: UIViewController, UIImagePickerControllerDelegate, PFLogInViewCon
             
             let school: String? = myself!["school"] as? String
             schoolName.text = school
+            
+            profilePic.layer.cornerRadius = 10
+            profilePic.clipsToBounds = true
+            
         
         }
 
@@ -150,7 +154,7 @@ class Profile: UIViewController, UIImagePickerControllerDelegate, PFLogInViewCon
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
         profilePic.image = image
         self.dismissViewControllerAnimated(true, completion: nil)
-        picText.titleLabel?.text = "Change Photo"
+        
 
     }
 
