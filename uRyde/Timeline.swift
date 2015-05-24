@@ -132,15 +132,14 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
                         
                             profilePic?.getDataInBackgroundWithBlock {
                                 (imageData: NSData?, error: NSError?) -> Void in
-                                if error == nil {
-                                    if let imageData = imageData {
-                                        let image = UIImage(data:imageData)
-                                        cell.profilePic.image = image
+                            if error == nil {
+                                if let imageData = imageData {
+                                    let image = UIImage(data:imageData)
+                                    cell.profilePic.image = image
                                         
-                                    }
                                 }
                             }
-                        
+                        }
                     }
                 }
             } else {
