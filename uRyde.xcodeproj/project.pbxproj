@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1DDC2AAB8259805E3EA7AFEA /* libPods-uRyde.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B4FD15D333F448B3C7665C9 /* libPods-uRyde.a */; };
 		4154315C1B08AE9700B625D0 /* tableCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4154315B1B08AE9700B625D0 /* tableCellView.xib */; };
 		4154315E1B08B2B300B625D0 /* TableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4154315D1B08B2B300B625D0 /* TableCell.swift */; };
 		416CBDB01B08421D00CC3E10 /* LogIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416CBDAF1B08421D00CC3E10 /* LogIn.swift */; };
@@ -42,6 +43,8 @@
 		A8BE9D731B06C672009F13BD /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8BE9D721B06C672009F13BD /* Social.framework */; };
 		A8BE9D751B07EA07009F13BD /* CreatePost.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BE9D741B07EA07009F13BD /* CreatePost.swift */; };
 		A8D08DE61B1113FA00B0A4A0 /* Sinch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8D08DE51B1113FA00B0A4A0 /* Sinch.framework */; };
+		A8D08DEB1B116B3D00B0A4A0 /* uRyde_link.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D08DE91B116B3D00B0A4A0 /* uRyde_link.m */; };
+		A8D08DF01B1171F900B0A4A0 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8D08DEF1B1171F900B0A4A0 /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,12 +58,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2B4FD15D333F448B3C7665C9 /* libPods-uRyde.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-uRyde.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4154315B1B08AE9700B625D0 /* tableCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = tableCellView.xib; sourceTree = "<group>"; };
 		4154315D1B08B2B300B625D0 /* TableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableCell.swift; sourceTree = "<group>"; };
 		416CBDAF1B08421D00CC3E10 /* LogIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogIn.swift; sourceTree = "<group>"; };
 		41C89F481B1153A60066A346 /* gasMoney.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gasMoney.png; sourceTree = "<group>"; };
 		41C89F4C1B116B360066A346 /* profPic_def.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profPic_def.png; sourceTree = "<group>"; };
 		A8640D3C1B0874DE008796A1 /* bridgeHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = bridgeHeader.h; path = ../bridgeHeader.h; sourceTree = "<group>"; };
+		A77FA2DF035423DD26061F41 /* Pods-uRyde.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-uRyde.debug.xcconfig"; path = "Pods/Target Support Files/Pods-uRyde/Pods-uRyde.debug.xcconfig"; sourceTree = "<group>"; };
 		A87B392A1B066E020078ADAE /* uRyde.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uRyde.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A87B392E1B066E020078ADAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A87B392F1B066E020078ADAE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +100,11 @@
 		A8BE9D721B06C672009F13BD /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		A8BE9D741B07EA07009F13BD /* CreatePost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePost.swift; sourceTree = "<group>"; };
 		A8D08DE51B1113FA00B0A4A0 /* Sinch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sinch.framework; sourceTree = "<group>"; };
+		A8D08DE81B116B3C00B0A4A0 /* uRyde-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "uRyde-Bridging-Header.h"; sourceTree = "<group>"; };
+		A8D08DE91B116B3D00B0A4A0 /* uRyde_link.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = uRyde_link.m; sourceTree = "<group>"; };
+		A8D08DEA1B116B3D00B0A4A0 /* uRyde_link.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uRyde_link.h; sourceTree = "<group>"; };
+		A8D08DEF1B1171F900B0A4A0 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		D7726232342CDE7B8CE4CAD9 /* Pods-uRyde.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-uRyde.release.xcconfig"; path = "Pods/Target Support Files/Pods-uRyde/Pods-uRyde.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8D08DF01B1171F900B0A4A0 /* AVFoundation.framework in Frameworks */,
 				A8BE9D731B06C672009F13BD /* Social.framework in Frameworks */,
 				A8BE9D711B06C66B009F13BD /* Accounts.framework in Frameworks */,
 				A8BE9D6F1B06C662009F13BD /* libsqlite3.dylib in Frameworks */,
@@ -122,6 +133,7 @@
 				A87B395F1B0671400078ADAE /* ParseFacebookUtils.framework in Frameworks */,
 				A87B395C1B0671400078ADAE /* Bolts.framework in Frameworks */,
 				A87B39601B0671400078ADAE /* ParseFacebookUtilsV4.framework in Frameworks */,
+				1DDC2AAB8259805E3EA7AFEA /* libPods-uRyde.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,6 +154,7 @@
 				A87B39421B066E020078ADAE /* uRydeTests */,
 				A87B392B1B066E020078ADAE /* Products */,
 				A87B39551B06712D0078ADAE /* Frameworks */,
+				EC94D70D51395203106607E8 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -166,7 +179,6 @@
 				A87B39311B066E020078ADAE /* SignUp.swift */,
 				416CBDAF1B08421D00CC3E10 /* LogIn.swift */,
 				A8BE9D741B07EA07009F13BD /* CreatePost.swift */,
-				A8640D3C1B0874DE008796A1 /* bridgeHeader.h */,
 				4154315B1B08AE9700B625D0 /* tableCellView.xib */,
 				A87B39361B066E020078ADAE /* Images.xcassets */,
 				A87B39381B066E020078ADAE /* LaunchScreen.xib */,
@@ -179,8 +191,11 @@
 			isa = PBXGroup;
 			children = (
 				41C89F4C1B116B360066A346 /* profPic_def.png */,
+				A8D08DE91B116B3D00B0A4A0 /* uRyde_link.m */,
+				A8D08DEA1B116B3D00B0A4A0 /* uRyde_link.h */,
 				41C89F481B1153A60066A346 /* gasMoney.png */,
 				A87B392E1B066E020078ADAE /* Info.plist */,
+				A8D08DE81B116B3C00B0A4A0 /* uRyde-Bridging-Header.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -205,6 +220,7 @@
 		A87B39551B06712D0078ADAE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A8D08DEF1B1171F900B0A4A0 /* AVFoundation.framework */,
 				A8D08DE51B1113FA00B0A4A0 /* Sinch.framework */,
 				A8BE9D721B06C672009F13BD /* Social.framework */,
 				A8BE9D701B06C66B009F13BD /* Accounts.framework */,
@@ -225,9 +241,19 @@
 				A87B39591B0671400078ADAE /* ParseFacebookUtils.framework */,
 				A87B395A1B0671400078ADAE /* ParseFacebookUtilsV4.framework */,
 				A87B395B1B0671400078ADAE /* ParseUI.framework */,
+				2B4FD15D333F448B3C7665C9 /* libPods-uRyde.a */,
 			);
 			name = Frameworks;
 			path = uRyde.xcodeproj;
+			sourceTree = "<group>";
+		};
+		EC94D70D51395203106607E8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A77FA2DF035423DD26061F41 /* Pods-uRyde.debug.xcconfig */,
+				D7726232342CDE7B8CE4CAD9 /* Pods-uRyde.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,9 +263,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A87B39491B066E020078ADAE /* Build configuration list for PBXNativeTarget "uRyde" */;
 			buildPhases = (
+				EE7F38094FAD3CA230C169CB /* Check Pods Manifest.lock */,
 				A87B39261B066E020078ADAE /* Sources */,
 				A87B39271B066E020078ADAE /* Frameworks */,
 				A87B39281B066E020078ADAE /* Resources */,
+				F455D946C3C0CC5CD63AA5CA /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -335,6 +363,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		EE7F38094FAD3CA230C169CB /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F455D946C3C0CC5CD63AA5CA /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-uRyde/Pods-uRyde-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A87B39261B066E020078ADAE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -346,6 +407,7 @@
 				A87B39541B066E9B0078ADAE /* Profile.swift in Sources */,
 				A87B39501B066E770078ADAE /* Timeline.swift in Sources */,
 				416CBDB01B08421D00CC3E10 /* LogIn.swift in Sources */,
+				A8D08DEB1B116B3D00B0A4A0 /* uRyde_link.m in Sources */,
 				A87B39321B066E020078ADAE /* SignUp.swift in Sources */,
 				A87B39301B066E020078ADAE /* AppDelegate.swift in Sources */,
 			);
@@ -474,35 +536,152 @@
 		};
 		A87B394A1B066E020078ADAE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A77FA2DF035423DD26061F41 /* Pods-uRyde.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/uRyde.xcodeproj",
 				);
 				INFOPLIST_FILE = uRyde/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				"OTHER_LDFLAGS[arch=*]" = (
+					"-l\"Parse\"",
+					"-l\"ParseFacebookUtilsV4\"",
+					"-l\"Pods-uRyde-Bolts\"",
+					"-l\"Pods-uRyde-FBSDKCoreKit\"",
+					"-l\"Pods-uRyde-FBSDKLoginKit\"",
+					"-l\"Pods-uRyde-Parse\"",
+					"-l\"Pods-uRyde-ParseFacebookUtilsV4\"",
+					"-l\"Pods-uRyde-SinchRTC\"",
+					"-l\"Pods-uRyde-SinchService\"",
+					"-l\"c++\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AVFoundation\"",
+					"-framework",
+					"\"AudioToolbox\"",
+					"-framework",
+					"\"CFNetwork\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"Sinch\"",
+					"-framework",
+					"\"StoreKit\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-weak_framework",
+					"\"Accounts\"",
+					"-weak_framework",
+					"\"AudioToolbox\"",
+					"-weak_framework",
+					"\"CoreGraphics\"",
+					"-weak_framework",
+					"\"CoreLocation\"",
+					"-weak_framework",
+					"\"Foundation\"",
+					"-weak_framework",
+					"\"QuartzCore\"",
+					"-weak_framework",
+					"\"Security\"",
+					"-weak_framework",
+					"\"Social\"",
+					"-weak_framework",
+					"\"UIKit\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "uRyde/uRyde-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		A87B394B1B066E020078ADAE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D7726232342CDE7B8CE4CAD9 /* Pods-uRyde.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/uRyde.xcodeproj",
 				);
 				INFOPLIST_FILE = uRyde/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-l\"Parse\"",
+					"-l\"ParseFacebookUtilsV4\"",
+					"-l\"Pods-uRyde-Bolts\"",
+					"-l\"Pods-uRyde-FBSDKCoreKit\"",
+					"-l\"Pods-uRyde-FBSDKLoginKit\"",
+					"-l\"Pods-uRyde-Parse\"",
+					"-l\"Pods-uRyde-ParseFacebookUtilsV4\"",
+					"-l\"Pods-uRyde-SinchRTC\"",
+					"-l\"Pods-uRyde-SinchService\"",
+					"-l\"c++\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AVFoundation\"",
+					"-framework",
+					"\"AudioToolbox\"",
+					"-framework",
+					"\"CFNetwork\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"Sinch\"",
+					"-framework",
+					"\"StoreKit\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-weak_framework",
+					"\"Accounts\"",
+					"-weak_framework",
+					"\"AudioToolbox\"",
+					"-weak_framework",
+					"\"CoreGraphics\"",
+					"-weak_framework",
+					"\"CoreLocation\"",
+					"-weak_framework",
+					"\"Foundation\"",
+					"-weak_framework",
+					"\"QuartzCore\"",
+					"-weak_framework",
+					"\"Security\"",
+					"-weak_framework",
+					"\"Social\"",
+					"-weak_framework",
+					"\"UIKit\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "uRyde/uRyde-Bridging-Header.h";
 			};
 			name = Release;
 		};

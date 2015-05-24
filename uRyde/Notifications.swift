@@ -17,22 +17,29 @@ class Notifications: UIViewController, UITableViewDataSource, UITableViewDelegat
     
     var currentUserStr = String()
     
-    let textIdentifier = "messageCell"
+    let textCellIdentifier = "messageCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+        let myself = PFUser.currentUser()
+        self.currentUserStr = (myself!["username"] as? String)!
+    
         directMessageTblView.delegate = self
         directMessageTblView.dataSource = self
     }
     
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        retrieveUserListFromParse()
+    }
+
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-        let myself = PFUser.currentUser()
-        self.currentUserStr = (myself!["username"] as? String)!
-        retrieveUserListFromParse()
+      
     }
     
     //DataSourceSegment////////////////
@@ -42,14 +49,16 @@ class Notifications: UIViewController, UITableViewDataSource, UITableViewDelegat
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return userListPost.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = directMessageTblView.dequeueReusableCellWithIdentifier(textIdentifier, forIndexPath: indexPath) as! UITableViewCell
+        let cell = directMessageTblView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) as! UITableViewCell
         
-        let row = indexPath.row
-
+        var tempObject:PFObject = self.userListPost.objectAtIndex(indexPath.row) as! PFObject
+        cell.textLabel?.text = tempObject["username"] as! String
+        
+        
         return cell
     }
     
@@ -64,18 +73,29 @@ class Notifications: UIViewController, UITableViewDataSource, UITableViewDelegat
     func retrieveUserListFromParse(){
         self.userListPost.removeAllObjects() //clear userList
         
-        var userQuery:PFQuery = PFQuery()
+        var userQuery:PFQuery = PFUser.query()!
         userQuery.orderByAscending("username")
         userQuery.whereKey("username", notEqualTo: currentUserStr)
         userQuery.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]?, error: NSError?) -> Void in
+            // The find succeeded.
+            println("Successfully retrieved \(objects!.count) scores.")
+            
                 if error == nil
                 {
                     // Do something with the found objects
                     if let objects = objects as? [PFObject] {
+                        
                         for object in objects {
-                            println(object.objectId)
+                            self.userListPost.addObject(object)
+                            print(self.userListPost)
+                            
                         }
+                    }
+                    
+                      self.directMessageTblView.reloadData()
+                        
+                        
                 }
             
                 else
@@ -114,5 +134,5 @@ class Notifications: UIViewController, UITableViewDataSource, UITableViewDelegat
 
     
     
-}
+
 

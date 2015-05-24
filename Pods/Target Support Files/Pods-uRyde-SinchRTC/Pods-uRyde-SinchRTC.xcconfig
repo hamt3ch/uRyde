@@ -1,0 +1,3 @@
+PODS_URYDE_SINCHRTC_CLANG_CXX_LIBRARY = libc++
+PODS_URYDE_SINCHRTC_FRAMEWORK_SEARCH_PATHS = "$(PODS_ROOT)/SinchRTC"
+PODS_URYDE_SINCHRTC_OTHER_LDFLAGS = -l"c++" -framework "AVFoundation" -framework "AudioToolbox" -framework "Security" -framework "Sinch"
