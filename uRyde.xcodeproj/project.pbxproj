@@ -10,6 +10,7 @@
 		4154315C1B08AE9700B625D0 /* tableCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4154315B1B08AE9700B625D0 /* tableCellView.xib */; };
 		4154315E1B08B2B300B625D0 /* TableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4154315D1B08B2B300B625D0 /* TableCell.swift */; };
 		416CBDB01B08421D00CC3E10 /* LogIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416CBDAF1B08421D00CC3E10 /* LogIn.swift */; };
+		41C89F491B1153A60066A346 /* gasMoney.png in Resources */ = {isa = PBXBuildFile; fileRef = 41C89F481B1153A60066A346 /* gasMoney.png */; };
 		A87B39301B066E020078ADAE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87B392F1B066E020078ADAE /* AppDelegate.swift */; };
 		A87B39321B066E020078ADAE /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87B39311B066E020078ADAE /* SignUp.swift */; };
 		A87B39351B066E020078ADAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A87B39331B066E020078ADAE /* Main.storyboard */; };
@@ -56,6 +57,7 @@
 		4154315B1B08AE9700B625D0 /* tableCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = tableCellView.xib; sourceTree = "<group>"; };
 		4154315D1B08B2B300B625D0 /* TableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableCell.swift; sourceTree = "<group>"; };
 		416CBDAF1B08421D00CC3E10 /* LogIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogIn.swift; sourceTree = "<group>"; };
+		41C89F481B1153A60066A346 /* gasMoney.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gasMoney.png; sourceTree = "<group>"; };
 		A8640D3C1B0874DE008796A1 /* bridgeHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = bridgeHeader.h; path = ../bridgeHeader.h; sourceTree = "<group>"; };
 		A87B392A1B066E020078ADAE /* uRyde.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uRyde.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A87B392E1B066E020078ADAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 		A87B392D1B066E020078ADAE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				41C89F481B1153A60066A346 /* gasMoney.png */,
 				A87B392E1B066E020078ADAE /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -311,6 +314,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41C89F491B1153A60066A346 /* gasMoney.png in Resources */,
 				A87B39351B066E020078ADAE /* Main.storyboard in Resources */,
 				4154315C1B08AE9700B625D0 /* tableCellView.xib in Resources */,
 				A87B393A1B066E020078ADAE /* LaunchScreen.xib in Resources */,

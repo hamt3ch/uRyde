@@ -38,17 +38,25 @@
                         <rect key="frame" x="15" y="7" width="85" height="85"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gasMoney.png" id="aq8-Iz-yVz">
+                        <rect key="frame" x="280" y="10" width="20" height="20"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
                 </subviews>
             </tableViewCellContentView>
             <connections>
                 <outlet property="date" destination="ulc-b3-bNV" id="cIV-82-1Z5"/>
                 <outlet property="destination" destination="5Ha-Qu-42L" id="NfH-12-zM4"/>
+                <outlet property="moneyIcon" destination="aq8-Iz-yVz" id="z2g-e2-hRA"/>
                 <outlet property="name" destination="jrI-WE-h2z" id="iiM-NC-iLO"/>
                 <outlet property="profilePic" destination="RCH-8o-9T0" id="vJo-c7-wuX"/>
             </connections>
             <point key="canvasLocation" x="566" y="152"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="gasMoney.png" width="512" height="512"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

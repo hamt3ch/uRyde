@@ -16,7 +16,7 @@ class TableCell: UITableViewCell {
     @IBOutlet var destination: UILabel!
     @IBOutlet var date: UILabel!
     @IBOutlet var profilePic: UIImageView!
-    
+    @IBOutlet var moneyIcon: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

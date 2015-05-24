@@ -127,23 +127,35 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
                 // Do something with the found objects
                 if let objects = objects as? [PFObject] {
                     for object in objects {
-                        let profilePic = object["picture"] as! PFFile
-                        profilePic.getDataInBackgroundWithBlock {
-                            (imageData: NSData?, error: NSError?) -> Void in
-                            if error == nil {
-                                if let imageData = imageData {
-                                    let image = UIImage(data:imageData)
-                                    cell.profilePic.image = image
+                        
+                        if let profilePic = object["picture"] as? PFFile {
+
+                            profilePic.getDataInBackgroundWithBlock {
+                                (imageData: NSData?, error: NSError?) -> Void in
+                                if error == nil {
+                                    if let imageData = imageData {
+                                        let image = UIImage(data:imageData)
+                                        cell.profilePic.image = image
+                                    }
                                 }
                             }
                         }
-
                     }
                 }
             } else {
                 // Log details of the failure
                 println("Error: \(error!) \(error!.userInfo!)")
             }
+        }
+        
+        var needGasMoney = tempObject["needGasMoney"] as? Bool
+        if needGasMoney == false {
+            cell.moneyIcon.hidden = true
+        }
+        
+        var willIPay = tempObject["willIPay"] as? Bool
+        if willIPay == false {
+            cell.moneyIcon.hidden = true
         }
         
         
