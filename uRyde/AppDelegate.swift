@@ -6,14 +6,16 @@
 //  Copyright (c) 2015 ph7. All rights reserved.
 //
 
+import Foundation
 import UIKit
 import Parse
 import Bolts
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, SINClientDelegate {
 
     var window: UIWindow?
+     var client: SINClient?
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -41,6 +43,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
+    
+    //SinchIM - Delegate
+    func createSinchClient(userId: String) {
+        if client == nil {
+            client = Sinch.clientWithApplicationKey("728f3ab4-a1d6-45d6-9db8-01a9003fb82e", applicationSecret: "4H4nXopLk0aMHqAmicusiA==", environmentHost: "sandbox.sinch.com", userId: userId)
+            
+            client!.setSupportCalling(true)
+            client!.setSupportActiveConnectionInBackground(true)
+            
+            client!.delegate = self
+            
+            client!.start()
+            client!.startListeningOnActiveConnection()
+        }
+    }
+    
+    func clientDidStart(client: SINClient) {
+        NSLog("client did start")
+    }
+    
+    func clientDidStop(client: SINClient) {
+        NSLog("client did stop")
+    }
+    
+    func clientDidFail(client: SINClient, error: NSError!) {
+        NSLog("client did fail", error.description)
+        let toast = UIAlertView(title: "Failed to start", message: error.description, delegate: nil, cancelButtonTitle: "OK")
+        toast.show()
+    }
+    
     
     //PushNotes - Delegate
     

@@ -18,7 +18,6 @@
 		A87B39351B066E020078ADAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A87B39331B066E020078ADAE /* Main.storyboard */; };
 		A87B39371B066E020078ADAE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A87B39361B066E020078ADAE /* Images.xcassets */; };
 		A87B393A1B066E020078ADAE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A87B39381B066E020078ADAE /* LaunchScreen.xib */; };
-		A87B39461B066E020078ADAE /* uRydeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87B39451B066E020078ADAE /* uRydeTests.swift */; };
 		A87B39501B066E770078ADAE /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87B394F1B066E770078ADAE /* Timeline.swift */; };
 		A87B39521B066E8F0078ADAE /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87B39511B066E8F0078ADAE /* Notifications.swift */; };
 		A87B39541B066E9B0078ADAE /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87B39531B066E9B0078ADAE /* Profile.swift */; };
@@ -47,16 +46,6 @@
 		A8D08DF01B1171F900B0A4A0 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8D08DEF1B1171F900B0A4A0 /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		A87B39401B066E020078ADAE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A87B39221B066E020078ADAE /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A87B39291B066E020078ADAE;
-			remoteInfo = uRyde;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		2B4FD15D333F448B3C7665C9 /* libPods-uRyde.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-uRyde.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4154315B1B08AE9700B625D0 /* tableCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = tableCellView.xib; sourceTree = "<group>"; };
@@ -64,7 +53,6 @@
 		416CBDAF1B08421D00CC3E10 /* LogIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogIn.swift; sourceTree = "<group>"; };
 		41C89F481B1153A60066A346 /* gasMoney.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gasMoney.png; sourceTree = "<group>"; };
 		41C89F4C1B116B360066A346 /* profPic_def.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profPic_def.png; sourceTree = "<group>"; };
-		A8640D3C1B0874DE008796A1 /* bridgeHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = bridgeHeader.h; path = ../bridgeHeader.h; sourceTree = "<group>"; };
 		A77FA2DF035423DD26061F41 /* Pods-uRyde.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-uRyde.debug.xcconfig"; path = "Pods/Target Support Files/Pods-uRyde/Pods-uRyde.debug.xcconfig"; sourceTree = "<group>"; };
 		A87B392A1B066E020078ADAE /* uRyde.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uRyde.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A87B392E1B066E020078ADAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -73,7 +61,6 @@
 		A87B39341B066E020078ADAE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A87B39361B066E020078ADAE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A87B39391B066E020078ADAE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		A87B393F1B066E020078ADAE /* uRydeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = uRydeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A87B39441B066E020078ADAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A87B39451B066E020078ADAE /* uRydeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uRydeTests.swift; sourceTree = "<group>"; };
 		A87B394F1B066E770078ADAE /* Timeline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timeline.swift; sourceTree = "<group>"; };
@@ -137,13 +124,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A87B393C1B066E020078ADAE /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -162,7 +142,6 @@
 			isa = PBXGroup;
 			children = (
 				A87B392A1B066E020078ADAE /* uRyde.app */,
-				A87B393F1B066E020078ADAE /* uRydeTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -278,24 +257,6 @@
 			productReference = A87B392A1B066E020078ADAE /* uRyde.app */;
 			productType = "com.apple.product-type.application";
 		};
-		A87B393E1B066E020078ADAE /* uRydeTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A87B394C1B066E020078ADAE /* Build configuration list for PBXNativeTarget "uRydeTests" */;
-			buildPhases = (
-				A87B393B1B066E020078ADAE /* Sources */,
-				A87B393C1B066E020078ADAE /* Frameworks */,
-				A87B393D1B066E020078ADAE /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A87B39411B066E020078ADAE /* PBXTargetDependency */,
-			);
-			name = uRydeTests;
-			productName = uRydeTests;
-			productReference = A87B393F1B066E020078ADAE /* uRydeTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -314,11 +275,6 @@
 							};
 						};
 					};
-					A87B393E1B066E020078ADAE = {
-						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = GDB3SZ2MTH;
-						TestTargetID = A87B39291B066E020078ADAE;
-					};
 				};
 			};
 			buildConfigurationList = A87B39251B066E020078ADAE /* Build configuration list for PBXProject "uRyde" */;
@@ -335,7 +291,6 @@
 			projectRoot = "";
 			targets = (
 				A87B39291B066E020078ADAE /* uRyde */,
-				A87B393E1B066E020078ADAE /* uRydeTests */,
 			);
 		};
 /* End PBXProject section */
@@ -351,13 +306,6 @@
 				41C89F4D1B116B360066A346 /* profPic_def.png in Resources */,
 				A87B393A1B066E020078ADAE /* LaunchScreen.xib in Resources */,
 				A87B39371B066E020078ADAE /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A87B393D1B066E020078ADAE /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,23 +361,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A87B393B1B066E020078ADAE /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A87B39461B066E020078ADAE /* uRydeTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		A87B39411B066E020078ADAE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A87B39291B066E020078ADAE /* uRyde */;
-			targetProxy = A87B39401B066E020078ADAE /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		A87B39331B066E020078ADAE /* Main.storyboard */ = {
@@ -489,6 +421,8 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_QUOTE_LINKER_ARGUMENTS_FOR_COMPILER_DRIVER = YES;
+				LINK_WITH_STANDARD_LIBRARIES = YES;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -528,6 +462,8 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_QUOTE_LINKER_ARGUMENTS_FOR_COMPILER_DRIVER = YES;
+				LINK_WITH_STANDARD_LIBRARIES = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -549,7 +485,63 @@
 				);
 				INFOPLIST_FILE = uRyde/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-l\"Parse\"",
+					"-l\"ParseFacebookUtilsV4\"",
+					"-l\"Pods-uRyde-Bolts\"",
+					"-l\"Pods-uRyde-FBSDKCoreKit\"",
+					"-l\"Pods-uRyde-FBSDKLoginKit\"",
+					"-l\"Pods-uRyde-Parse\"",
+					"-l\"Pods-uRyde-ParseFacebookUtilsV4\"",
+					"-l\"Pods-uRyde-SinchRTC\"",
+					"-l\"Pods-uRyde-SinchService\"",
+					"-l\"c++\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AVFoundation\"",
+					"-framework",
+					"\"AudioToolbox\"",
+					"-framework",
+					"\"CFNetwork\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"Sinch\"",
+					"-framework",
+					"\"StoreKit\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-weak_framework",
+					"\"Accounts\"",
+					"-weak_framework",
+					"\"AudioToolbox\"",
+					"-weak_framework",
+					"\"CoreGraphics\"",
+					"-weak_framework",
+					"\"CoreLocation\"",
+					"-weak_framework",
+					"\"Foundation\"",
+					"-weak_framework",
+					"\"QuartzCore\"",
+					"-weak_framework",
+					"\"Security\"",
+					"-weak_framework",
+					"\"Social\"",
+					"-weak_framework",
+					"\"UIKit\"",
+				);
 				"OTHER_LDFLAGS[arch=*]" = (
+					"$(inherited)",
+					"-Xlinker",
 					"-l\"Parse\"",
 					"-l\"ParseFacebookUtilsV4\"",
 					"-l\"Pods-uRyde-Bolts\"",
@@ -625,6 +617,7 @@
 				);
 				INFOPLIST_FILE = uRyde/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-l\"Parse\"",
 					"-l\"ParseFacebookUtilsV4\"",
@@ -685,46 +678,6 @@
 			};
 			name = Release;
 		};
-		A87B394D1B066E020078ADAE /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = uRydeTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/uRyde.app/uRyde";
-			};
-			name = Debug;
-		};
-		A87B394E1B066E020078ADAE /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = uRydeTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/uRyde.app/uRyde";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -742,15 +695,6 @@
 			buildConfigurations = (
 				A87B394A1B066E020078ADAE /* Debug */,
 				A87B394B1B066E020078ADAE /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A87B394C1B066E020078ADAE /* Build configuration list for PBXNativeTarget "uRydeTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A87B394D1B066E020078ADAE /* Debug */,
-				A87B394E1B066E020078ADAE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
