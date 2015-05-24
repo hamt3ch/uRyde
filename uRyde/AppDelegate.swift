@@ -10,13 +10,13 @@ import Foundation
 import UIKit
 import Parse
 import Bolts
+import MessageUI
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, SINClientDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, SINClientDelegate, MFMessageComposeViewControllerDelegate {
 
     var window: UIWindow?
-     var client: SINClient?
-
+    var client: SINClient?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -28,8 +28,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SINClientDelegate {
         // Initialize Parse.
         Parse.setApplicationId("XtZNXXbzP5R99gWlwRM6ZiRjXxrRoKRd8UEy5QoU",
             clientKey: "0HGWsTpKKC3f8KGGtDWES2hQ25PRGYiMfiBJYpGq")
-        
-        
         
         // [Optional] Track statistics around application opens.
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
@@ -92,9 +90,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SINClientDelegate {
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
         PFPush.handlePush(userInfo)
+        
     }
  
     func application(application: UIApplication,  didReceiveRemoteNotification userInfo: [NSObject : AnyObject],  fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+        
         
     }
     
@@ -153,6 +153,66 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SINClientDelegate {
         
 
     }
+    
+    func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [NSObject : AnyObject], completionHandler: () -> Void) {
+        completionHandler()
+        
+        if(identifier == "ACCEPT")
+        {
+            println("Accept notification pressed")
+            
+            
+//            println(MFMessageComposeViewController.canSendText())
+//            //launchMessageComposeViewController()
+//                // send text message to requestingUser
+//            let vc = UIViewController()
+//            self.window?.rootViewController?.presentViewController(vc, animated: true, completion: nil)
+        }
+        
+        else
+        {
+            println("Decline notification pressed")
+                // send push notification to declineUser
+        }
+        
+         completionHandler()
+        
+    }
+    
+    
+    //MessageUI - Delegate
+  
+    
+    // this function will be called after the user presses the cancel button or sends the text
+    func messageComposeViewController(controller: MFMessageComposeViewController!, didFinishWithResult result: MessageComposeResult) {
+      //  self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    
+    func canSendText() -> Bool {
+        
+        return MFMessageComposeViewController.canSendText()
+        
+    }
+    
+    
+    
+    // Configures and returns a MFMessageComposeViewController instance
+    
+    func configuredMessageComposeViewController(textMessageRecipients:[String] ,textBody body:String) -> MFMessageComposeViewController {
+        
+        let messageComposeVC = MFMessageComposeViewController()
+        
+        messageComposeVC.messageComposeDelegate = self  //  Make sure to set this property to self, so that the controller can be dismissed!
+        
+        messageComposeVC.recipients = textMessageRecipients
+        
+        messageComposeVC.body = body
+        
+        return messageComposeVC
+        
+    }
 
+    
 }
 

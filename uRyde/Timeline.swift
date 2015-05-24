@@ -297,6 +297,7 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
                         self.myPostArray.addObject(object)
                     }
                 }
+                
                 self.tableView.reloadData()
                 
                 // The find succeeded.

@@ -8,8 +8,9 @@
 
 import UIKit
 import Parse
+import MessageUI
 
-class Notifications: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class Notifications: UIViewController, UITableViewDataSource, UITableViewDelegate, MFMessageComposeViewControllerDelegate {
     
     @IBOutlet var directMessageTblView: UITableView!
     
@@ -24,7 +25,11 @@ class Notifications: UIViewController, UITableViewDataSource, UITableViewDelegat
         // Do any additional setup after loading the view, typically from a nib.
         let myself = PFUser.currentUser()
         self.currentUserStr = (myself!["username"] as? String)!
-    
+        
+        let messageComposeVC = MFMessageComposeViewController()
+        messageComposeVC.messageComposeDelegate = self  //  Make sure to set this property to self, so that the controller can be dismissed!
+
+        
         directMessageTblView.delegate = self
         directMessageTblView.dataSource = self
     }
@@ -66,6 +71,7 @@ class Notifications: UIViewController, UITableViewDataSource, UITableViewDelegat
     //UITableViewSegment////////////////
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        launchMessageComposeViewController()
         
         
     }
@@ -127,8 +133,51 @@ class Notifications: UIViewController, UITableViewDataSource, UITableViewDelegat
 //        NSLog(@"Error: %@", error.description);
 //        }
 //        }];
-//        
+//    
+    
+    //MessageUI - Delegate
+    
+    // this function will be called after the user presses the cancel button or sends the text
+    func messageComposeViewController(controller: MFMessageComposeViewController!, didFinishWithResult result: MessageComposeResult) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    
+    // MessageUI - AdditionalMethods
+    
+    // prepend this function with @IBAction if you want to call it from a Storyboard.
+    func launchMessageComposeViewController() {
         
+        if MFMessageComposeViewController.canSendText() {
+            let messageVC = MFMessageComposeViewController()
+            messageVC.messageComposeDelegate = self
+            messageVC.recipients = ["9417378620"]
+            messageVC.body = "This is Hugh Miles (hmiles23) do you still need a ride"
+            self.presentViewController(messageVC, animated: true, completion: nil)
+        }
+        
+        else {
+            println("User hasn't setup Messages.app")
+        }
+    }
+    
+    // Configures and returns a MFMessageComposeViewController instance
+    
+    func configuredMessageComposeViewController(textMessageRecipients:[String] ,textBody body:String) -> MFMessageComposeViewController {
+        
+        let messageComposeVC = MFMessageComposeViewController()
+        
+        messageComposeVC.messageComposeDelegate = self  //  Make sure to set this property to self, so that the controller can be dismissed!
+        
+        messageComposeVC.recipients = textMessageRecipients
+        
+        messageComposeVC.body = body
+        
+        return messageComposeVC
+        
+    }
+
+    
     
     }
 
