@@ -61,7 +61,14 @@ class Notifications: UIViewController, UITableViewDataSource, UITableViewDelegat
         let cell = directMessageTblView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) as! UITableViewCell
         
         var tempObject:PFObject = self.userListPost.objectAtIndex(indexPath.row) as! PFObject
-        cell.textLabel?.text = tempObject["username"] as! String
+        
+        
+        
+        
+        
+        
+        
+        cell.textLabel?.text = tempObject["sentBy"] as! String
         
         
         return cell
@@ -79,7 +86,8 @@ class Notifications: UIViewController, UITableViewDataSource, UITableViewDelegat
     func retrieveUserListFromParse(){
         self.userListPost.removeAllObjects() //clear userList
         
-        var userQuery:PFQuery = PFUser.query()!
+        //var userQuery:PFQuery = PFUser.query()!
+        var userQuery:PFQuery = PFQuery(className: "Pending")
         userQuery.orderByAscending("username")
         userQuery.whereKey("username", notEqualTo: currentUserStr)
         userQuery.findObjectsInBackgroundWithBlock {
@@ -162,7 +170,6 @@ class Notifications: UIViewController, UITableViewDataSource, UITableViewDelegat
     }
     
     // Configures and returns a MFMessageComposeViewController instance
-    
     func configuredMessageComposeViewController(textMessageRecipients:[String] ,textBody body:String) -> MFMessageComposeViewController {
         
         let messageComposeVC = MFMessageComposeViewController()

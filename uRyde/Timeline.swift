@@ -18,6 +18,7 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
     @IBOutlet var tableView: UITableView!
     
     var myPostArray = NSMutableArray()
+    var selectedPostType:String = "Offer"
     
 //     let swipeRec = UISwipeGestureRecognizer()
     
@@ -206,6 +207,7 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
         println(myPostArray.objectAtIndex(row)) // getObject in cell
         
         let postCreator = myPostArray.objectAtIndex(row)["madeBy"] as! String
+        let postID = myPostArray.objectAtIndex(row)["ObjectId"]
         println(postCreator)
     
         if(PFUser.currentUser()?.username == postCreator)
@@ -232,7 +234,24 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
                 
                 push.setData(data) //attach data to pushNotes
                 push.sendPushInBackground()
-                
+       
+            //Create Post Object
+            var pendingPost = PFObject(className: "Pending")
+            pendingPost["sentBy"] = PFUser.currentUser()?.username
+            pendingPost["recievedBy"] = postCreator
+            pendingPost["accept"] = false
+            pendingPost["typeOfPost"] = selectedPostType
+            pendingPost.saveInBackgroundWithBlock {
+                (success: Bool, error: NSError?) -> Void in
+                if (success) {
+                    // The object has been saved.
+                    println("pendingPost was sent >> Parse")
+                } else {
+                    // There was a problem, check error.description
+                    println("error sending")
+                }
+            }
+
                 //disable after confirming later
                 
             }))
@@ -242,9 +261,7 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
                 println("Handle Cancel Logic here")
             }))
             
-            presentViewController(refreshAlert, animated: true, completion: nil)
-
-            
+            presentViewController(refreshAlert, animated: true, completion: nil)     
 
          }
     
@@ -290,10 +307,13 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
     //Buttons//////////////////
     @IBAction func offerBtnPressed(sender: AnyObject) {
         retrieveDataFromParse("Offer") //populate TableView with Offer Post
+        selectedPostType = "Offer"
+        
     }
     
     @IBAction func requestBtnPressed(sender: AnyObject) {
         retrieveDataFromParse("Request") //populate Tableview with Request Post
+        selectedPostType = "Request"
     }
     
     //retrieves data at viewDidLoad the
