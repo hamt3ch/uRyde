@@ -79,7 +79,7 @@ class SignUp: UIViewController, UITextFieldDelegate {
             //make autocompletion
             
         //checks number validity
-        if count(self.phoneNum.text) != 10 || count(self.phoneNum.text) != 11 {
+        if count(self.phoneNum.text) != 10 && count(self.phoneNum.text) != 11 {
             var alert = UIAlertView(title: "Error", message: "Not a valid phone number.", delegate: self, cancelButtonTitle: "OK")
             alert.show()
         }

@@ -220,13 +220,31 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
 
         else
         {
-            var push:PFPush = PFPush() // set channel to postCreator
-            push.setChannel(postCreator)
-            push.setMessage(postCreator + "Wants a Ride")
-            let data = ["alert":(PFUser.currentUser()?.username)! + " wants a Ride", "badge": "", "content-available":"2","sound":"", "category":"MY_CATEGORY" ]
-        
-            push.setData(data) //attach data to pushNotes
-            push.sendPushInBackground()
+            var refreshAlert = UIAlertController(title: "Confirm", message: "Do you want to request a ride from " + postCreator + "?", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            //ok
+            refreshAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
+                println("Handle Ok logic here")
+                var push:PFPush = PFPush() // set channel to postCreator
+                push.setChannel(postCreator)
+                push.setMessage(postCreator + "wants a ride")
+                let data = ["alert":(PFUser.currentUser()?.username)! + " wants a ride from you", "badge": "", "content-available":"2","sound":"", "category":"MY_CATEGORY" ]
+                
+                push.setData(data) //attach data to pushNotes
+                push.sendPushInBackground()
+                
+                //disable after confirming later
+                
+            }))
+            
+            //cancel
+            refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction!) in
+                println("Handle Cancel Logic here")
+            }))
+            
+            presentViewController(refreshAlert, animated: true, completion: nil)
+
+            
 
          }
     

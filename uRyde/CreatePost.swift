@@ -206,6 +206,7 @@ class CreatePost: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
         dateFormatter.timeStyle = .ShortStyle
         postToCreate["timeLeaving"] = dateFormatter.stringFromDate(requestDatePicker.date)
         
+        println(postType)
         //$$$
         if (postType == "Offer") {
             postToCreate["needGasMoney"] = GasSwitch.on
