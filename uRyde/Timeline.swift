@@ -40,8 +40,10 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
     override func viewDidLoad() {
         super.viewDidLoad()
         //Register custom cell
-        var nib = UINib(nibName: "tableCellView", bundle: nil)
-        tableView.registerNib(nib, forCellReuseIdentifier: "offerCell")
+        var nibOffer = UINib(nibName: "offerCellView", bundle: nil)
+        tableView.registerNib(nibOffer, forCellReuseIdentifier: "offerCell")
+        var nibReq = UINib(nibName: "requestCellView", bundle: nil)
+        tableView.registerNib(nibReq, forCellReuseIdentifier: "requestCell")
         
         // Do any additional setup after loading the view, typically from a nib. <-- on point
 //        swipeRec.addTarget(self, action: "swipedView")
@@ -107,59 +109,107 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell:OfferCell = tableView.dequeueReusableCellWithIdentifier("offerCell") as! OfferCell
         
         //get offer/request
         var tempObject:PFObject = self.myPostArray.objectAtIndex(indexPath.row) as! PFObject
-        cell.name.text = tempObject["madeBy"] as? String
-        cell.destination.text = tempObject["destination"] as? String
-        let departureDate = tempObject["dateLeaving"] as! String
-        let departureTime = tempObject["timeLeaving"] as! String
-        cell.date.text = "Leaving on " + "\(departureDate)" + " at " + "\(departureTime)"
-        
         let postCreator = tempObject["madeBy"] as! String  // get username from post
+        var destination = tempObject["destination"] as! String
+        var departDate = tempObject["dateLeaving"] as! String
         var userQuery:PFQuery = PFUser.query()! // access user class
         userQuery.whereKey("username", equalTo: postCreator) // find user == postCreator
-        userQuery.findObjectsInBackgroundWithBlock {
-            (objects: [AnyObject]?, error: NSError?) -> Void in
-            if error == nil {
-                // The find succeeded.
-                println("Successfully retrieved \(objects!.count) scores.")
-                // Do something with the found objects
-                if let objects = objects as? [PFObject] {
-                    for object in objects {
-                        
-                        let profilePic = object["picture"] as? PFFile
-                        
+        
+        //for requests
+        if (selectedPostType == "Request") {
+            var rCell:RequestCell = tableView.dequeueReusableCellWithIdentifier("requestCell") as! RequestCell
+            
+            var willIPay = tempObject["willIPay"] as? Bool
+            //String for request info
+            var goingToPay = ""
+            if willIPay == false {
+                goingToPay = "."
+            } else {
+                goingToPay = " and is willing to pay for gas."
+            }
+            rCell.rInfo.text = "\(postCreator) wants to go to " + "\(destination)" + " on \(departDate)" + "\(goingToPay)"
+            
+            userQuery.findObjectsInBackgroundWithBlock {
+                (objects: [AnyObject]?, error: NSError?) -> Void in
+                if error == nil {
+                    // The find succeeded.
+                    println("Successfully retrieved \(objects!.count) scores.")
+                    // Do something with the found objects
+                    if let objects = objects as? [PFObject] {
+                        for object in objects {
+                            
+                            let profilePic = object["picture"] as? PFFile
+                            
                             profilePic?.getDataInBackgroundWithBlock {
                                 (imageData: NSData?, error: NSError?) -> Void in
-                            if error == nil {
-                                if let imageData = imageData {
-                                    let image = UIImage(data:imageData)
-                                    cell.profilePic.image = image
+                                if error == nil {
+                                    if let imageData = imageData {
+                                        let image = UIImage(data:imageData)
+                                        rCell.rProfPic.image = image
                                         
+                                    }
                                 }
                             }
                         }
                     }
+                } else {
+                    // Log details of the failure
+                    println("Error: \(error!) \(error!.userInfo!)")
                 }
-            } else {
-                // Log details of the failure
-                println("Error: \(error!) \(error!.userInfo!)")
             }
+
+            return rCell
+            
+        //for offers
+        } else {
+            var oCell:OfferCell = tableView.dequeueReusableCellWithIdentifier("offerCell") as! OfferCell
+            oCell.name.text = postCreator
+            oCell.destination.text = destination
+            let departureDate = departDate
+            let departureTime = tempObject["timeLeaving"] as! String
+            oCell.date.text = "Leaving on " + "\(departureDate)" + " at " + "\(departureTime)"
+            
+            userQuery.findObjectsInBackgroundWithBlock {
+                (objects: [AnyObject]?, error: NSError?) -> Void in
+                if error == nil {
+                    // The find succeeded.
+                    println("Successfully retrieved \(objects!.count) scores.")
+                    // Do something with the found objects
+                    if let objects = objects as? [PFObject] {
+                        for object in objects {
+                            
+                            let profilePic = object["picture"] as? PFFile
+                            
+                            profilePic?.getDataInBackgroundWithBlock {
+                                (imageData: NSData?, error: NSError?) -> Void in
+                                if error == nil {
+                                    if let imageData = imageData {
+                                        let image = UIImage(data:imageData)
+                                        oCell.profilePic.image = image
+                                        
+                                    }
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    // Log details of the failure
+                    println("Error: \(error!) \(error!.userInfo!)")
+                }
+            }
+            
+            var needGasMoney = tempObject["needGasMoney"] as? Bool
+            if needGasMoney == false {
+                oCell.moneyIcon.hidden = true
+            }
+            
+            return oCell
+
         }
         
-        var needGasMoney = tempObject["needGasMoney"] as? Bool
-        if needGasMoney == false {
-            cell.moneyIcon.hidden = true
-        }
-        
-        var willIPay = tempObject["willIPay"] as? Bool
-        if willIPay == false {
-            cell.moneyIcon.hidden = true
-        }
-        
-        return cell
     }
     
     

@@ -108,14 +108,16 @@ class SignUp: UIViewController, UITextFieldDelegate {
                         var alert = UIAlertView(title: "Error", message: "\(error)", delegate: self, cancelButtonTitle: "OK")
                         alert.show()
                         
+                        
                     }
                         
                     else {
-                        
-                        var alert = UIAlertView(title: "Success", message: "Welcome to uRyde, " + self.firstName.text + "!", delegate: self, cancelButtonTitle: "OK")
+                        //var verified = newUser["emailVerified"] as? Bool
+                        var alert = UIAlertView(title: "Success", message: "Welcome to uRyde, " + self.firstName.text + "! Please verify your account before logging in.", delegate: self, cancelButtonTitle: "OK")
                         alert.show()
-                        var timelineVC = self.storyboard?.instantiateViewControllerWithIdentifier("TabBar") as! UITabBarController
-                        self.presentViewController(timelineVC, animated: true, completion: nil)
+                        var loginVC = self.storyboard?.instantiateViewControllerWithIdentifier("Login") as! LogIn
+                        var navController = UINavigationController(rootViewController: loginVC)
+                        self.presentViewController(navController, animated: true, completion: nil)
                     }
                     
                 })

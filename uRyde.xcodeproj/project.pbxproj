@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		1DDC2AAB8259805E3EA7AFEA /* libPods-uRyde.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B4FD15D333F448B3C7665C9 /* libPods-uRyde.a */; };
 		411E69891B12E89D009E9DF0 /* gasMoney.png in Resources */ = {isa = PBXBuildFile; fileRef = 411E69881B12E89D009E9DF0 /* gasMoney.png */; };
+		411E698C1B12FD50009E9DF0 /* RequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411E698A1B12FD50009E9DF0 /* RequestCell.swift */; };
+		411E698D1B12FD50009E9DF0 /* requestCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 411E698B1B12FD50009E9DF0 /* requestCellView.xib */; };
+		411E698F1B12FDCC009E9DF0 /* uRyde_logo.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 411E698E1B12FDCC009E9DF0 /* uRyde_logo.JPG */; };
 		4154315C1B08AE9700B625D0 /* offerCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4154315B1B08AE9700B625D0 /* offerCellView.xib */; };
 		4154315E1B08B2B300B625D0 /* OfferCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4154315D1B08B2B300B625D0 /* OfferCell.swift */; };
 		416CBDB01B08421D00CC3E10 /* LogIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416CBDAF1B08421D00CC3E10 /* LogIn.swift */; };
@@ -49,6 +52,9 @@
 /* Begin PBXFileReference section */
 		2B4FD15D333F448B3C7665C9 /* libPods-uRyde.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-uRyde.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		411E69881B12E89D009E9DF0 /* gasMoney.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gasMoney.png; path = ../../Desktop/gasMoney.png; sourceTree = "<group>"; };
+		411E698A1B12FD50009E9DF0 /* RequestCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestCell.swift; sourceTree = "<group>"; };
+		411E698B1B12FD50009E9DF0 /* requestCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = requestCellView.xib; sourceTree = "<group>"; };
+		411E698E1B12FDCC009E9DF0 /* uRyde_logo.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = uRyde_logo.JPG; path = ../../Desktop/uRyde_logo.JPG; sourceTree = "<group>"; };
 		4154315B1B08AE9700B625D0 /* offerCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = offerCellView.xib; sourceTree = "<group>"; };
 		4154315D1B08B2B300B625D0 /* OfferCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfferCell.swift; sourceTree = "<group>"; };
 		416CBDAF1B08421D00CC3E10 /* LogIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogIn.swift; sourceTree = "<group>"; };
@@ -162,6 +168,8 @@
 				A87B39361B066E020078ADAE /* Images.xcassets */,
 				A87B39381B066E020078ADAE /* LaunchScreen.xib */,
 				A87B392D1B066E020078ADAE /* Supporting Files */,
+				411E698A1B12FD50009E9DF0 /* RequestCell.swift */,
+				411E698B1B12FD50009E9DF0 /* requestCellView.xib */,
 			);
 			path = uRyde;
 			sourceTree = "<group>";
@@ -169,6 +177,7 @@
 		A87B392D1B066E020078ADAE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				411E698E1B12FDCC009E9DF0 /* uRyde_logo.JPG */,
 				41C89F4C1B116B360066A346 /* profPic_def.png */,
 				A8D08DE91B116B3D00B0A4A0 /* uRyde_link.m */,
 				411E69881B12E89D009E9DF0 /* gasMoney.png */,
@@ -300,11 +309,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				411E698D1B12FD50009E9DF0 /* requestCellView.xib in Resources */,
 				A87B39351B066E020078ADAE /* Main.storyboard in Resources */,
 				4154315C1B08AE9700B625D0 /* offerCellView.xib in Resources */,
 				411E69891B12E89D009E9DF0 /* gasMoney.png in Resources */,
 				41C89F4D1B116B360066A346 /* profPic_def.png in Resources */,
 				A87B393A1B066E020078ADAE /* LaunchScreen.xib in Resources */,
+				411E698F1B12FDCC009E9DF0 /* uRyde_logo.JPG in Resources */,
 				A87B39371B066E020078ADAE /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -353,6 +364,7 @@
 				A8BE9D751B07EA07009F13BD /* CreatePost.swift in Sources */,
 				4154315E1B08B2B300B625D0 /* OfferCell.swift in Sources */,
 				A87B39541B066E9B0078ADAE /* Profile.swift in Sources */,
+				411E698C1B12FD50009E9DF0 /* RequestCell.swift in Sources */,
 				A87B39501B066E770078ADAE /* Timeline.swift in Sources */,
 				416CBDB01B08421D00CC3E10 /* LogIn.swift in Sources */,
 				A8D08DEB1B116B3D00B0A4A0 /* uRyde_link.m in Sources */,

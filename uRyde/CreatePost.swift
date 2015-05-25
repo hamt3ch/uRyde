@@ -40,8 +40,6 @@ class CreatePost: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
 
     @IBOutlet var SegmentCtrl: UISegmentedControl!
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
