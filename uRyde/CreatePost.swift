@@ -29,8 +29,41 @@ class CreatePost: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
     @IBOutlet var cityPicker: UIPickerView!
     
     @IBOutlet var GasSwitch: UISwitch!
-    let pickerData = ["Akron","Boca Raton","Canton","Cape Coral","Cincinnati","Cleveland","Columbus","Coral Springs","Dayton","Daytona", "Elyria","Fort Lauderdale","Gainesville","Hamilton","Hialeah","Hollywood","Jacksonville","Kettering","Lorain","Miami","Middletown","Miramar","Orlando","St. Petersburg","Parma","Pembroke Pines","Port St. Lucie","Tallahassee","Tampa","Toledo","Youngstown"]
-    var selectedCityRow = "Akron"
+    let pickerData = ["Alafaya", "Altamonte Springs", "Apopka", "Aventura", "Bayonet Point",
+    "Bellview", "Bloomingdale", "Boca Raton", "Bonita Springs", "Boynton Beach",
+    "Bradenton", "Brent", "Buenaventura Lakes", "Cape Coral", "Carrollwood",
+    "Casselberry", "Citrus Park", "Clearwater", "Clermont", "Coconut Creek",
+    "Cooper City", "Coral Gables", "Coral Springs", "Coral Terrace", "Country Club",
+    "Crestview", "Cutler Bay", "Dania Beach", "Davie", "Daytona Beach", "Deerfield Beach",
+    "Deland", "Delray Beach", "Deltona", "Doral", "Dunedin", "East Lake",
+    "East Lake-Orient Park", "Edgewater", "Egypt Lake-Leto", "Ensley", "Estero",
+    "Ferry Pass", "Fleming Island", "Fort Lauderdale", "Fort Myers", "Fort Pierce",
+    "Fort Walton Beach", "Fountainebleau", "Four Corners", "Fruit Cove", "Gainesville",
+    "Golden Gate", "Golden Glades", "Greenacres", "Haines City", "Hallandale Beach",
+    "Hialeah", "Hialeah Gardens", "Holiday", "Hollywood", "Homestead", "Immokalee",
+    "Jacksonville", "Jacksonville Beach", "Jupiter", "Kendale Lakes", "Kendall",
+    "Kendall West", "Keystone", "Key West", "Kissimmee", "Lakeland", "Lake Worth",
+    "Land O' Lakes", "Largo", "Lauderdale Lakes", "Lauderhill", "Leesburg",
+    "Lehigh Acres", "Leisure City", "Margate", "Meadow Woods", "Melbourne",
+    "Merritt Island", "Miami", "Miami Beach", "Miami Gardens", "Miami Lakes",
+    "Miramar", "Naples", "Navarre", "New Smyrna Beach", "Northdale",
+    "North Fort Myers", "North Lauderdale", "North Miami", "North MIami Beach",
+    "North Port", "Oakland Park", "Oakleaf Plantation", "Oak Ridge", "Ocala",
+    "Ocoee", "Orlando", "Ormond Beach", "Oviedo", "Pace", "Palm Bay",
+    "Palm Beach Gardens", "Palm City", "Palm Coast", "Palmetto Bay", "Palm Harbor",
+    "Palm River-Clair Mel", "Palm Springs", "Palm Valley", "Panama City", "Parkland",
+    "Parkland", "Pembroke Pines", "Pensacola", "Pine Hills", "Pinellas Park", "Plantation",
+    "Plant City", "Poinciana", "Pompano Beach", "Port Charlotte", "Port Orange",
+    "Port St. Lucie", "Princeton", "Richmond West", "Riverview", "Riviera Beach",
+    "Rockledge", "Royal Palm Beach", "Sanford", "Sarasota", "Sebastian", "South Bradenton",
+    "South Miami Heights", "Spring Hill", "St. Cloud", "St. Petersburg", "Sunny Isles Beach",
+    "Sunrise", "Sweetwater", "Tallahassee", "Tamarac", "Tamiami", "Tampa", "Tarpon Springs",
+    "Temple Terrace", "The Acreage", "The Crossings", "The Hammocks", "The Villages",
+    "Titusville", "Town 'n' Country", "Unversity", "University Park", "Valrico", "Venice",
+    "Vero Beach South", "Wekiva Springs", "Wellington", "Wesley Chapel", "Westchase",
+    "Westchester", "West Little River", "Weston", "West Palm Beach", "West Pensacola",
+    "Winter Garden", "Winter Haven", "Winter Park", "Winter Springs", "Wright"]
+    var selectedCityRow = "Alafaya" //first one for now
     
     @IBOutlet var offerView: UIView!      // OfferView Reference and Fields
     @IBOutlet var offerDatePicker: UIDatePicker!
@@ -43,16 +76,23 @@ class CreatePost: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        offerDatePicker.datePickerMode = UIDatePickerMode.DateAndTime  // Set UIDatePickers for Date and Time Mode
-        requestDatePicker.datePickerMode = UIDatePickerMode.DateAndTime
+        //offerDatePicker.datePickerMode = UIDatePickerMode.DateAndTime  // Set UIDatePickers for Date and Time Mode
+        //requestDatePicker.datePickerMode = UIDatePickerMode.DateAndTime
         
         let currentDate = NSDate()  // setTempVariable to CurrentDate
         
         offerDatePicker.minimumDate = currentDate // intialize OfferDatePicker Values
+        let gregorian:NSCalendar! = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
         offerDatePicker.date = currentDate
-        
-        requestDatePicker.minimumDate = currentDate // intialize OfferDatePicker Values
+        let dateComponents = NSDateComponents()
+        dateComponents.month = 3
+        let endingDate:NSDate = gregorian.dateByAddingComponents(dateComponents, toDate: currentDate, options: nil) as NSDate!
+        //max date will only be three months from now
+        offerDatePicker.maximumDate = endingDate
+        println(endingDate)
+        requestDatePicker.minimumDate = currentDate // intialize RequestDatePicker Values
         requestDatePicker.date = currentDate
+        requestDatePicker.maximumDate = endingDate
         
         SegmentCtrl.setTitle("Offer", forSegmentAtIndex: 0) // initialize segCtrl text
         SegmentCtrl.setTitle("Request", forSegmentAtIndex: 1)
@@ -62,9 +102,12 @@ class CreatePost: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
         cityPicker.delegate = myPicker.delegate
         cityPicker.dataSource = myPicker.dataSource
         
+        
         //starts in the middle of the picker
         //cityPicker.selectRow(pickerData.count / 2, inComponent: 0, animated: true)
 
+        showCreatePostView(postSelection)
+        sendButton.setTitle("+Post", forState: UIControlState.Normal)
         
     }
     
@@ -158,14 +201,14 @@ class CreatePost: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
             showCreatePostView("Offer") // change subView of CreatePostView
             gas.text = "Need Gas $$$?"
             departTime.text = "Time of Departure:"
-            sendButton.setTitle("+Offer", forState: UIControlState.Normal)
+            //sendButton.setTitle("+Offer", forState: UIControlState.Normal)
             postSelection = "Offer"
             
         case 1:
             showCreatePostView("Request")
             gas.text = "Will You Pay?"
             departTime.text = "Desired Departure Date:"
-            sendButton.setTitle("+Request", forState: UIControlState.Normal)
+            //sendButton.setTitle("+Request", forState: UIControlState.Normal)
             postSelection = "Request"
         default:
             break         }
@@ -192,9 +235,6 @@ class CreatePost: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
         
         //only dateLeaving
         let dateFormatter = NSDateFormatter()
-        dateFormatter.dateStyle = .ShortStyle
-        dateFormatter.timeStyle = .NoStyle
-        postToCreate["dateLeaving"] = dateFormatter.stringFromDate(requestDatePicker.date)
         
         //destination
         postToCreate["destination"] = selectedCityRow
@@ -207,9 +247,15 @@ class CreatePost: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
         println(postType)
         //$$$
         if (postType == "Offer") {
+            dateFormatter.dateStyle = .ShortStyle
+            dateFormatter.timeStyle = .NoStyle
+            postToCreate["dateLeaving"] = dateFormatter.stringFromDate(requestDatePicker.date)
             postToCreate["needGasMoney"] = GasSwitch.on
         }
         if (postType == "Request") {
+            dateFormatter.dateStyle = .FullStyle
+            dateFormatter.timeStyle = .NoStyle
+            postToCreate["dateLeaving"] = dateFormatter.stringFromDate(requestDatePicker.date)
             postToCreate["willIPay"] = GasSwitch.on
         }
         

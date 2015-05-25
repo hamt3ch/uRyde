@@ -430,8 +430,8 @@
                             <view alpha="0.0" contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gLX-vv-bI9" userLabel="Offer">
                                 <rect key="frame" x="0.0" y="137" width="320" height="265"/>
                                 <subviews>
-                                    <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Moj-i1-KfS">
-                                        <rect key="frame" x="1" y="31" width="320" height="66"/>
+                                    <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="5" translatesAutoresizingMaskIntoConstraints="NO" id="Moj-i1-KfS">
+                                        <rect key="frame" x="0.0" y="8" width="320" height="66"/>
                                         <date key="date" timeIntervalSinceReferenceDate="453515991.13999897">
                                             <!--2015-05-17 00:39:51 +0000-->
                                         </date>
@@ -451,7 +451,7 @@
                                             <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
                                         </accessibility>
                                     </pickerView>
-                                    <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="AY5-Dq-ObG">
+                                    <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="5" translatesAutoresizingMaskIntoConstraints="NO" id="AY5-Dq-ObG">
                                         <rect key="frame" x="0.0" y="8" width="320" height="66"/>
                                         <date key="date" timeIntervalSinceReferenceDate="453515978.72316498">
                                             <!--2015-05-17 00:39:38 +0000-->
