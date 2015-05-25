@@ -13,6 +13,7 @@ import MessageUI
 class Notifications: UIViewController, UITableViewDataSource, UITableViewDelegate, MFMessageComposeViewControllerDelegate {
     
     @IBOutlet var directMessageTblView: UITableView!
+    var tableView: UITableView!
     
     var userListPost:NSMutableArray = NSMutableArray()
     
@@ -25,11 +26,6 @@ class Notifications: UIViewController, UITableViewDataSource, UITableViewDelegat
         // Do any additional setup after loading the view, typically from a nib.
         let myself = PFUser.currentUser()
         self.currentUserStr = (myself!["username"] as? String)!
-        
-        let messageComposeVC = MFMessageComposeViewController()
-        messageComposeVC.messageComposeDelegate = self  //  Make sure to set this property to self, so that the controller can be dismissed!
-
-        
         directMessageTblView.delegate = self
         directMessageTblView.dataSource = self
     }
@@ -62,25 +58,47 @@ class Notifications: UIViewController, UITableViewDataSource, UITableViewDelegat
         
         var tempObject:PFObject = self.userListPost.objectAtIndex(indexPath.row) as! PFObject
         
-        
-        
-        
-        
-        
-        
         cell.textLabel?.text = tempObject["sentBy"] as! String
         
-        
         return cell
+    }
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(tableView: UITableView!, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath!) {
+        if (editingStyle == UITableViewCellEditingStyle.Delete) {
+            // handle delete (by removing the data from your array and updating the tableview)
+        }
     }
     
     
     //UITableViewSegment////////////////
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        launchMessageComposeViewController()
         
+        var tempObject:PFObject = self.userListPost.objectAtIndex(indexPath.row) as! PFObject
+        let userTryingContact = tempObject["sentBy"] as! String
         
+        var userQuery:PFQuery = PFUser.query()!
+         userQuery.whereKey("username", equalTo: userTryingContact)
+         userQuery.findObjectsInBackgroundWithBlock{
+            (objects: [AnyObject]?, error: NSError?) -> Void in
+            // The find succeeded.
+            if error == nil
+            {  // Do something with the found objects
+                if let objects = objects as? [PFObject]
+                {
+                    for object in objects
+                    {
+                        let phoneNumber = object["phone"] as! String
+                        let myself = PFUser.currentUser()?.username
+                        self.launchMessageComposeViewController(phoneNumber, currentUser: myself)
+                    }
+                }
+            }
+        }
     }
     
     func retrieveUserListFromParse(){
@@ -89,7 +107,7 @@ class Notifications: UIViewController, UITableViewDataSource, UITableViewDelegat
         //var userQuery:PFQuery = PFUser.query()!
         var userQuery:PFQuery = PFQuery(className: "Pending")
         userQuery.orderByAscending("username")
-        userQuery.whereKey("username", notEqualTo: currentUserStr)
+        userQuery.whereKey("sentBy", notEqualTo: self.currentUserStr)
         userQuery.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]?, error: NSError?) -> Void in
             // The find succeeded.
@@ -150,17 +168,16 @@ class Notifications: UIViewController, UITableViewDataSource, UITableViewDelegat
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    
     // MessageUI - AdditionalMethods
     
     // prepend this function with @IBAction if you want to call it from a Storyboard.
-    func launchMessageComposeViewController() {
+    func launchMessageComposeViewController(recipient:String!, currentUser:String!) {
         
         if MFMessageComposeViewController.canSendText() {
             let messageVC = MFMessageComposeViewController()
             messageVC.messageComposeDelegate = self
-            messageVC.recipients = ["9417378620"]
-            messageVC.body = "This is Hugh Miles (hmiles23) do you still need a ride"
+            messageVC.recipients = [recipient]
+            messageVC.body = "This is " + currentUser + " do you still need a ride?"
             self.presentViewController(messageVC, animated: true, completion: nil)
         }
         
@@ -168,25 +185,7 @@ class Notifications: UIViewController, UITableViewDataSource, UITableViewDelegat
             println("User hasn't setup Messages.app")
         }
     }
-    
-    // Configures and returns a MFMessageComposeViewController instance
-    func configuredMessageComposeViewController(textMessageRecipients:[String] ,textBody body:String) -> MFMessageComposeViewController {
-        
-        let messageComposeVC = MFMessageComposeViewController()
-        
-        messageComposeVC.messageComposeDelegate = self  //  Make sure to set this property to self, so that the controller can be dismissed!
-        
-        messageComposeVC.recipients = textMessageRecipients
-        
-        messageComposeVC.body = body
-        
-        return messageComposeVC
-        
-    }
-
-    
-    
-    }
+}
 
     
     
