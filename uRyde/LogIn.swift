@@ -52,20 +52,26 @@ class LogIn: UIViewController {
         PFUser.logInWithUsernameInBackground(username, password: password, block: { (user, error) -> Void in
             self.actInd.stopAnimating() //stop talking to the backend
             if (user != nil) {
-                var alert = UIAlertView(title: "Success", message: "You logged in correctly", delegate: self, cancelButtonTitle: "OK")
-                alert.show()
-                var timelineVC = self.storyboard?.instantiateViewControllerWithIdentifier("TabBar") as! UITabBarController
+                var verified = PFUser.currentUser()?.objectForKey("emailVerified") as! Bool
+                if (verified) {
+                    var alert = UIAlertView(title: "Success", message: "You logged in correctly!", delegate: self, cancelButtonTitle: "OK")
+                    alert.show()
+                    var timelineVC = self.storyboard?.instantiateViewControllerWithIdentifier("TabBar") as! UITabBarController
+                    
+                    var installation:PFInstallation = PFInstallation.currentInstallation()
+                    installation.addUniqueObject(PFUser.currentUser()!.username!, forKey: "channels")
+                    installation["user"] = PFUser.currentUser()
+                    installation.saveInBackground()
+                    
+                    self.presentViewController(timelineVC, animated: true, completion: nil)
+                } else {
+                    var alert = UIAlertView(title: "Confirm Email", message: "Please check your email to verify your account.", delegate: self, cancelButtonTitle: "OK")
+                    alert.show()
+                }
                 
-                var installation:PFInstallation = PFInstallation.currentInstallation()
-                installation.addUniqueObject(PFUser.currentUser()!.username!, forKey: "channels")
-                installation["user"] = PFUser.currentUser()
-                installation.saveInBackground()
-                
-                
-                self.presentViewController(timelineVC, animated: true, completion: nil)
             
             } else {
-                var alert = UIAlertView(title: "Error", message: "\(error)", delegate: self, cancelButtonTitle: "OK")
+                var alert = UIAlertView(title: "Error", message: "Username/password combination does not exist.", delegate: self, cancelButtonTitle: "OK")
                 alert.show()
             }
         })

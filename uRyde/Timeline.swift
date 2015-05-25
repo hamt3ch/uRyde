@@ -107,7 +107,7 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell:TableCell = tableView.dequeueReusableCellWithIdentifier("offerCell") as! TableCell
+        var cell:OfferCell = tableView.dequeueReusableCellWithIdentifier("offerCell") as! OfferCell
         
         //get offer/request
         var tempObject:PFObject = self.myPostArray.objectAtIndex(indexPath.row) as! PFObject
@@ -159,41 +159,6 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
             cell.moneyIcon.hidden = true
         }
         
-        
-        //var userFound = userQuery.findObjects()
-        
-      ///  print(userFound)
-
-//        let postPicure = userFound["picture"] as PFFile
-//            postPicure.getDataInBackgroundWithBlock {
-//                (imageData: NSData?, error: NSError?) -> Void in
-//                if error == nil {
-//                    if let imageData = imageData {
-//                        let imageData = UIImage(data: imageData)
-//                          cell.profilePic.image = imageData
-//                        }
-//                    }
-//                }
-//                
-//        }
-//    
-//        print(userFound)
-        
-        
-        // find way to connect
-
-//        let myProfPic = tempObject["picture"] as PFFile
-//        myProfPic.getDataInBackgroundWithBlock {
-//            (imageData: NSData?, error: NSError?) -> Void in
-//            if error == nil {
-//                if let imageData = imageData {
-//                    let image = UIImage(data:imageData)
-//                    cell.profilePic.image = image
-//                   println(cell.profilePic.image)
-//
-        //FOR LATE USE
-        //for images: cell.userImage = UIImage(named: "u_turn_symbol")
-        
         return cell
     }
     
@@ -207,7 +172,7 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
         println(myPostArray.objectAtIndex(row)) // getObject in cell
         
         let postCreator = myPostArray.objectAtIndex(row)["madeBy"] as! String
-        let postID = myPostArray.objectAtIndex(row)["ObjectId"]
+        let postID = myPostArray.objectAtIndex(row)["objectId"]
         println(postCreator)
     
         if(PFUser.currentUser()?.username == postCreator)
@@ -235,22 +200,22 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
                 push.setData(data) //attach data to pushNotes
                 push.sendPushInBackground()
        
-            //Create Post Object
-            var pendingPost = PFObject(className: "Pending")
-            pendingPost["sentBy"] = PFUser.currentUser()?.username
-            pendingPost["recievedBy"] = postCreator
-            pendingPost["accept"] = false
-            pendingPost["typeOfPost"] = selectedPostType
-            pendingPost.saveInBackgroundWithBlock {
-                (success: Bool, error: NSError?) -> Void in
-                if (success) {
-                    // The object has been saved.
-                    println("pendingPost was sent >> Parse")
-                } else {
-                    // There was a problem, check error.description
-                    println("error sending")
+                //Create Post Object
+                var pendingPost = PFObject(className: "Pending")
+                pendingPost["sentBy"] = PFUser.currentUser()?.username
+                pendingPost["recievedBy"] = postCreator
+                pendingPost["accept"] = false
+                pendingPost["typeOfPost"] = self.selectedPostType
+                pendingPost.saveInBackgroundWithBlock {
+                    (success: Bool, error: NSError?) -> Void in
+                    if (success) {
+                        // The object has been saved.
+                        println("pendingPost was sent >> Parse")
+                    } else {
+                        // There was a problem, check error.description
+                        println("error sending")
+                    }
                 }
-            }
 
                 //disable after confirming later
                 

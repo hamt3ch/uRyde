@@ -10,7 +10,7 @@ import UIKit
 import Parse
 import QuartzCore
 
-class TableCell: UITableViewCell {
+class OfferCell: UITableViewCell {
 
     @IBOutlet var name: UILabel!
     @IBOutlet var destination: UILabel!
