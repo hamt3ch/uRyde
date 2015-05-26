@@ -14,6 +14,8 @@ class Notifications: UIViewController, UITableViewDataSource, UITableViewDelegat
     
     @IBOutlet var directMessageTblView: UITableView!
     var tableView: UITableView!
+
+    var refreshControl:UIRefreshControl!
     
     var userListPost:NSMutableArray = NSMutableArray()
     
@@ -26,6 +28,13 @@ class Notifications: UIViewController, UITableViewDataSource, UITableViewDelegat
         // Do any additional setup after loading the view, typically from a nib.
         let myself = PFUser.currentUser()
         self.currentUserStr = (myself!["username"] as? String)!
+        
+        //SwipeToRefresh//////
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        self.refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        self.directMessageTblView.addSubview(refreshControl)
+        
         directMessageTblView.delegate = self
         directMessageTblView.dataSource = self
     }
@@ -73,8 +82,7 @@ class Notifications: UIViewController, UITableViewDataSource, UITableViewDelegat
 
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
             // handle delete (by removing the data from your array and updating the tableview)
-            self.userListPost.removeObjectAtIndex(indexPath.row)
-            
+                    
             //delete Pending Object from Parse
             objectToDelete.deleteInBackground()
             
@@ -139,6 +147,7 @@ class Notifications: UIViewController, UITableViewDataSource, UITableViewDelegat
                     }
                     
                       self.directMessageTblView.reloadData()
+                    self.refreshControl.endRefreshing() //indicate data refresh is done
                         
                         
                 }
@@ -197,6 +206,12 @@ class Notifications: UIViewController, UITableViewDataSource, UITableViewDelegat
         else {
             println("User hasn't setup Messages.app")
         }
+    }
+    
+    //SwipeToRefresh - AdditionalMethods
+    func refresh(sender:AnyObject)
+    {
+        retrieveUserListFromParse() //reload data from Parse
     }
 }
 
