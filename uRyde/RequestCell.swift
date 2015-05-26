@@ -11,7 +11,9 @@ import UIKit
 class RequestCell: UITableViewCell {
 
     @IBOutlet var rProfPic: UIImageView!
-    @IBOutlet var rInfo: UILabel!
+    @IBOutlet var name: UILabel!
+    @IBOutlet var destination: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

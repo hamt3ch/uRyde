@@ -23,20 +23,9 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
 //     let swipeRec = UISwipeGestureRecognizer()
     
     @IBOutlet var swipeView: UIView!
+
+    @IBOutlet var actIndicator: UIActivityIndicatorView!
     
-    //var currentPostType = "Offer" // if no public variable allowed
-    
-    //use this array to populate the cell
-    //var mySwiftArray: [String] = []
-    
-    /*
-    var postArrayString:Array = [""]
-    var postArray:NSMutableArray = []
-    
-    let swiftBlogs = ["I", "am", "cooler", "than", "Hugh", "Anthony", "Miles"]
-    
-    let textCellIdentifier = "TextCell"
-    */
     override func viewDidLoad() {
         super.viewDidLoad()
         //Register custom cell
@@ -50,14 +39,16 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
 //        swipeView.addGestureRecognizer(swipeRec)
 //        swipeView.userInteractionEnabled = true
         
-        
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         //reloads data before even appearing in the view
-        retrieveDataFromParse("Offer")
+        retrieveDataFromParse(selectedPostType)
         self.tableView.reloadData()
+        
+        
+        actIndicator.hidden = true // for now
         
     }
     
@@ -88,7 +79,13 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
             var loginVC = self.storyboard?.instantiateViewControllerWithIdentifier("Login") as! LogIn
             var navController = UINavigationController(rootViewController: loginVC)
             self.presentViewController(navController, animated: true, completion: nil)
+            
+        }
         
+        if selectedPostType == "Offer" {
+            tableView.separatorColor = UIColor.whiteColor()
+        } else {
+            tableView.separatorColor = UIColor(red: 17, green: 79, blue: 160, alpha: 1)
         }
     }
 
@@ -130,7 +127,8 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
             } else {
                 goingToPay = " and is willing to pay for gas."
             }
-            rCell.rInfo.text = "\(postCreator) wants to go to " + "\(destination)" + " on \(departDate)" + "\(goingToPay)"
+            rCell.name.text = postCreator
+            rCell.destination.text = "Needs a ride to " + "\(destination)" + " on " + "\(departDate)" + "\(goingToPay)"
             
             userQuery.findObjectsInBackgroundWithBlock {
                 (objects: [AnyObject]?, error: NSError?) -> Void in
@@ -362,6 +360,7 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
                 println("Error: \(error!) \(error!.userInfo!)")
             }
         }
+        
         
     }
     
