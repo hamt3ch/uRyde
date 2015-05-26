@@ -16,6 +16,7 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
     var signUpViewController = PFSignUpViewController() // instantiate signupView
   
     @IBOutlet var tableView: UITableView!
+    var refreshControl:UIRefreshControl!
     
     var myPostArray = NSMutableArray()
     var selectedPostType:String = "Offer"
@@ -33,6 +34,12 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
         tableView.registerNib(nibOffer, forCellReuseIdentifier: "offerCell")
         var nibReq = UINib(nibName: "requestCellView", bundle: nil)
         tableView.registerNib(nibReq, forCellReuseIdentifier: "requestCell")
+        
+        //SwipeToRefresh Initialization
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        self.refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        self.tableView.addSubview(refreshControl)
         
         // Do any additional setup after loading the view, typically from a nib. <-- on point
 //        swipeRec.addTarget(self, action: "swipedView")
@@ -350,6 +357,7 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
                 }
                 
                 self.tableView.reloadData()
+                self.refreshControl.endRefreshing() // indicate new Data is ready
                 
                 // The find succeeded.
                 println("Successfully retrieved \(objects!.count) posts.")
@@ -362,6 +370,12 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
         }
         
         
+    }
+    
+    //SwipeToRefresh - Additional Methods
+    func refresh(sender:AnyObject)
+    {
+        retrieveDataFromParse(selectedPostType)
     }
     
     

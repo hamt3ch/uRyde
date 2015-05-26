@@ -53,7 +53,7 @@ class LogIn: UIViewController {
             self.actInd.stopAnimating() //stop talking to the backend
             if (user != nil) {
                 var verified = PFUser.currentUser()?.objectForKey("emailVerified") as! Bool
-                if (verified) {
+//                if (verified) {
                     var alert = UIAlertView(title: "Success", message: "You logged in correctly!", delegate: self, cancelButtonTitle: "OK")
                     alert.show()
                     var timelineVC = self.storyboard?.instantiateViewControllerWithIdentifier("TabBar") as! UITabBarController
@@ -64,10 +64,10 @@ class LogIn: UIViewController {
                     installation.saveInBackground()
                     
                     self.presentViewController(timelineVC, animated: true, completion: nil)
-                } else {
-                    var alert = UIAlertView(title: "Confirm Email", message: "Please check your email to verify your account.", delegate: self, cancelButtonTitle: "OK")
-                    alert.show()
-                }
+//                } else {
+//                    var alert = UIAlertView(title: "Confirm Email", message: "Please check your email to verify your account.", delegate: self, cancelButtonTitle: "OK")
+//                    alert.show()
+
                 
             
             } else {
