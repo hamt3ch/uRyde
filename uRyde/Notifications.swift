@@ -68,8 +68,21 @@ class Notifications: UIViewController, UITableViewDataSource, UITableViewDelegat
     }
     
     func tableView(tableView: UITableView!, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath!) {
+        
+         var objectToDelete:PFObject = self.userListPost.objectAtIndex(indexPath.row) as! PFObject //get object from TableRow
+
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
             // handle delete (by removing the data from your array and updating the tableview)
+            self.userListPost.removeObjectAtIndex(indexPath.row)
+            
+            //delete Pending Object from Parse
+            objectToDelete.deleteInBackground()
+            
+            // send push to other user that ride was declined
+            //let push = PFPush()
+            
+            
+            
         }
     }
     
