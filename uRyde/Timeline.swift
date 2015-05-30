@@ -233,7 +233,7 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
         if(PFUser.currentUser()?.username == postCreator)
         {
             var alert:UIAlertView = UIAlertView()
-            alert.title = "You cannot request a ride from yourself"
+            alert.title = "You cannot request a ride from yourself."
             //alert.message = "Your workout has been logged into the system"
             alert.delegate = self
             alert.addButtonWithTitle("Ok")
@@ -242,14 +242,18 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
 
         else
         {
-            var refreshAlert = UIAlertController(title: "Confirm", message: "Do you want to request a ride from " + postCreator + "?", preferredStyle: UIAlertControllerStyle.Alert)
+            var offerMessage = "Do you want to request a ride from " + postCreator + "?"
+            var requestMessage = "Do you want to give " + postCreator + " a ride to Hugh's kingdom?"
+            var refreshAlert = UIAlertController(title: "Confirm", message: selectedPostType == "Offer" ? offerMessage : requestMessage, preferredStyle: UIAlertControllerStyle.Alert)
             
             //ok
             refreshAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
                 println("Handle Ok logic here")
                 var push:PFPush = PFPush() // set channel to postCreator
                 push.setChannel(postCreator)
-                push.setMessage(postCreator + "wants a ride")
+                var notifyOfferMessage = "wants a ride from you!"
+                var notifyRequestMessage = "wants to offer you a ride!"
+                push.setMessage(postCreator + self.selectedPostType == "Offer" ? notifyOfferMessage : notifyRequestMessage)
        
                 //Create Post Object
                 var pendingPost = PFObject(className: "Pending")
@@ -264,7 +268,7 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
                         println("pendingPost was sent >> Parse")
                         
                         //set APS for data transfer
-                        let data = ["alert":(PFUser.currentUser()?.username)! + " wants a ride from you", "badge": "", "content-available":"2", "category":"MY_CATEGORY", "objectId":pendingPost.objectId!]
+                        let data = ["alert":(PFUser.currentUser()?.username)! + self.selectedPostType == "Offer" ? notifyOfferMessage : notifyRequestMessage, "badge": "", "content-available":"2", "category":"MY_CATEGORY", "objectId":pendingPost.objectId!]
                         
                         push.setData(data) //attach data to pushNotes
                         push.sendPushInBackground() // send pushNote to otherUser
