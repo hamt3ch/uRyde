@@ -266,11 +266,20 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
                     if (success) {
                         // The object has been saved.
                         println("pendingPost was sent >> Parse")
+                        println(pendingPost.objectId)
+                        var pendingId:String  = pendingPost.objectId!
+                        let data = ["alert":(PFUser.currentUser()?.username)! + " wants a ride from you", "badge": "", "content-available":"2","sound":"", "category":"MY_CATEGORY", "objectId": pendingId ]
+                        
+                        push.setData(data) //attach data to pushNotes
+                        
                     } else {
                         // There was a problem, check error.description
                         println("error sending")
                     }
                 }
+                
+                  push.sendPushInBackground()
+               
 
             //disable after confirming later
                 

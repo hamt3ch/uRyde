@@ -157,10 +157,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SINClientDelegate, MFMess
     func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [NSObject : AnyObject], completionHandler: () -> Void) {
         completionHandler()
         
+        println(userInfo)
+        
         if(identifier == "ACCEPT")
         {
             println("Accept notification pressed")
-            
             
 //            println(MFMessageComposeViewController.canSendText())
 //            //launchMessageComposeViewController()
