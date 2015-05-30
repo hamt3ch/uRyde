@@ -250,10 +250,6 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
                 var push:PFPush = PFPush() // set channel to postCreator
                 push.setChannel(postCreator)
                 push.setMessage(postCreator + "wants a ride")
-                let data = ["alert":(PFUser.currentUser()?.username)! + " wants a ride from you", "badge": "", "content-available":"2","sound":"", "category":"MY_CATEGORY" ]
-                
-                push.setData(data) //attach data to pushNotes
-                push.sendPushInBackground()
        
                 //Create Post Object
                 var pendingPost = PFObject(className: "Pending")
@@ -266,11 +262,19 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
                     if (success) {
                         // The object has been saved.
                         println("pendingPost was sent >> Parse")
+                        
+                        //set APS for data transfer
+                        let data = ["alert":(PFUser.currentUser()?.username)! + " wants a ride from you", "badge": "", "content-available":"2", "category":"MY_CATEGORY", "objectId":pendingPost.objectId!]
+                        
+                        push.setData(data) //attach data to pushNotes
+                        push.sendPushInBackground() // send pushNote to otherUser
+
                     } else {
                         // There was a problem, check error.description
                         println("error sending")
                     }
-                }
+            }
+                
 
             //disable after confirming later
                 
