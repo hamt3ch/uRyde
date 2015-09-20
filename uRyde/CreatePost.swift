@@ -86,10 +86,10 @@ class CreatePost: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
         offerDatePicker.date = currentDate
         let dateComponents = NSDateComponents()
         dateComponents.month = 3
-        let endingDate:NSDate = gregorian.dateByAddingComponents(dateComponents, toDate: currentDate, options: nil) as NSDate!
+        let endingDate:NSDate = gregorian.dateByAddingComponents(dateComponents, toDate: currentDate, options: .MatchStrictly) as NSDate!
         //max date will only be three months from now
         offerDatePicker.maximumDate = endingDate
-        println(endingDate)
+        print(endingDate)
         requestDatePicker.minimumDate = currentDate // intialize RequestDatePicker Values
         requestDatePicker.date = currentDate
         requestDatePicker.maximumDate = endingDate
@@ -168,7 +168,7 @@ class CreatePost: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
     {
         if(userChoice == "Request")
         {
-            println("Showing Request View")
+            print("Showing Request View")
             UIView.animateWithDuration(0.2,
                 animations: {
                     self.offerView.alpha = 0
@@ -181,7 +181,7 @@ class CreatePost: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
             
         else
         {
-            println("Showing Offer View")
+            print("Showing Offer View")
             UIView.animateWithDuration(0.2,
                 animations: {
                     self.offerView.alpha = 1
@@ -217,12 +217,12 @@ class CreatePost: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
     @IBAction func switchTgl(sender: UISwitch) {
         if(GasSwitch.on)
         {
-            println("Switch on")
+            print("Switch on")
         }
             
         else
         {
-            println("Switch off")
+            print("Switch off")
         }
     }
     
@@ -244,7 +244,7 @@ class CreatePost: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
         dateFormatter.timeStyle = .ShortStyle
         postToCreate["timeLeaving"] = dateFormatter.stringFromDate(requestDatePicker.date)
         
-        println(postType)
+        print(postType)
         //$$$
         if (postType == "Offer") {
             dateFormatter.dateStyle = .ShortStyle

@@ -132,7 +132,7 @@ class Notifications: UIViewController, UITableViewDataSource, UITableViewDelegat
         userQuery.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]?, error: NSError?) -> Void in
             // The find succeeded.
-            println("Successfully retrieved \(objects!.count) scores.")
+            print("Successfully retrieved \(objects!.count) scores.")
             
                 if error == nil
                 {
@@ -154,7 +154,7 @@ class Notifications: UIViewController, UITableViewDataSource, UITableViewDelegat
             
                 else
                 {
-                    println("Error from notificationsQuery")
+                    print("Error from notificationsQuery")
                 
                 }
                     
@@ -204,7 +204,7 @@ class Notifications: UIViewController, UITableViewDataSource, UITableViewDelegat
         }
         
         else {
-            println("User hasn't setup Messages.app")
+            print("User hasn't setup Messages.app")
         }
     }
     

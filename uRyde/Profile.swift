@@ -104,7 +104,7 @@ class Profile: UIViewController, UIImagePickerControllerDelegate, PFLogInViewCon
     
     func logInViewController(logInController: PFLogInViewController, didFailToLogInWithError error: NSError?) {
         //User failed to login
-        println("Did fail to login")
+        print("Did fail to login")
     }
     
     //logs out user and sends back timeline which will send back to log in page
@@ -135,19 +135,19 @@ class Profile: UIViewController, UIImagePickerControllerDelegate, PFLogInViewCon
     }
     
     @IBAction func uploadToParse(sender: AnyObject) {
-        let imageData = UIImagePNGRepresentation(self.profilePic.image)
-        let imageFile:PFFile = PFFile(data: imageData)
+        let imageData = UIImagePNGRepresentation(self.profilePic.image!)
+        let imageFile:PFFile = PFFile(data: imageData!)
         PFUser.currentUser()!["picture"] = imageFile
         PFUser.currentUser()?.saveInBackgroundWithBlock({
             (success: Bool, error: NSError?) -> Void in
             
             if error == nil {
                 //save pic
-                println("Done")
+               print("Done")
                 
                 
             } else {
-                println("Something went wrong")
+                print("Something went wrong")
             }
         })
     }

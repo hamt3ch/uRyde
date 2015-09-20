@@ -141,7 +141,7 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
                 (objects: [AnyObject]?, error: NSError?) -> Void in
                 if error == nil {
                     // The find succeeded.
-                    println("Successfully retrieved \(objects!.count) scores.")
+                    print("Successfully retrieved \(objects!.count) scores.")
                     // Do something with the found objects
                     if let objects = objects as? [PFObject] {
                         for object in objects {
@@ -162,7 +162,7 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
                     }
                 } else {
                     // Log details of the failure
-                    println("Error: \(error!) \(error!.userInfo!)")
+                    print("Error: \(error!) \(error!.userInfo)")
                 }
             }
 
@@ -181,7 +181,7 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
                 (objects: [AnyObject]?, error: NSError?) -> Void in
                 if error == nil {
                     // The find succeeded.
-                    println("Successfully retrieved \(objects!.count) scores.")
+                    print("Successfully retrieved \(objects!.count) scores.")
                     // Do something with the found objects
                     if let objects = objects as? [PFObject] {
                         for object in objects {
@@ -202,7 +202,7 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
                     }
                 } else {
                     // Log details of the failure
-                    println("Error: \(error!) \(error!.userInfo!)")
+                    print("Error: \(error!) \(error!.userInfo)")
                 }
             }
             
@@ -224,11 +224,11 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         let row = indexPath.row
-        println(myPostArray.objectAtIndex(row)) // getObject in cell
+        //printmyPostArray.objectAtIndex(row) // getObject in cell
         
         let postCreator = myPostArray.objectAtIndex(row)["madeBy"] as! String
         let postID = myPostArray.objectAtIndex(row)["objectId"]
-        println(postCreator)
+        print(postCreator)
     
         if(PFUser.currentUser()?.username == postCreator)
         {
@@ -248,7 +248,7 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
             
             //ok
             refreshAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
-                println("Handle Ok logic here")
+                print("Handle Ok logic here")
                 var push:PFPush = PFPush() // set channel to postCreator
                 push.setChannel(postCreator)
                 var notifyOfferMessage = "wants a ride from you!"
@@ -265,7 +265,7 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
                     (success: Bool, error: NSError?) -> Void in
                     if (success) {
                         // The object has been saved.
-                        println("pendingPost was sent >> Parse")
+                        print("pendingPost was sent >> Parse")
                         
                         //set APS for data transfer
                         let data = ["alert":(PFUser.currentUser()?.username)! + self.selectedPostType == "Offer" ? notifyOfferMessage : notifyRequestMessage, "badge": "", "content-available":"2", "category":"MY_CATEGORY", "objectId":pendingPost.objectId!]
@@ -275,7 +275,7 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
 
                     } else {
                         // There was a problem, check error.description
-                        println("error sending")
+                        print("error sending")
                     }
             }
                 
@@ -286,7 +286,7 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
             
             //cancel
             refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction!) in
-                println("Handle Cancel Logic here")
+                print("Handle Cancel Logic here")
             }))
             
             presentViewController(refreshAlert, animated: true, completion: nil)     
@@ -316,7 +316,7 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
     
     func logInViewController(logInController: PFLogInViewController, didFailToLogInWithError error: NSError?) {
         //User failed to login
-        println("Failed to login")
+        print("Failed to login")
     }
     
     //UIParseSignupSegment////////////////////////////////////
@@ -325,11 +325,11 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
     }
     
     func signUpViewController(signUpController: PFSignUpViewController, didFailToSignUpWithError error: NSError?) {
-        println("Failed to signup")
+        print("Failed to signup")
     }
     
     func signUpViewControllerDidCancelSignUp(signUpController: PFSignUpViewController) {
-        println("Cancelled signupView")
+        print("Cancelled signupView")
     }
     
     //Buttons//////////////////
@@ -359,7 +359,7 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
                 //populate myPostArray with each parse objects
                 if let objects = objects as? [PFObject] {
                     for object in objects {
-                        println(object.objectId)
+                        print(object.objectId)
                         self.myPostArray.addObject(object)
                     }
                 }
@@ -368,12 +368,12 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
                 self.refreshControl.endRefreshing() // indicate new Data is ready
                 
                 // The find succeeded.
-                println("Successfully retrieved \(objects!.count) posts.")
+                print("Successfully retrieved \(objects!.count) posts.")
             }
             else
             {
                 // Log details of the failure
-                println("Error: \(error!) \(error!.userInfo!)")
+                print("Error: \(error!) \(error!.userInfo)")
             }
         }
         

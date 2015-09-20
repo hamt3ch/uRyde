@@ -49,7 +49,7 @@ class LogIn: UIViewController {
         
         self.actInd.startAnimating()
         
-        PFUser.logInWithUsernameInBackground(username, password: password, block: { (user, error) -> Void in
+        PFUser.logInWithUsernameInBackground(username!, password: password!, block: { (user, error) -> Void in
             self.actInd.stopAnimating() //stop talking to the backend
             if (user != nil) {
                 var verified = PFUser.currentUser()?.objectForKey("emailVerified") as! Bool

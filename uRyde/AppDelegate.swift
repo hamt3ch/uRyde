@@ -85,7 +85,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SINClientDelegate, MFMess
     }
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
-        println(error.localizedDescription)
+        print(error.localizedDescription)
     }
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
@@ -123,7 +123,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SINClientDelegate, MFMess
     
     func intializeCustomPushNotes(application:UIApplication)
     {
-        var acceptAction: UIMutableUserNotificationAction = UIMutableUserNotificationAction()
+        let acceptAction: UIMutableUserNotificationAction = UIMutableUserNotificationAction()
         acceptAction.title = "Accept"
         acceptAction.identifier = "ACCEPT"
         acceptAction.activationMode = UIUserNotificationActivationMode.Background
@@ -140,17 +140,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SINClientDelegate, MFMess
         myCategory.identifier = "MY_CATEGORY"
         
         let myActions:NSArray = [acceptAction,declineAction]
-        myCategory.setActions(myActions as [AnyObject], forContext: UIUserNotificationActionContext.Minimal)
-        
+//        myCategory.setActions(myActions as [AnyObject], forContext: UIUserNotificationActionContext.Minimal)
+//        
         let categories:NSSet = NSSet(objects:myCategory)
         
         //ParsePushNotifications
-        let notificationTypes:UIUserNotificationType = UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound
-        let notificationSettings:UIUserNotificationSettings = UIUserNotificationSettings(forTypes: notificationTypes, categories: categories as Set<NSObject>)
-        
-        UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
-        application.registerForRemoteNotifications()
-        
+//        let notificationTypes:UIUserNotificationType = UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound
+//        let notificationSettings:UIUserNotificationSettings = UIUserNotificationSettings(forTypes: notificationTypes, categories: categories as Set<NSObject>)
+//        
+//        UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
+//        application.registerForRemoteNotifications()
+//        
 
     }
     
@@ -159,7 +159,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SINClientDelegate, MFMess
         
         if(identifier == "ACCEPT")
         {
-            println("Accept notification pressed")
+            print("Accept notification pressed")
             
             
 //            println(MFMessageComposeViewController.canSendText())
@@ -171,7 +171,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SINClientDelegate, MFMess
         
         else
         {
-            println("Decline notification pressed")
+            print("Decline notification pressed")
                 // send push notification to declineUser
         }
         
