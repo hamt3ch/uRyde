@@ -89,7 +89,7 @@ class CreatePost: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
         let endingDate:NSDate = gregorian.dateByAddingComponents(dateComponents, toDate: currentDate, options: .MatchStrictly) as NSDate!
         //max date will only be three months from now
         offerDatePicker.maximumDate = endingDate
-        print(endingDate)
+        print(endingDate, terminator: "")
         requestDatePicker.minimumDate = currentDate // intialize RequestDatePicker Values
         requestDatePicker.date = currentDate
         requestDatePicker.maximumDate = endingDate
@@ -135,7 +135,7 @@ class CreatePost: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
         selectedCityRow = pickerData[row]
     }
     
-    func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView!) -> UIView {
+    func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView?) -> UIView {
         var pickerLabel = UILabel()
         if view == nil {  //if no label there yet
             pickerLabel = UILabel()
@@ -168,7 +168,7 @@ class CreatePost: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
     {
         if(userChoice == "Request")
         {
-            print("Showing Request View")
+            print("Showing Request View", terminator: "")
             UIView.animateWithDuration(0.2,
                 animations: {
                     self.offerView.alpha = 0
@@ -181,7 +181,7 @@ class CreatePost: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
             
         else
         {
-            print("Showing Offer View")
+            print("Showing Offer View", terminator: "")
             UIView.animateWithDuration(0.2,
                 animations: {
                     self.offerView.alpha = 1
@@ -217,18 +217,18 @@ class CreatePost: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
     @IBAction func switchTgl(sender: UISwitch) {
         if(GasSwitch.on)
         {
-            print("Switch on")
+            print("Switch on", terminator: "")
         }
             
         else
         {
-            print("Switch off")
+            print("Switch off", terminator: "")
         }
     }
     
     @IBAction func sendToParse(sender: AnyObject) {
-        var postType:String = postSelection  //parsePostIndicator for SaveInBackground
-        var postToCreate = PFObject(className: postType) //indicate post type (Offer/Request)
+        let postType:String = postSelection  //parsePostIndicator for SaveInBackground
+        let postToCreate = PFObject(className: postType) //indicate post type (Offer/Request)
 
         //made by
         postToCreate["madeBy"] = PFUser.currentUser()!.username
@@ -244,7 +244,7 @@ class CreatePost: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
         dateFormatter.timeStyle = .ShortStyle
         postToCreate["timeLeaving"] = dateFormatter.stringFromDate(requestDatePicker.date)
         
-        print(postType)
+        print(postType, terminator: "")
         //$$$
         if (postType == "Offer") {
             dateFormatter.dateStyle = .ShortStyle
@@ -263,7 +263,7 @@ class CreatePost: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
             (success: Bool, error: NSError?) -> Void in
             if (success) {
                 // The object has been saved. Now return to timeline
-                var timelineVC = self.storyboard?.instantiateViewControllerWithIdentifier("TabBar") as! UITabBarController
+                let timelineVC = self.storyboard?.instantiateViewControllerWithIdentifier("TabBar") as! UITabBarController
                 self.presentViewController(timelineVC, animated: true, completion: nil)
             } else {
                 // There was a problem, check error.description

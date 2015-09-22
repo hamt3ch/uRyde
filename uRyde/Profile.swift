@@ -104,7 +104,7 @@ class Profile: UIViewController, UIImagePickerControllerDelegate, PFLogInViewCon
     
     func logInViewController(logInController: PFLogInViewController, didFailToLogInWithError error: NSError?) {
         //User failed to login
-        print("Did fail to login")
+        print("Did fail to login", terminator: "")
     }
     
     //logs out user and sends back timeline which will send back to log in page
@@ -115,8 +115,8 @@ class Profile: UIViewController, UIImagePickerControllerDelegate, PFLogInViewCon
         {
             //calls login view controller
             
-            var loginVC = self.storyboard?.instantiateViewControllerWithIdentifier("Login") as! LogIn
-            var navController = UINavigationController(rootViewController: loginVC)
+            let loginVC = self.storyboard?.instantiateViewControllerWithIdentifier("Login") as! LogIn
+            let navController = UINavigationController(rootViewController: loginVC)
             self.presentViewController(navController, animated: true, completion: nil)
         
         }
@@ -127,7 +127,7 @@ class Profile: UIViewController, UIImagePickerControllerDelegate, PFLogInViewCon
 
     @IBAction func uploadFromSourceToParse(sender: AnyObject) {
         //uploads from library
-        var imagePicker = UIImagePickerController()
+        let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         imagePicker.allowsEditing = false
@@ -143,11 +143,11 @@ class Profile: UIViewController, UIImagePickerControllerDelegate, PFLogInViewCon
             
             if error == nil {
                 //save pic
-               print("Done")
+               print("Done", terminator: "")
                 
                 
             } else {
-                print("Something went wrong")
+                print("Something went wrong", terminator: "")
             }
         })
     }

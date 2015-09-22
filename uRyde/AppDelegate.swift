@@ -85,7 +85,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SINClientDelegate, MFMess
     }
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
-        print(error.localizedDescription)
+        print(error.localizedDescription, terminator: "")
     }
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
@@ -129,14 +129,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SINClientDelegate, MFMess
         acceptAction.activationMode = UIUserNotificationActivationMode.Background
         acceptAction.authenticationRequired = false
         
-        var declineAction: UIMutableUserNotificationAction = UIMutableUserNotificationAction()
+        let declineAction: UIMutableUserNotificationAction = UIMutableUserNotificationAction()
         declineAction.title = "Decline"
         declineAction.identifier = "DECLINE"
         declineAction.activationMode = UIUserNotificationActivationMode.Background
         declineAction.authenticationRequired = false
         
         //Category
-        var myCategory:UIMutableUserNotificationCategory = UIMutableUserNotificationCategory()
+        let myCategory:UIMutableUserNotificationCategory = UIMutableUserNotificationCategory()
         myCategory.identifier = "MY_CATEGORY"
         
         let myActions:NSArray = [acceptAction,declineAction]
@@ -159,7 +159,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SINClientDelegate, MFMess
         
         if(identifier == "ACCEPT")
         {
-            print("Accept notification pressed")
+            print("Accept notification pressed", terminator: "")
             
             
 //            println(MFMessageComposeViewController.canSendText())
@@ -171,7 +171,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SINClientDelegate, MFMess
         
         else
         {
-            print("Decline notification pressed")
+            print("Decline notification pressed", terminator: "")
                 // send push notification to declineUser
         }
         
@@ -184,7 +184,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SINClientDelegate, MFMess
   
     
     // this function will be called after the user presses the cancel button or sends the text
-    func messageComposeViewController(controller: MFMessageComposeViewController!, didFinishWithResult result: MessageComposeResult) {
+    func messageComposeViewController(controller: MFMessageComposeViewController, didFinishWithResult result: MessageComposeResult) {
       //  self.dismissViewControllerAnimated(true, completion: nil)
     }
     

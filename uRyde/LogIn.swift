@@ -44,8 +44,8 @@ class LogIn: UIViewController {
     
     @IBAction func loginAction(sender: AnyObject) {
         //checks correct login info
-        var username = self.usernameField.text
-        var password = self.passwordField.text
+        let username = self.usernameField.text
+        let password = self.passwordField.text
         
         self.actInd.startAnimating()
         
@@ -54,11 +54,11 @@ class LogIn: UIViewController {
             if (user != nil) {
                 var verified = PFUser.currentUser()?.objectForKey("emailVerified") as! Bool
 //                if (verified) {
-                    var alert = UIAlertView(title: "Success", message: "You logged in correctly!", delegate: self, cancelButtonTitle: "OK")
+                    let alert = UIAlertView(title: "Success", message: "You logged in correctly!", delegate: self, cancelButtonTitle: "OK")
                     alert.show()
-                    var timelineVC = self.storyboard?.instantiateViewControllerWithIdentifier("TabBar") as! UITabBarController
+                    let timelineVC = self.storyboard?.instantiateViewControllerWithIdentifier("TabBar") as! UITabBarController
                     
-                    var installation:PFInstallation = PFInstallation.currentInstallation()
+                    let installation:PFInstallation = PFInstallation.currentInstallation()
                     installation.addUniqueObject(PFUser.currentUser()!.username!, forKey: "channels")
                     installation["user"] = PFUser.currentUser()
                     installation.saveInBackground()
@@ -71,7 +71,7 @@ class LogIn: UIViewController {
                 
             
             } else {
-                var alert = UIAlertView(title: "Error", message: "Username/password combination does not exist.", delegate: self, cancelButtonTitle: "OK")
+                let alert = UIAlertView(title: "Error", message: "Username/password combination does not exist.", delegate: self, cancelButtonTitle: "OK")
                 alert.show()
             }
         })
