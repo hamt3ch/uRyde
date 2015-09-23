@@ -250,11 +250,11 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="NMd-SP-i9g" secondAttribute="trailing" id="3Jl-2d-h7i"/>
                             <constraint firstItem="hCx-Fc-BTc" firstAttribute="centerX" secondItem="NMd-SP-i9g" secondAttribute="centerX" id="4qH-5I-dJe"/>
+                            <constraint firstItem="m0X-HY-eKk" firstAttribute="top" secondItem="Nmu-Oe-w2j" secondAttribute="bottom" constant="22" id="5VH-fb-6kd"/>
                             <constraint firstItem="hCx-Fc-BTc" firstAttribute="leading" secondItem="m0X-HY-eKk" secondAttribute="trailing" constant="94" id="ALM-kA-Hf5"/>
-                            <constraint firstItem="As5-ls-U2M" firstAttribute="top" secondItem="NMd-SP-i9g" secondAttribute="bottom" id="Bjp-to-5gN"/>
                             <constraint firstItem="m0X-HY-eKk" firstAttribute="centerY" secondItem="hCx-Fc-BTc" secondAttribute="centerY" id="GhL-dh-vie"/>
-                            <constraint firstItem="m0X-HY-eKk" firstAttribute="top" secondItem="Nmu-Oe-w2j" secondAttribute="bottom" constant="22" id="LHY-LX-re5"/>
                             <constraint firstItem="m0X-HY-eKk" firstAttribute="leading" secondItem="aL3-bY-DFM" secondAttribute="leadingMargin" id="P9x-mV-xgp"/>
+                            <constraint firstItem="As5-ls-U2M" firstAttribute="top" secondItem="NMd-SP-i9g" secondAttribute="bottom" id="Yj2-pX-cEx"/>
                             <constraint firstItem="NMd-SP-i9g" firstAttribute="leading" secondItem="aL3-bY-DFM" secondAttribute="leading" id="eei-BL-fVG"/>
                             <constraint firstItem="NdQ-6p-9NA" firstAttribute="leading" secondItem="hCx-Fc-BTc" secondAttribute="trailing" constant="74" id="nXR-JA-Uez"/>
                             <constraint firstItem="m0X-HY-eKk" firstAttribute="baseline" secondItem="NdQ-6p-9NA" secondAttribute="baseline" id="pVG-Jo-MFq"/>
@@ -262,10 +262,7 @@
                             <constraint firstItem="NdQ-6p-9NA" firstAttribute="trailing" secondItem="aL3-bY-DFM" secondAttribute="trailingMargin" id="wM5-dC-fc9"/>
                         </constraints>
                     </view>
-                    <toolbarItems>
-                        <barButtonItem title="Item" id="Nhi-tv-4Mf"/>
-                        <barButtonItem title="Item" id="7bz-5S-5sY"/>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Live Feed" id="WUo-ND-zwG">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="xnK-HE-g2a">
                             <color key="tintColor" red="0.0" green="0.49803921568627452" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -282,11 +279,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2kc-Ls-DvR" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="left" id="mxg-9d-U0J">
-                    <connections>
-                        <segue destination="AsH-X4-Y9N" kind="push" id="TGs-Kb-t6q"/>
-                    </connections>
-                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="161" y="1925"/>
         </scene>
@@ -719,7 +711,7 @@
                     <navigationItem key="navigationItem" id="3in-vH-tZQ">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="pGy-gk-ulQ">
                             <button key="customView" autoresizesSubviews="NO" opaque="NO" contentMode="right" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="rxP-YS-C0U">
-                                <rect key="frame" x="202" y="4" width="157" height="36"/>
+                                <rect key="frame" x="147" y="4" width="157" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
@@ -753,7 +745,6 @@
         <!--Timeline-->
         <scene sceneID="kJb-Hg-efq">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sth-MN-DgA" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="K66-n1-M6g" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Timeline" id="wgv-TP-frq"/>
                     <toolbarItems/>
@@ -768,6 +759,7 @@
                         <segue destination="VEP-lE-yRV" kind="relationship" relationship="rootViewController" id="RJX-hm-i6Z"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sth-MN-DgA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="189" y="1163"/>
         </scene>
@@ -797,8 +789,5 @@
         <image name="login-page-blurred_0002s_0019_Layer-48-copy" width="640" height="1096"/>
         <image name="profPic_def.png" width="360" height="360"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="TGs-Kb-t6q"/>
-    </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.49803921568627452" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
