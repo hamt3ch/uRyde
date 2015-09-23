@@ -7,26 +7,6 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="zyF-z5-GIE">
-            <objects>
-                <viewController id="sno-zI-O9O" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Jwt-g2-zEl"/>
-                        <viewControllerLayoutGuide type="bottom" id="Qtx-Ex-0gB"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="57f-Jg-yrO">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="07M-mE-YdL"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="A7z-8x-ksr" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-328" y="2713"/>
-        </scene>
         <!--Profile-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
@@ -179,11 +159,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="right" id="Hpd-fx-aZk">
-                    <connections>
-                        <segue destination="sno-zI-O9O" kind="push" id="0B3-7c-9Ib"/>
-                    </connections>
-                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="Hpd-fx-aZk"/>
             </objects>
             <point key="canvasLocation" x="-382" y="1930"/>
         </scene>
@@ -220,7 +196,7 @@
                                         <rect key="frame" x="0.0" y="22" width="320" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xEc-35-sPk" id="aQh-L9-UHz">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="99.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <animations/>
                                         </tableViewCellContentView>
@@ -387,7 +363,7 @@
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <textField opaque="NO" clipsSubviews="YES" alpha="0.5" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qQM-Bs-gED">
+                            <textField opaque="NO" clipsSubviews="YES" alpha="0.80000000000000004" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qQM-Bs-gED">
                                 <rect key="frame" x="46" y="282" width="309" height="40"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -401,7 +377,7 @@
                                     <outletCollection property="gestureRecognizers" destination="NOB-y7-XY2" appends="YES" id="Fd2-of-FzP"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" alpha="0.5" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mib-vU-UZT" userLabel="Username Field">
+                            <textField opaque="NO" clipsSubviews="YES" alpha="0.80000000000000004" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mib-vU-UZT" userLabel="Username Field">
                                 <rect key="frame" x="46" y="224" width="309" height="40"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

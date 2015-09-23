@@ -28,14 +28,20 @@ class LogIn: UIViewController {
         self.actInd.hidesWhenStopped = true
         self.actInd.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
         
+        //override for Tap take off once tap guesture works for input fields
+        userExt.alpha = 0.8
+        passExt.alpha = 0.8
+        usernameTap.alpha = 0
+        passwordTap.alpha = 0;
+        
         //initializeTap
-        var inputs = [passwordTap,usernameTap]
-        for i in inputs{
-            i.userInteractionEnabled = true
-            let tapGuesture = UITapGestureRecognizer()
-            tapGuesture.addTarget(self, action: "tappedView:")
-            i.addGestureRecognizer(tapGuesture)
-        }
+//        var inputs = [passwordTap,usernameTap]
+//        for i in inputs{
+//            i.userInteractionEnabled = true
+//            let tapGuesture = UITapGestureRecognizer()
+//            tapGuesture.addTarget(self, action: "tappedView:")
+//            i.addGestureRecognizer(tapGuesture)
+//        }
 
         
         
@@ -96,17 +102,17 @@ class LogIn: UIViewController {
     //tappedInput - When user touches textbox
     func tappedView(sender:UITapGestureRecognizer) {
         
-        if(sender.view!.tag == 0){//username
-            usernameTap.alpha = 0 // turn off TapGuestView
-            usernameField.alpha = 1 // showtextField
-            userExt.alpha = 1
-        }
-        
-        else if(sender.view!.tag == 1) {//password
-            passwordTap.alpha = 0 // turn on TapGuestView
-            passwordField.alpha = 1 // set password back to normal
-            passExt.alpha = 1
-        }
+//        if(sender.view!.tag == 0){//username
+//            usernameTap.alpha = 0 // turn off TapGuestView
+//            usernameField.alpha = 1 // showtextField
+//            userExt.alpha = 1
+//        }
+//        
+//        else if(sender.view!.tag == 1) {//password
+//            passwordTap.alpha = 0 // turn on TapGuestView
+//            passwordField.alpha = 1 // set password back to normal
+//            passExt.alpha = 1
+//        }
         
     }
 }
