@@ -385,24 +385,40 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <animations/>
                             </imageView>
-                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sP0-aF-LaV">
-                                <rect key="frame" x="131" y="408" width="55" height="30"/>
+                            <view alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C3v-k3-nWP" userLabel="userExt">
+                                <rect key="frame" x="20" y="224" width="26" height="40"/>
                                 <animations/>
-                                <state key="normal" title="Sign Up"/>
-                            </button>
-                            <textField opaque="NO" clipsSubviews="YES" alpha="0.80000000000000004" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qqa-Qh-1Cg">
-                                <rect key="frame" x="20" y="224" width="335" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w4r-Pt-se6" userLabel="passExt">
+                                <rect key="frame" x="20" y="282" width="26" height="40"/>
                                 <animations/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" alpha="0.80000000000000004" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qQM-Bs-gED">
-                                <rect key="frame" x="20" y="282" width="335" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <textField opaque="NO" clipsSubviews="YES" alpha="0.5" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qQM-Bs-gED">
+                                <rect key="frame" x="46" y="282" width="309" height="40"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" keyboardKey="YES"/>
+                                </accessibility>
+                                <gestureRecognizers/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="NOB-y7-XY2" appends="YES" id="Fd2-of-FzP"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" alpha="0.5" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mib-vU-UZT" userLabel="Username Field">
+                                <rect key="frame" x="46" y="224" width="309" height="40"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" keyboardKey="YES"/>
+                                </accessibility>
+                                <gestureRecognizers/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zKx-8Y-FJX">
                                 <rect key="frame" x="20" y="343" width="335" height="40"/>
@@ -422,6 +438,24 @@
                                 <animations/>
                                 <color key="backgroundColor" red="0.23921568627450981" green="0.60392156862745094" blue="0.2627450980392157" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sP0-aF-LaV">
+                                <rect key="frame" x="131" y="408" width="55" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Sign Up"/>
+                            </button>
+                            <view alpha="0.10000000000000001" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bse-HZ-igJ" userLabel="userTapUserName">
+                                <rect key="frame" x="20" y="224" width="335" height="40"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="NOB-y7-XY2" appends="YES" id="Mi0-Ho-2rX"/>
+                                </connections>
+                            </view>
+                            <view alpha="0.10000000149011612" tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ija-Yi-Knv" userLabel="userTapPassword">
+                                <rect key="frame" x="21" y="282" width="335" height="40"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="pmT-mf-Zy0">
                                 <rect key="frame" x="142" y="82" width="92" height="112"/>
                                 <animations/>
@@ -437,11 +471,16 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
+                        <outlet property="passExt" destination="w4r-Pt-se6" id="nc6-KY-7Fi"/>
                         <outlet property="passwordField" destination="qQM-Bs-gED" id="CmW-IE-Npb"/>
-                        <outlet property="usernameField" destination="Qqa-Qh-1Cg" id="Vua-ZV-qBU"/>
+                        <outlet property="passwordTap" destination="Ija-Yi-Knv" id="Irk-iO-IrA"/>
+                        <outlet property="userExt" destination="C3v-k3-nWP" id="83o-Qs-l96"/>
+                        <outlet property="usernameField" destination="Mib-vU-UZT" id="gJk-Z0-z1P"/>
+                        <outlet property="usernameTap" destination="bse-HZ-igJ" id="Hp6-v9-7dV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JNI-m2-mVz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="NOB-y7-XY2"/>
             </objects>
             <point key="canvasLocation" x="53" y="-379"/>
         </scene>

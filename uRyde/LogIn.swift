@@ -13,7 +13,12 @@ class LogIn: UIViewController {
     
     @IBOutlet var usernameField: UITextField!
     @IBOutlet var passwordField: UITextField!
+    @IBOutlet var usernameTap: UIView!
+    @IBOutlet var passwordTap: UIView!
+    @IBOutlet var userExt: UIView!
+    @IBOutlet var passExt: UIView!
     
+
     var actInd: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(0, 0, 150, 150)) as UIActivityIndicatorView
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +28,18 @@ class LogIn: UIViewController {
         self.actInd.hidesWhenStopped = true
         self.actInd.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
         
-        view.addSubview(self.actInd)
+        //initializeTap
+        var inputs = [passwordTap,usernameTap]
+        for i in inputs{
+            i.userInteractionEnabled = true
+            let tapGuesture = UITapGestureRecognizer()
+            tapGuesture.addTarget(self, action: "tappedView:")
+            i.addGestureRecognizer(tapGuesture)
+        }
+
+        
+        
+        //view.addSubview(self.actInd)
     }
     
     override func didReceiveMemoryWarning() {
@@ -76,5 +92,21 @@ class LogIn: UIViewController {
             }
         })
     }
-
+    
+    //tappedInput - When user touches textbox
+    func tappedView(sender:UITapGestureRecognizer) {
+        
+        if(sender.view!.tag == 0){//username
+            usernameTap.alpha = 0 // turn off TapGuestView
+            usernameField.alpha = 1 // showtextField
+            userExt.alpha = 1
+        }
+        
+        else if(sender.view!.tag == 1) {//password
+            passwordTap.alpha = 0 // turn on TapGuestView
+            passwordField.alpha = 1 // set password back to normal
+            passExt.alpha = 1
+        }
+        
+    }
 }
