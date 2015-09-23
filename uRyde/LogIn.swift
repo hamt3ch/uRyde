@@ -99,6 +99,10 @@ class LogIn: UIViewController {
         })
     }
     
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
     //tappedInput - When user touches textbox
     func tappedView(sender:UITapGestureRecognizer) {
         
