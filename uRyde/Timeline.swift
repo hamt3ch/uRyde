@@ -15,6 +15,8 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
     var loginViewController = PFLogInViewController()  // instantiate loginView
     var signUpViewController = PFSignUpViewController() // instantiate signupView
   
+    @IBOutlet var OfferBackGnd: UIView!
+    @IBOutlet var RequestBackGnd: UIView!
     @IBOutlet var tableView: UITableView!
     var refreshControl:UIRefreshControl!
     
@@ -55,7 +57,7 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
         self.tableView.reloadData()
         
         
-        actIndicator.hidden = true // for now
+       // actIndicator.hidden = true // for now
         
     }
     
@@ -336,12 +338,15 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
     @IBAction func offerBtnPressed(sender: AnyObject) {
         retrieveDataFromParse("Offer") //populate TableView with Offer Post
         selectedPostType = "Offer"
-        
+        OfferBackGnd.alpha = 1 // selected
+        RequestBackGnd.alpha = 0.6 // dim
     }
     
     @IBAction func requestBtnPressed(sender: AnyObject) {
         retrieveDataFromParse("Request") //populate Tableview with Request Post
         selectedPostType = "Request"
+        OfferBackGnd.alpha = 0.6 // dim
+        RequestBackGnd.alpha = 1 // selected
     }
     
     //retrieves data at viewDidLoad the
