@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1DDC2AAB8259805E3EA7AFEA /* libPods-uRyde.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B4FD15D333F448B3C7665C9 /* libPods-uRyde.a */; };
 		411E698C1B12FD50009E9DF0 /* RequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411E698A1B12FD50009E9DF0 /* RequestCell.swift */; };
 		411E698D1B12FD50009E9DF0 /* requestCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 411E698B1B12FD50009E9DF0 /* requestCellView.xib */; };
 		4154315C1B08AE9700B625D0 /* offerCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4154315B1B08AE9700B625D0 /* offerCellView.xib */; };
@@ -42,18 +41,29 @@
 		A8BE9D711B06C66B009F13BD /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8BE9D701B06C66B009F13BD /* Accounts.framework */; };
 		A8BE9D731B06C672009F13BD /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8BE9D721B06C672009F13BD /* Social.framework */; };
 		A8BE9D751B07EA07009F13BD /* CreatePost.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BE9D741B07EA07009F13BD /* CreatePost.swift */; };
-		A8D08DE61B1113FA00B0A4A0 /* Sinch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8D08DE51B1113FA00B0A4A0 /* Sinch.framework */; };
 		A8D08DEB1B116B3D00B0A4A0 /* uRyde_link.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D08DE91B116B3D00B0A4A0 /* uRyde_link.m */; };
 		A8D08DF01B1171F900B0A4A0 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8D08DEF1B1171F900B0A4A0 /* AVFoundation.framework */; };
+		D91308B6EEC1E0AAA3D8E608 /* Pods_uRyde.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA1DE2C244E6011E287AC209 /* Pods_uRyde.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		4177DA5E1C3E1E3D00E39064 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A87B39221B066E020078ADAE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A87B39291B066E020078ADAE;
+			remoteInfo = uRyde;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		2B4FD15D333F448B3C7665C9 /* libPods-uRyde.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-uRyde.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		411E698A1B12FD50009E9DF0 /* RequestCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestCell.swift; sourceTree = "<group>"; };
 		411E698B1B12FD50009E9DF0 /* requestCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = requestCellView.xib; sourceTree = "<group>"; };
 		4154315B1B08AE9700B625D0 /* offerCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = offerCellView.xib; sourceTree = "<group>"; };
 		4154315D1B08B2B300B625D0 /* OfferCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfferCell.swift; sourceTree = "<group>"; };
+		4162066D1C3E31FE00BAA0C5 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "Pods/../build/Debug-iphoneos/Parse.framework"; sourceTree = SOURCE_ROOT; };
 		416CBDAF1B08421D00CC3E10 /* LogIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogIn.swift; sourceTree = "<group>"; };
+		4177DA591C3E1E3D00E39064 /* uRydeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = uRydeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		41C89F4C1B116B360066A346 /* profPic_def.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profPic_def.png; sourceTree = "<group>"; };
 		A77FA2DF035423DD26061F41 /* Pods-uRyde.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-uRyde.debug.xcconfig"; path = "Pods/Target Support Files/Pods-uRyde/Pods-uRyde.debug.xcconfig"; sourceTree = "<group>"; };
 		A87B392A1B066E020078ADAE /* uRyde.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uRyde.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,25 +98,33 @@
 		A8BE9D701B06C66B009F13BD /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		A8BE9D721B06C672009F13BD /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		A8BE9D741B07EA07009F13BD /* CreatePost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePost.swift; sourceTree = "<group>"; };
-		A8D08DE51B1113FA00B0A4A0 /* Sinch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sinch.framework; sourceTree = "<group>"; };
 		A8D08DE81B116B3C00B0A4A0 /* uRyde-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "uRyde-Bridging-Header.h"; sourceTree = "<group>"; };
 		A8D08DE91B116B3D00B0A4A0 /* uRyde_link.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = uRyde_link.m; sourceTree = "<group>"; };
 		A8D08DEA1B116B3D00B0A4A0 /* uRyde_link.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uRyde_link.h; sourceTree = "<group>"; };
 		A8D08DEF1B1171F900B0A4A0 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		BA1DE2C244E6011E287AC209 /* Pods_uRyde.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_uRyde.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7726232342CDE7B8CE4CAD9 /* Pods-uRyde.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-uRyde.release.xcconfig"; path = "Pods/Target Support Files/Pods-uRyde/Pods-uRyde.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		4177DA561C3E1E3D00E39064 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A87B39271B066E020078ADAE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A87B395D1B0671400078ADAE /* Parse.framework in Frameworks */,
+				A87B395C1B0671400078ADAE /* Bolts.framework in Frameworks */,
 				A8D08DF01B1171F900B0A4A0 /* AVFoundation.framework in Frameworks */,
 				A8BE9D731B06C672009F13BD /* Social.framework in Frameworks */,
 				A8BE9D711B06C66B009F13BD /* Accounts.framework in Frameworks */,
 				A8BE9D6F1B06C662009F13BD /* libsqlite3.dylib in Frameworks */,
 				A8BE9D6D1B06C60E009F13BD /* libz.dylib in Frameworks */,
-				A8D08DE61B1113FA00B0A4A0 /* Sinch.framework in Frameworks */,
 				A8BE9D6B1B06C5F6009F13BD /* SystemConfiguration.framework in Frameworks */,
 				A8BE9D691B06C5E8009F13BD /* StoreKit.framework in Frameworks */,
 				A8BE9D671B06C5E0009F13BD /* Security.framework in Frameworks */,
@@ -117,12 +135,10 @@
 				A8BE9D5D1B06C5B9009F13BD /* CFNetwork.framework in Frameworks */,
 				A8BE9D5B1B06C5B1009F13BD /* AudioToolbox.framework in Frameworks */,
 				A87B39611B0671400078ADAE /* ParseUI.framework in Frameworks */,
-				A87B395D1B0671400078ADAE /* Parse.framework in Frameworks */,
 				A87B395E1B0671400078ADAE /* ParseCrashReporting.framework in Frameworks */,
 				A87B395F1B0671400078ADAE /* ParseFacebookUtils.framework in Frameworks */,
-				A87B395C1B0671400078ADAE /* Bolts.framework in Frameworks */,
 				A87B39601B0671400078ADAE /* ParseFacebookUtilsV4.framework in Frameworks */,
-				1DDC2AAB8259805E3EA7AFEA /* libPods-uRyde.a in Frameworks */,
+				D91308B6EEC1E0AAA3D8E608 /* Pods_uRyde.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				A87B392A1B066E020078ADAE /* uRyde.app */,
+				4177DA591C3E1E3D00E39064 /* uRydeTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -202,8 +219,8 @@
 		A87B39551B06712D0078ADAE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4162066D1C3E31FE00BAA0C5 /* Parse.framework */,
 				A8D08DEF1B1171F900B0A4A0 /* AVFoundation.framework */,
-				A8D08DE51B1113FA00B0A4A0 /* Sinch.framework */,
 				A8BE9D721B06C672009F13BD /* Social.framework */,
 				A8BE9D701B06C66B009F13BD /* Accounts.framework */,
 				A8BE9D6E1B06C662009F13BD /* libsqlite3.dylib */,
@@ -223,7 +240,7 @@
 				A87B39591B0671400078ADAE /* ParseFacebookUtils.framework */,
 				A87B395A1B0671400078ADAE /* ParseFacebookUtilsV4.framework */,
 				A87B395B1B0671400078ADAE /* ParseUI.framework */,
-				2B4FD15D333F448B3C7665C9 /* libPods-uRyde.a */,
+				BA1DE2C244E6011E287AC209 /* Pods_uRyde.framework */,
 			);
 			name = Frameworks;
 			path = uRyde.xcodeproj;
@@ -241,6 +258,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		4177DA581C3E1E3D00E39064 /* uRydeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4177DA621C3E1E3E00E39064 /* Build configuration list for PBXNativeTarget "uRydeTests" */;
+			buildPhases = (
+				4177DA551C3E1E3D00E39064 /* Sources */,
+				4177DA561C3E1E3D00E39064 /* Frameworks */,
+				4177DA571C3E1E3D00E39064 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4177DA5F1C3E1E3D00E39064 /* PBXTargetDependency */,
+			);
+			name = uRydeTests;
+			productName = uRydeTests;
+			productReference = 4177DA591C3E1E3D00E39064 /* uRydeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		A87B39291B066E020078ADAE /* uRyde */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A87B39491B066E020078ADAE /* Build configuration list for PBXNativeTarget "uRyde" */;
@@ -250,6 +285,7 @@
 				A87B39271B066E020078ADAE /* Frameworks */,
 				A87B39281B066E020078ADAE /* Resources */,
 				F455D946C3C0CC5CD63AA5CA /* Copy Pods Resources */,
+				007EE6BE3CC276CE2911209D /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -266,9 +302,15 @@
 		A87B39221B066E020078ADAE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = ph7;
 				TargetAttributes = {
+					4177DA581C3E1E3D00E39064 = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = A87B39291B066E020078ADAE;
+					};
 					A87B39291B066E020078ADAE = {
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = GDB3SZ2MTH;
@@ -294,11 +336,19 @@
 			projectRoot = "";
 			targets = (
 				A87B39291B066E020078ADAE /* uRyde */,
+				4177DA581C3E1E3D00E39064 /* uRydeTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		4177DA571C3E1E3D00E39064 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A87B39281B066E020078ADAE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -315,6 +365,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		007EE6BE3CC276CE2911209D /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-uRyde/Pods-uRyde-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		EE7F38094FAD3CA230C169CB /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -348,6 +413,13 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		4177DA551C3E1E3D00E39064 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A87B39261B066E020078ADAE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -366,6 +438,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4177DA5F1C3E1E3D00E39064 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A87B39291B066E020078ADAE /* uRyde */;
+			targetProxy = 4177DA5E1C3E1E3D00E39064 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		A87B39331B066E020078ADAE /* Main.storyboard */ = {
@@ -387,6 +467,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		4177DA601C3E1E3E00E39064 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
+				INFOPLIST_FILE = uRydeTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.psdapps.uRydeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/uRyde.app/uRyde";
+			};
+			name = Debug;
+		};
+		4177DA611C3E1E3E00E39064 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
+				INFOPLIST_FILE = uRydeTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.psdapps.uRydeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/uRyde.app/uRyde";
+			};
+			name = Release;
+		};
 		A87B39471B066E020078ADAE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -489,116 +607,8 @@
 				);
 				INFOPLIST_FILE = uRyde/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = (
-					"-l\"Parse\"",
-					"-l\"ParseFacebookUtilsV4\"",
-					"-l\"Pods-uRyde-Bolts\"",
-					"-l\"Pods-uRyde-FBSDKCoreKit\"",
-					"-l\"Pods-uRyde-FBSDKLoginKit\"",
-					"-l\"Pods-uRyde-Parse\"",
-					"-l\"Pods-uRyde-ParseFacebookUtilsV4\"",
-					"-l\"Pods-uRyde-SinchRTC\"",
-					"-l\"Pods-uRyde-SinchService\"",
-					"-l\"c++\"",
-					"-l\"sqlite3\"",
-					"-l\"z\"",
-					"-framework",
-					"\"AVFoundation\"",
-					"-framework",
-					"\"AudioToolbox\"",
-					"-framework",
-					"\"CFNetwork\"",
-					"-framework",
-					"\"CoreGraphics\"",
-					"-framework",
-					"\"CoreLocation\"",
-					"-framework",
-					"\"MobileCoreServices\"",
-					"-framework",
-					"\"QuartzCore\"",
-					"-framework",
-					"\"Security\"",
-					"-framework",
-					"\"Sinch\"",
-					"-framework",
-					"\"StoreKit\"",
-					"-framework",
-					"\"SystemConfiguration\"",
-					"-weak_framework",
-					"\"Accounts\"",
-					"-weak_framework",
-					"\"AudioToolbox\"",
-					"-weak_framework",
-					"\"CoreGraphics\"",
-					"-weak_framework",
-					"\"CoreLocation\"",
-					"-weak_framework",
-					"\"Foundation\"",
-					"-weak_framework",
-					"\"QuartzCore\"",
-					"-weak_framework",
-					"\"Security\"",
-					"-weak_framework",
-					"\"Social\"",
-					"-weak_framework",
-					"\"UIKit\"",
-				);
-				"OTHER_LDFLAGS[arch=*]" = (
-					"$(inherited)",
-					"-Xlinker",
-					"-l\"Parse\"",
-					"-l\"ParseFacebookUtilsV4\"",
-					"-l\"Pods-uRyde-Bolts\"",
-					"-l\"Pods-uRyde-FBSDKCoreKit\"",
-					"-l\"Pods-uRyde-FBSDKLoginKit\"",
-					"-l\"Pods-uRyde-Parse\"",
-					"-l\"Pods-uRyde-ParseFacebookUtilsV4\"",
-					"-l\"Pods-uRyde-SinchRTC\"",
-					"-l\"Pods-uRyde-SinchService\"",
-					"-l\"c++\"",
-					"-l\"sqlite3\"",
-					"-l\"z\"",
-					"-framework",
-					"\"AVFoundation\"",
-					"-framework",
-					"\"AudioToolbox\"",
-					"-framework",
-					"\"CFNetwork\"",
-					"-framework",
-					"\"CoreGraphics\"",
-					"-framework",
-					"\"CoreLocation\"",
-					"-framework",
-					"\"MobileCoreServices\"",
-					"-framework",
-					"\"QuartzCore\"",
-					"-framework",
-					"\"Security\"",
-					"-framework",
-					"\"Sinch\"",
-					"-framework",
-					"\"StoreKit\"",
-					"-framework",
-					"\"SystemConfiguration\"",
-					"-weak_framework",
-					"\"Accounts\"",
-					"-weak_framework",
-					"\"AudioToolbox\"",
-					"-weak_framework",
-					"\"CoreGraphics\"",
-					"-weak_framework",
-					"\"CoreLocation\"",
-					"-weak_framework",
-					"\"Foundation\"",
-					"-weak_framework",
-					"\"QuartzCore\"",
-					"-weak_framework",
-					"\"Security\"",
-					"-weak_framework",
-					"\"Social\"",
-					"-weak_framework",
-					"\"UIKit\"",
-				);
+				OTHER_LDFLAGS = "";
+				"OTHER_LDFLAGS[arch=*]" = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "uRyde/uRyde-Bridging-Header.h";
@@ -622,60 +632,7 @@
 				INFOPLIST_FILE = uRyde/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = (
-					"-l\"Parse\"",
-					"-l\"ParseFacebookUtilsV4\"",
-					"-l\"Pods-uRyde-Bolts\"",
-					"-l\"Pods-uRyde-FBSDKCoreKit\"",
-					"-l\"Pods-uRyde-FBSDKLoginKit\"",
-					"-l\"Pods-uRyde-Parse\"",
-					"-l\"Pods-uRyde-ParseFacebookUtilsV4\"",
-					"-l\"Pods-uRyde-SinchRTC\"",
-					"-l\"Pods-uRyde-SinchService\"",
-					"-l\"c++\"",
-					"-l\"sqlite3\"",
-					"-l\"z\"",
-					"-framework",
-					"\"AVFoundation\"",
-					"-framework",
-					"\"AudioToolbox\"",
-					"-framework",
-					"\"CFNetwork\"",
-					"-framework",
-					"\"CoreGraphics\"",
-					"-framework",
-					"\"CoreLocation\"",
-					"-framework",
-					"\"MobileCoreServices\"",
-					"-framework",
-					"\"QuartzCore\"",
-					"-framework",
-					"\"Security\"",
-					"-framework",
-					"\"Sinch\"",
-					"-framework",
-					"\"StoreKit\"",
-					"-framework",
-					"\"SystemConfiguration\"",
-					"-weak_framework",
-					"\"Accounts\"",
-					"-weak_framework",
-					"\"AudioToolbox\"",
-					"-weak_framework",
-					"\"CoreGraphics\"",
-					"-weak_framework",
-					"\"CoreLocation\"",
-					"-weak_framework",
-					"\"Foundation\"",
-					"-weak_framework",
-					"\"QuartzCore\"",
-					"-weak_framework",
-					"\"Security\"",
-					"-weak_framework",
-					"\"Social\"",
-					"-weak_framework",
-					"\"UIKit\"",
-				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "uRyde/uRyde-Bridging-Header.h";
@@ -685,6 +642,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		4177DA621C3E1E3E00E39064 /* Build configuration list for PBXNativeTarget "uRydeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4177DA601C3E1E3E00E39064 /* Debug */,
+				4177DA611C3E1E3E00E39064 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		A87B39251B066E020078ADAE /* Build configuration list for PBXProject "uRyde" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

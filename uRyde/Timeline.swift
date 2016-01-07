@@ -15,6 +15,8 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
     var loginViewController = PFLogInViewController()  // instantiate loginView
     var signUpViewController = PFSignUpViewController() // instantiate signupView
   
+    @IBOutlet var OfferBackGnd: UIView!
+    @IBOutlet var RequestBackGnd: UIView!
     @IBOutlet var tableView: UITableView!
     var refreshControl:UIRefreshControl!
     
@@ -30,9 +32,9 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
     override func viewDidLoad() {
         super.viewDidLoad()
         //Register custom cell
-        var nibOffer = UINib(nibName: "offerCellView", bundle: nil)
+        let nibOffer = UINib(nibName: "offerCellView", bundle: nil)
         tableView.registerNib(nibOffer, forCellReuseIdentifier: "offerCell")
-        var nibReq = UINib(nibName: "requestCellView", bundle: nil)
+        let nibReq = UINib(nibName: "requestCellView", bundle: nil)
         tableView.registerNib(nibReq, forCellReuseIdentifier: "requestCell")
         
         //SwipeToRefresh Initialization
@@ -55,7 +57,7 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
         self.tableView.reloadData()
         
         
-        actIndicator.hidden = true // for now
+       // actIndicator.hidden = true // for now
         
     }
     
@@ -72,7 +74,7 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
             //customize parse login/signup here
             
             //replaes Parse logo
-            var loginLogoTitle = UILabel() //can use UIImage UIButton etc...
+            let loginLogoTitle = UILabel() //can use UIImage UIButton etc...
             loginLogoTitle.text = "uRyde"
             loginViewController.logInView?.logo = loginLogoTitle
             loginViewController.delegate = self // connect loginView to delegate
@@ -83,8 +85,8 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
             // signupBtn >> signupViewController
             loginViewController.signUpController = self.signUpViewController
             
-            var loginVC = self.storyboard?.instantiateViewControllerWithIdentifier("Login") as! LogIn
-            var navController = UINavigationController(rootViewController: loginVC)
+            let loginVC = self.storyboard?.instantiateViewControllerWithIdentifier("Login") as! LogIn
+            let navController = UINavigationController(rootViewController: loginVC)
             self.presentViewController(navController, animated: true, completion: nil)
             
         }
@@ -115,18 +117,18 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         //get offer/request
-        var tempObject:PFObject = self.myPostArray.objectAtIndex(indexPath.row) as! PFObject
+        let tempObject:PFObject = self.myPostArray.objectAtIndex(indexPath.row) as! PFObject
         let postCreator = tempObject["madeBy"] as! String  // get username from post
-        var destination = tempObject["destination"] as! String
-        var departDate = tempObject["dateLeaving"] as! String
-        var userQuery:PFQuery = PFUser.query()! // access user class
+        let destination = tempObject["destination"] as! String
+        let departDate = tempObject["dateLeaving"] as! String
+        let userQuery:PFQuery = PFUser.query()! // access user class
         userQuery.whereKey("username", equalTo: postCreator) // find user == postCreator
         
         //for requests
         if (selectedPostType == "Request") {
-            var rCell:RequestCell = tableView.dequeueReusableCellWithIdentifier("requestCell") as! RequestCell
+            let rCell:RequestCell = tableView.dequeueReusableCellWithIdentifier("requestCell") as! RequestCell
             
-            var willIPay = tempObject["willIPay"] as? Bool
+            let willIPay = tempObject["willIPay"] as? Bool
             //String for request info
             var goingToPay = ""
             if willIPay == false {
@@ -138,12 +140,12 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
             rCell.destination.text = "Needs a ride to " + "\(destination)" + " on " + "\(departDate)" + "\(goingToPay)"
             
             userQuery.findObjectsInBackgroundWithBlock {
-                (objects: [AnyObject]?, error: NSError?) -> Void in
+                (objects: [PFObject]?, error: NSError?) -> Void in
                 if error == nil {
                     // The find succeeded.
-                    print("Successfully retrieved \(objects!.count) scores.")
+                    print("Successfully retrieved \(objects!.count) scores.", terminator: "")
                     // Do something with the found objects
-                    if let objects = objects as? [PFObject] {
+                    if let objects = objects {
                         for object in objects {
                             
                             let profilePic = object["picture"] as? PFFile
@@ -162,7 +164,7 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
                     }
                 } else {
                     // Log details of the failure
-                    print("Error: \(error!) \(error!.userInfo)")
+                    print("Error: \(error!) \(error!.userInfo)", terminator: "")
                 }
             }
 
@@ -170,7 +172,7 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
             
         //for offers
         } else {
-            var oCell:OfferCell = tableView.dequeueReusableCellWithIdentifier("offerCell") as! OfferCell
+            let oCell:OfferCell = tableView.dequeueReusableCellWithIdentifier("offerCell") as! OfferCell
             oCell.name.text = postCreator
             oCell.destination.text = destination
             let departureDate = departDate
@@ -178,12 +180,12 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
             oCell.date.text = "Leaving on " + "\(departureDate)" + " at " + "\(departureTime)"
             
             userQuery.findObjectsInBackgroundWithBlock {
-                (objects: [AnyObject]?, error: NSError?) -> Void in
+                (objects: [PFObject]?, error: NSError?) -> Void in
                 if error == nil {
                     // The find succeeded.
-                    print("Successfully retrieved \(objects!.count) scores.")
+                    print("Successfully retrieved \(objects!.count) scores.", terminator: "")
                     // Do something with the found objects
-                    if let objects = objects as? [PFObject] {
+                    if let objects = objects {
                         for object in objects {
                             
                             let profilePic = object["picture"] as? PFFile
@@ -202,11 +204,11 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
                     }
                 } else {
                     // Log details of the failure
-                    print("Error: \(error!) \(error!.userInfo)")
+                    print("Error: \(error!) \(error!.userInfo)", terminator: "")
                 }
             }
             
-            var needGasMoney = tempObject["needGasMoney"] as? Bool
+            let needGasMoney = tempObject["needGasMoney"] as? Bool
             if needGasMoney == false {
                 oCell.moneyIcon.hidden = true
             }
@@ -228,11 +230,11 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
         
         let postCreator = myPostArray.objectAtIndex(row)["madeBy"] as! String
         let postID = myPostArray.objectAtIndex(row)["objectId"]
-        print(postCreator)
+        print(postCreator, terminator: "")
     
         if(PFUser.currentUser()?.username == postCreator)
         {
-            var alert:UIAlertView = UIAlertView()
+            let alert:UIAlertView = UIAlertView()
             alert.title = "You cannot request a ride from yourself."
             //alert.message = "Your workout has been logged into the system"
             alert.delegate = self
@@ -242,21 +244,21 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
 
         else
         {
-            var offerMessage = "Do you want to request a ride from " + postCreator + "?"
-            var requestMessage = "Do you want to give " + postCreator + " a ride to Hugh's kingdom?"
-            var refreshAlert = UIAlertController(title: "Confirm", message: selectedPostType == "Offer" ? offerMessage : requestMessage, preferredStyle: UIAlertControllerStyle.Alert)
+            let offerMessage = "Do you want to request a ride from " + postCreator + "?"
+            let requestMessage = "Do you want to give " + postCreator + " a ride to Hugh's kingdom?"
+            let refreshAlert = UIAlertController(title: "Confirm", message: selectedPostType == "Offer" ? offerMessage : requestMessage, preferredStyle: UIAlertControllerStyle.Alert)
             
             //ok
-            refreshAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
-                print("Handle Ok logic here")
-                var push:PFPush = PFPush() // set channel to postCreator
+            refreshAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction) in
+                print("Handle Ok logic here", terminator: "")
+                let push:PFPush = PFPush() // set channel to postCreator
                 push.setChannel(postCreator)
-                var notifyOfferMessage = "wants a ride from you!"
-                var notifyRequestMessage = "wants to offer you a ride!"
+                let notifyOfferMessage = "wants a ride from you!"
+                let notifyRequestMessage = "wants to offer you a ride!"
                 push.setMessage(postCreator + self.selectedPostType == "Offer" ? notifyOfferMessage : notifyRequestMessage)
        
                 //Create Post Object
-                var pendingPost = PFObject(className: "Pending")
+                let pendingPost = PFObject(className: "Pending")
                 pendingPost["sentBy"] = PFUser.currentUser()?.username
                 pendingPost["recievedBy"] = postCreator
                 pendingPost["accept"] = false
@@ -265,7 +267,7 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
                     (success: Bool, error: NSError?) -> Void in
                     if (success) {
                         // The object has been saved.
-                        print("pendingPost was sent >> Parse")
+                        print("pendingPost was sent >> Parse", terminator: "")
                         
                         //set APS for data transfer
                         let data = ["alert":(PFUser.currentUser()?.username)! + self.selectedPostType == "Offer" ? notifyOfferMessage : notifyRequestMessage, "badge": "", "content-available":"2", "category":"MY_CATEGORY", "objectId":pendingPost.objectId!]
@@ -275,7 +277,7 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
 
                     } else {
                         // There was a problem, check error.description
-                        print("error sending")
+                        print("error sending", terminator: "")
                     }
             }
                 
@@ -285,8 +287,8 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
             }))
             
             //cancel
-            refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction!) in
-                print("Handle Cancel Logic here")
+            refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction) in
+                print("Handle Cancel Logic here", terminator: "")
             }))
             
             presentViewController(refreshAlert, animated: true, completion: nil)     
@@ -316,7 +318,7 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
     
     func logInViewController(logInController: PFLogInViewController, didFailToLogInWithError error: NSError?) {
         //User failed to login
-        print("Failed to login")
+        print("Failed to login", terminator: "")
     }
     
     //UIParseSignupSegment////////////////////////////////////
@@ -325,41 +327,44 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
     }
     
     func signUpViewController(signUpController: PFSignUpViewController, didFailToSignUpWithError error: NSError?) {
-        print("Failed to signup")
+        print("Failed to signup", terminator: "")
     }
     
     func signUpViewControllerDidCancelSignUp(signUpController: PFSignUpViewController) {
-        print("Cancelled signupView")
+        print("Cancelled signupView", terminator: "")
     }
     
     //Buttons//////////////////
     @IBAction func offerBtnPressed(sender: AnyObject) {
         retrieveDataFromParse("Offer") //populate TableView with Offer Post
         selectedPostType = "Offer"
-        
+        OfferBackGnd.alpha = 1 // selected
+        RequestBackGnd.alpha = 0.6 // dim
     }
     
     @IBAction func requestBtnPressed(sender: AnyObject) {
         retrieveDataFromParse("Request") //populate Tableview with Request Post
         selectedPostType = "Request"
+        OfferBackGnd.alpha = 0.6 // dim
+        RequestBackGnd.alpha = 1 // selected
     }
     
     //retrieves data at viewDidLoad the
     func retrieveDataFromParse (selectedPost:String)
     {
         //get query from parse
-        var query = PFQuery(className: selectedPost)
+        let query = PFQuery(className: selectedPost)
         query.orderByDescending("createdAt")
         query.findObjectsInBackgroundWithBlock {
             //query parse object and put each object in objects array
-            (objects: [AnyObject]?, error: NSError?) -> Void in
+            (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil
             {
                 self.myPostArray.removeAllObjects()
                 //populate myPostArray with each parse objects
-                if let objects = objects as? [PFObject] {
+                if let objects = objects {
                     for object in objects {
-                        print(object.objectId)
+                        print(object.objectId, terminator: "")
                         self.myPostArray.addObject(object)
                     }
                 }
@@ -368,12 +373,12 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
                 self.refreshControl.endRefreshing() // indicate new Data is ready
                 
                 // The find succeeded.
-                print("Successfully retrieved \(objects!.count) posts.")
+                print("Successfully retrieved \(objects!.count) posts.", terminator: "")
             }
             else
             {
                 // Log details of the failure
-                print("Error: \(error!) \(error!.userInfo)")
+                print("Error: \(error!) \(error!.userInfo)", terminator: "")
             }
         }
         

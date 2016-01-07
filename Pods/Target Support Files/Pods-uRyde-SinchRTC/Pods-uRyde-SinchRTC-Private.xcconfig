@@ -1,7 +1,0 @@
-#include "Pods-uRyde-SinchRTC.xcconfig"
-CLANG_CXX_LIBRARY = ${PODS_URYDE_SINCHRTC_CLANG_CXX_LIBRARY}
-FRAMEWORK_SEARCH_PATHS = ${PODS_URYDE_SINCHRTC_FRAMEWORK_SEARCH_PATHS}
-GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Build" "${PODS_ROOT}/Headers/Build/SinchRTC" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/Bolts" "${PODS_ROOT}/Headers/Public/FBSDKCoreKit" "${PODS_ROOT}/Headers/Public/FBSDKLoginKit" "${PODS_ROOT}/Headers/Public/FBSDKLoginKit/FBSDKLoginKit" "${PODS_ROOT}/Headers/Public/Parse" "${PODS_ROOT}/Headers/Public/ParseFacebookUtilsV4" "${PODS_ROOT}/Headers/Public/SinchRTC" "${PODS_ROOT}/Headers/Public/SinchService" "${PODS_ROOT}/Headers/Public/SinchService/Sinch"
-OTHER_LDFLAGS = ${PODS_URYDE_SINCHRTC_OTHER_LDFLAGS} -ObjC
-PODS_ROOT = ${SRCROOT}

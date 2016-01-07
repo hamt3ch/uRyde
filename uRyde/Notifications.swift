@@ -63,9 +63,9 @@ class Notifications: UIViewController, UITableViewDataSource, UITableViewDelegat
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = directMessageTblView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) as! UITableViewCell
+        let cell = directMessageTblView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) 
         
-        var tempObject:PFObject = self.userListPost.objectAtIndex(indexPath.row) as! PFObject
+        let tempObject:PFObject = self.userListPost.objectAtIndex(indexPath.row) as! PFObject
         
         cell.textLabel?.text = tempObject["sentBy"] as! String
         
@@ -78,7 +78,7 @@ class Notifications: UIViewController, UITableViewDataSource, UITableViewDelegat
     
     func tableView(tableView: UITableView!, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath!) {
         
-         var objectToDelete:PFObject = self.userListPost.objectAtIndex(indexPath.row) as! PFObject //get object from TableRow
+         let objectToDelete:PFObject = self.userListPost.objectAtIndex(indexPath.row) as! PFObject //get object from TableRow
 
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
             // handle delete (by removing the data from your array and updating the tableview)
@@ -99,17 +99,17 @@ class Notifications: UIViewController, UITableViewDataSource, UITableViewDelegat
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        var tempObject:PFObject = self.userListPost.objectAtIndex(indexPath.row) as! PFObject
+        let tempObject:PFObject = self.userListPost.objectAtIndex(indexPath.row) as! PFObject
         let userTryingContact = tempObject["sentBy"] as! String
         
-        var userQuery:PFQuery = PFUser.query()!
+        let userQuery:PFQuery = PFUser.query()!
          userQuery.whereKey("username", equalTo: userTryingContact)
          userQuery.findObjectsInBackgroundWithBlock{
-            (objects: [AnyObject]?, error: NSError?) -> Void in
+            (objects: [PFObject]?, error: NSError?) -> Void in
             // The find succeeded.
             if error == nil
             {  // Do something with the found objects
-                if let objects = objects as? [PFObject]
+                if let objects = objects as [PFObject]!
                 {
                     for object in objects
                     {
@@ -126,22 +126,22 @@ class Notifications: UIViewController, UITableViewDataSource, UITableViewDelegat
         self.userListPost.removeAllObjects() //clear userList
         
         //var userQuery:PFQuery = PFUser.query()!
-        var userQuery:PFQuery = PFQuery(className: "Pending")
+        let userQuery:PFQuery = PFQuery(className: "Pending")
         userQuery.orderByAscending("username")
         userQuery.whereKey("sentBy", notEqualTo: self.currentUserStr)
         userQuery.findObjectsInBackgroundWithBlock {
-            (objects: [AnyObject]?, error: NSError?) -> Void in
+            (objects: [PFObject]?, error: NSError?) -> Void in
             // The find succeeded.
-            print("Successfully retrieved \(objects!.count) scores.")
+            print("Successfully retrieved \(objects!.count) scores.", terminator: "")
             
                 if error == nil
                 {
                     // Do something with the found objects
-                    if let objects = objects as? [PFObject] {
+                    if let objects = objects {
                         
                         for object in objects {
                             self.userListPost.addObject(object)
-                            print(self.userListPost)
+                            print(self.userListPost, terminator: "")
                             
                         }
                     }
@@ -154,7 +154,7 @@ class Notifications: UIViewController, UITableViewDataSource, UITableViewDelegat
             
                 else
                 {
-                    print("Error from notificationsQuery")
+                    print("Error from notificationsQuery", terminator: "")
                 
                 }
                     
@@ -186,7 +186,7 @@ class Notifications: UIViewController, UITableViewDataSource, UITableViewDelegat
     //MessageUI - Delegate
     
     // this function will be called after the user presses the cancel button or sends the text
-    func messageComposeViewController(controller: MFMessageComposeViewController!, didFinishWithResult result: MessageComposeResult) {
+    func messageComposeViewController(controller: MFMessageComposeViewController, didFinishWithResult result: MessageComposeResult) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -204,7 +204,7 @@ class Notifications: UIViewController, UITableViewDataSource, UITableViewDelegat
         }
         
         else {
-            print("User hasn't setup Messages.app")
+            print("User hasn't setup Messages.app", terminator: "")
         }
     }
     

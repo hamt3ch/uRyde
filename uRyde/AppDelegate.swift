@@ -13,7 +13,7 @@ import Bolts
 import MessageUI
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, SINClientDelegate, MFMessageComposeViewControllerDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, MFMessageComposeViewControllerDelegate {
 
     var window: UIWindow?
     var client: SINClient?
@@ -42,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SINClientDelegate, MFMess
         return true
     }
     
-    //SinchIM - Delegate
+    /*SinchIM - Delegate
     func createSinchClient(userId: String) {
         if client == nil {
             client = Sinch.clientWithApplicationKey("728f3ab4-a1d6-45d6-9db8-01a9003fb82e", applicationSecret: "4H4nXopLk0aMHqAmicusiA==", environmentHost: "sandbox.sinch.com", userId: userId)
@@ -70,6 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SINClientDelegate, MFMess
         let toast = UIAlertView(title: "Failed to start", message: error.description, delegate: nil, cancelButtonTitle: "OK")
         toast.show()
     }
+*/
     
     
     //PushNotes - Delegate
@@ -85,7 +86,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SINClientDelegate, MFMess
     }
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
-        print(error.localizedDescription)
+        print(error.localizedDescription, terminator: "")
     }
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
@@ -129,14 +130,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SINClientDelegate, MFMess
         acceptAction.activationMode = UIUserNotificationActivationMode.Background
         acceptAction.authenticationRequired = false
         
-        var declineAction: UIMutableUserNotificationAction = UIMutableUserNotificationAction()
+        let declineAction: UIMutableUserNotificationAction = UIMutableUserNotificationAction()
         declineAction.title = "Decline"
         declineAction.identifier = "DECLINE"
         declineAction.activationMode = UIUserNotificationActivationMode.Background
         declineAction.authenticationRequired = false
         
         //Category
-        var myCategory:UIMutableUserNotificationCategory = UIMutableUserNotificationCategory()
+        let myCategory:UIMutableUserNotificationCategory = UIMutableUserNotificationCategory()
         myCategory.identifier = "MY_CATEGORY"
         
         let myActions:NSArray = [acceptAction,declineAction]
@@ -159,7 +160,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SINClientDelegate, MFMess
         
         if(identifier == "ACCEPT")
         {
-            print("Accept notification pressed")
+            print("Accept notification pressed", terminator: "")
             
             
 //            println(MFMessageComposeViewController.canSendText())
@@ -171,7 +172,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SINClientDelegate, MFMess
         
         else
         {
-            print("Decline notification pressed")
+            print("Decline notification pressed", terminator: "")
                 // send push notification to declineUser
         }
         
@@ -184,7 +185,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SINClientDelegate, MFMess
   
     
     // this function will be called after the user presses the cancel button or sends the text
-    func messageComposeViewController(controller: MFMessageComposeViewController!, didFinishWithResult result: MessageComposeResult) {
+    func messageComposeViewController(controller: MFMessageComposeViewController, didFinishWithResult result: MessageComposeResult) {
       //  self.dismissViewControllerAnimated(true, completion: nil)
     }
     
