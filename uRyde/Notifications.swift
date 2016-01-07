@@ -105,11 +105,11 @@ class Notifications: UIViewController, UITableViewDataSource, UITableViewDelegat
         let userQuery:PFQuery = PFUser.query()!
          userQuery.whereKey("username", equalTo: userTryingContact)
          userQuery.findObjectsInBackgroundWithBlock{
-            (objects: [AnyObject]?, error: NSError?) -> Void in
+            (objects: [PFObject]?, error: NSError?) -> Void in
             // The find succeeded.
             if error == nil
             {  // Do something with the found objects
-                if let objects = objects as? [PFObject]
+                if let objects = objects as [PFObject]!
                 {
                     for object in objects
                     {
@@ -130,14 +130,14 @@ class Notifications: UIViewController, UITableViewDataSource, UITableViewDelegat
         userQuery.orderByAscending("username")
         userQuery.whereKey("sentBy", notEqualTo: self.currentUserStr)
         userQuery.findObjectsInBackgroundWithBlock {
-            (objects: [AnyObject]?, error: NSError?) -> Void in
+            (objects: [PFObject]?, error: NSError?) -> Void in
             // The find succeeded.
             print("Successfully retrieved \(objects!.count) scores.", terminator: "")
             
                 if error == nil
                 {
                     // Do something with the found objects
-                    if let objects = objects as? [PFObject] {
+                    if let objects = objects {
                         
                         for object in objects {
                             self.userListPost.addObject(object)

@@ -13,7 +13,7 @@ import Bolts
 import MessageUI
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, SINClientDelegate, MFMessageComposeViewControllerDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, MFMessageComposeViewControllerDelegate {
 
     var window: UIWindow?
     var client: SINClient?
@@ -42,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SINClientDelegate, MFMess
         return true
     }
     
-    //SinchIM - Delegate
+    /*SinchIM - Delegate
     func createSinchClient(userId: String) {
         if client == nil {
             client = Sinch.clientWithApplicationKey("728f3ab4-a1d6-45d6-9db8-01a9003fb82e", applicationSecret: "4H4nXopLk0aMHqAmicusiA==", environmentHost: "sandbox.sinch.com", userId: userId)
@@ -70,6 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SINClientDelegate, MFMess
         let toast = UIAlertView(title: "Failed to start", message: error.description, delegate: nil, cancelButtonTitle: "OK")
         toast.show()
     }
+*/
     
     
     //PushNotes - Delegate

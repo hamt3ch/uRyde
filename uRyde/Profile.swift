@@ -136,7 +136,7 @@ class Profile: UIViewController, UIImagePickerControllerDelegate, PFLogInViewCon
     
     @IBAction func uploadToParse(sender: AnyObject) {
         let imageData = UIImagePNGRepresentation(self.profilePic.image!)
-        let imageFile:PFFile = PFFile(data: imageData!)
+        let imageFile:PFFile = PFFile(data: imageData!)!
         PFUser.currentUser()!["picture"] = imageFile
         PFUser.currentUser()?.saveInBackgroundWithBlock({
             (success: Bool, error: NSError?) -> Void in

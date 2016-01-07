@@ -140,12 +140,12 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
             rCell.destination.text = "Needs a ride to " + "\(destination)" + " on " + "\(departDate)" + "\(goingToPay)"
             
             userQuery.findObjectsInBackgroundWithBlock {
-                (objects: [AnyObject]?, error: NSError?) -> Void in
+                (objects: [PFObject]?, error: NSError?) -> Void in
                 if error == nil {
                     // The find succeeded.
                     print("Successfully retrieved \(objects!.count) scores.", terminator: "")
                     // Do something with the found objects
-                    if let objects = objects as? [PFObject] {
+                    if let objects = objects {
                         for object in objects {
                             
                             let profilePic = object["picture"] as? PFFile
@@ -180,12 +180,12 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
             oCell.date.text = "Leaving on " + "\(departureDate)" + " at " + "\(departureTime)"
             
             userQuery.findObjectsInBackgroundWithBlock {
-                (objects: [AnyObject]?, error: NSError?) -> Void in
+                (objects: [PFObject]?, error: NSError?) -> Void in
                 if error == nil {
                     // The find succeeded.
                     print("Successfully retrieved \(objects!.count) scores.", terminator: "")
                     // Do something with the found objects
-                    if let objects = objects as? [PFObject] {
+                    if let objects = objects {
                         for object in objects {
                             
                             let profilePic = object["picture"] as? PFFile
@@ -357,12 +357,12 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
         query.orderByDescending("createdAt")
         query.findObjectsInBackgroundWithBlock {
             //query parse object and put each object in objects array
-            (objects: [AnyObject]?, error: NSError?) -> Void in
+            (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil
             {
                 self.myPostArray.removeAllObjects()
                 //populate myPostArray with each parse objects
-                if let objects = objects as? [PFObject] {
+                if let objects = objects {
                     for object in objects {
                         print(object.objectId, terminator: "")
                         self.myPostArray.addObject(object)
