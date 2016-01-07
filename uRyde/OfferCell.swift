@@ -20,7 +20,7 @@ class OfferCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        profilePic.layer.cornerRadius = 10;
+        profilePic.layer.cornerRadius = profilePic.frame.height / 2;
         profilePic.clipsToBounds = true;
     }
 
