@@ -31,6 +31,7 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         //Register custom cell
         let nibOffer = UINib(nibName: "offerCellView", bundle: nil)
         tableView.registerNib(nibOffer, forCellReuseIdentifier: "offerCell")
@@ -47,6 +48,11 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
 //        swipeRec.addTarget(self, action: "swipedView")
 //        swipeView.addGestureRecognizer(swipeRec)
 //        swipeView.userInteractionEnabled = true
+        
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
+        self.tableView.separatorInset = UIEdgeInsetsZero
+        self.tableView.separatorColor = UIColorFromRGB(0xE62D3B)
+        
         
     }
     
@@ -91,17 +97,29 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
             
         }
         
+        /*
         if selectedPostType == "Offer" {
             tableView.separatorColor = UIColor.whiteColor()
         } else {
             tableView.separatorColor = UIColor(red: 17, green: 79, blue: 160, alpha: 1)
         }
+        */
     }
 
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    //colors
+    func UIColorFromRGB(rgbValue: UInt) -> UIColor {
+        return UIColor(
+            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+            alpha: CGFloat(0.3)
+        )
     }
     
     //DataSourceSegment////////////////
@@ -115,7 +133,7 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
+
         //get offer/request
         let tempObject:PFObject = self.myPostArray.objectAtIndex(indexPath.row) as! PFObject
         let postCreator = tempObject["madeBy"] as! String  // get username from post
@@ -295,6 +313,12 @@ class Timeline: UIViewController, UITableViewDataSource, UITableViewDelegate, PF
 
          }
     
+    }
+    
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        cell.separatorInset = UIEdgeInsetsZero
+        cell.layoutMargins = UIEdgeInsetsZero
+        cell.preservesSuperviewLayoutMargins = false
     }
 
     //UIParseLoginSegment/////////////////

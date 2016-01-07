@@ -17,7 +17,7 @@ class RequestCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        rProfPic.layer.cornerRadius = 10;
+        rProfPic.layer.cornerRadius = rProfPic.frame.height / 2;
         rProfPic.clipsToBounds = true;
     }
 

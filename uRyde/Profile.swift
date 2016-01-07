@@ -68,7 +68,7 @@ class Profile: UIViewController, UIImagePickerControllerDelegate, PFLogInViewCon
             let school: String? = myself!["school"] as? String
             schoolName.text = school
             
-            profilePic.layer.cornerRadius = 10
+            profilePic.layer.cornerRadius = 20
             profilePic.clipsToBounds = true
             
         
